@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🎮 GAME MODE - iPhone 8 Plus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #0f0f1a 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Hiệu ứng nền động */
+        .background-glow {
+            position: fixed;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0,255,136,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+            pointer-events: none;
+            animation: pulse 4s infinite;
+            z-index: 0;
+        }
+        
+        .background-glow-2 {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,136,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            pointer-events: none;
+            animation: pulse 5s infinite 1s;
+            z-index: 0;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+        
+        .container {
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.8s ease;
+        }
+        
+        .header .icon {
+            font-size: 60px;
+            display: block;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            color: #aaa;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+        
+        .status-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .status-card .status-text {
+            font-size: 16px;
+            color: #fff;
+            font-weight: 600;
+        }
+        
+        .status-card .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #ff4444;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: blink 1s infinite;
+        }
+        
+        .status-card.active .status-indicator {
+            background: #00ff88;
+            animation: none;
+            box-shadow: 0 0 10px #00ff88;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            border: none;
+            border-radius: 15px;
+            padding: 18px 20px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 0.5px;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .btn:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-game {
+            background: linear-gradient(135deg, #00ff88, #00cc66);
+            color: #000;
+            box-shadow: 0 5px 20px rgba(0,255,136,0.3);
+        }
+        
+        .btn-game:hover {
+            box-shadow: 0 8px 30px rgba(0,255,136,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-normal {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            box-shadow: 0 5px 20px rgba(255,107,107,0.3);
+        }
+        
+        .btn-normal:hover {
+            box-shadow: 0 8px 30px rgba(255,107,107,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-auto {
+            background: linear-gradient(135deg, #4a90d9, #6c5ce7);
+            color: white;
+            box-shadow: 0 5px 20px rgba(74,144,217,0.3);
+        }
+        
+        .btn-auto:hover {
+            box-shadow: 0 8px 30px rgba(74,144,217,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-shortcut {
+            background: linear-gradient(135deg, #f39c12, #e74c3c);
+            color: white;
+            box-shadow: 0 5px 20px rgba(243,156,18,0.3);
+        }
+        
+        .btn-shortcut:hover {
+            box-shadow: 0 8px 30px rgba(243,156,18,0.5);
+            transform: translateY(-2px);
+        }
+        
+        .shortcut-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .shortcut-link {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .shortcut-link:active {
+            transform: scale(0.95);
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            animation: fadeIn 0.5s ease 0.3s;
+        }
+        
+        .tip-card h3 {
+            color: #00ff88;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .tip-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .tip-card li {
+            padding: 8px 0;
+            color: #ccc;
+            font-size: 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .tip-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .tip-card li span {
+            margin-right: 8px;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(0,0,0,0.9);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            padding: 15px 25px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: transform 0.5s ease;
+            z-index: 1000;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        
+        .notification.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .notification.success {
+            border-color: #00ff88;
+            color: #00ff88;
+        }
+        
+        .notification.error {
+            border-color: #ff4444;
+            color: #ff4444;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .watermark {
+            text-align: center;
+            margin-top: 30px;
+            color: #444;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+        
+        .watermark span {
+            color: #00ff88;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hiệu ứng nền -->
+    <div class="background-glow"></div>
+    <div class="background-glow-2"></div>
+    
+    <!-- Thông báo -->
+    <div class="notification" id="notification"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <span class="icon">🎮</span>
+            <h1>GAME MODE ULTIMATE</h1>
+            <p>⚡ Tối ưu cho iPhone 8 Plus · iOS 16</p>
+        </div>
+        
+        <!-- Trạng thái -->
+        <div class="status-card" id="statusCard">
+            <div class="status-text">
+                <span class="status-indicator"></span>
+                <span id="statusText">TRẠNG THÁI: BÌNH THƯỜNG</span>
+            </div>
+        </div>
+        
+        <!-- Nút chính -->
+        <div class="button-group">
+            <button class="btn btn-game" onclick="toggleGameMode()" id="btnGameMode">
+                ⚡ BẬT GAME MODE
+            </button>
+            
+            <button class="btn btn-normal" onclick="toggleNormalMode()" id="btnNormalMode">
+                🔄 VỀ BÌNH THƯỜNG
+            </button>
+        </div>
+        
+        <!-- Nút phím tắt -->
+        <div class="button-group">
+            <button class="btn btn-shortcut" onclick="openShortcut('game')">
+                📲 TẠO PHÍM TẮT GAME MODE
+            </button>
+            
+            <button class="btn btn-shortcut" onclick="openShortcut('normal')">
+                📲 TẠO PHÍM TẮT NORMAL MODE
+            </button>
+        </div>
+        
+        <!-- Link automation -->
+        <div class="button-group">
+            <button class="btn btn-auto" onclick="openAutomation()">
+                🤖 TẠO TỰ ĐỘNG HÓA
+            </button>
+        </div>
+        
+        <!-- Link tải phím tắt -->
+        <div class="shortcut-links">
+            <a class="shortcut-link" href="https://www.icloud.com/shortcuts/" onclick="showNotification('Mở trang Phím tắt iCloud...', 'success')">
+                🔗 Tải phím tắt từ iCloud
+            </a>
+            <a class="shortcut-link" href="https://support.apple.com/vi-vn/guide/shortcuts/welcome/ios" onclick="showNotification('Mở hướng dẫn Apple...', 'success')">
+                📖 Hướng dẫn chi tiết
+            </a>
+        </div>
+        
+        <!-- Mẹo tối ưu -->
+        <div class="tip-card">
+            <h3>💡 MẸO TỐI ƯU THÊM</h3>
+            <ul>
+                <li><span>🔋</span> Thay pin nếu dưới 80%</li>
+                <li><span>📱</span> Tháo ốp lưng khi chơi game</li>
+                <li><span>💾</span> Giữ 5GB trống trong máy</li>
+                <li><span>🎯</span> Hạ đồ họa xuống mức Mượt</li>
+                <li><span>🌬️</span> Chơi nơi thoáng mát</li>
+            </ul>
+        </div>
+        
+        <!-- Watermark -->
+        <div class="watermark">
+            <span>⚡</span> ULTIMATE GAME MODE <span>⚡</span><br>
+            Phiên bản cuối cùng · Không thể tốt hơn
+        </div>
+    </div>
+    
+    <script>
+        let gameModeActive = false;
+        
+        function toggleGameMode() {
+            gameModeActive = !gameModeActive;
+            updateStatus();
+            
+            if (gameModeActive) {
+                // Kích hoạt các tối ưu
+                activateOptimizations();
+                showNotification('✅ Game Mode đã bật!', 'success');
+                
+                // Rung nhẹ nếu thiết bị hỗ trợ
+                if (navigator.vibrate) {
+                    navigator.vibrate(100);
+                }
+                
+                // Chuyển hướng đến cài đặt
+                setTimeout(() => {
+                    openSettings('battery');
+                }, 1000);
+            }
+        }
+        
+        function toggleNormalMode() {
+            gameModeActive = false;
+            updateStatus();
+            showNotification('🔄 Đã về trạng thái bình thường!', 'error');
+            
+            if (navigator.vibrate) {
+                navigator.vibrate(100);
+            }
+        }
+        
+        function updateStatus() {
+            const statusCard = document.getElementById('statusCard');
+            const statusText = document.getElementById('statusText');
+            const btnGameMode = document.getElementById('btnGameMode');
+            
+            if (gameModeActive) {
+                statusCard.classList.add('active');
+                statusText.textContent = 'TRẠNG THÁI: GAME MODE ĐANG BẬT';
+                btnGameMode.textContent = '⚡ GAME MODE ĐANG CHẠY';
+                btnGameMode.style.background = 'linear-gradient(135deg, #00ff88, #00aa55)';
+            } else {
+                statusCard.classList.remove('active');
+                statusText.textContent = 'TRẠNG THÁI: BÌNH THƯỜNG';
+                btnGameMode.textContent = '⚡ BẬT GAME MODE';
+                btnGameMode.style.background = 'linear-gradient(135deg, #00ff88, #00cc66)';
+            }
+        }
+        
+        function activateOptimizations() {
+            // Mở các cài đặt tương ứng
+            const optimizations = [
+                'App-Prefs:root=BATTERY_USAGE',
+                'App-Prefs:root=Bluetooth',
+                'App-Prefs:root=WIFI',
+                'App-Prefs:root=DISPLAY'
+            ];
+            
+            // Hiển thị hướng dẫn
+            showNotification('Vui lòng bật Chế độ năng lượng thấp...', 'success');
+        }
+        
+        function openSettings(type) {
+            const settingsMap = {
+                'battery': 'App-Prefs:root=BATTERY_USAGE',
+                'bluetooth': 'App-Prefs:root=Bluetooth',
+                'wifi': 'App-Prefs:root=WIFI',
+                'display': 'App-Prefs:root=DISPLAY'
+            };
+            
+            if (settingsMap[type]) {
+                window.location.href = settingsMap[type];
+            }
+        }
+        
+        function openShortcut(type) {
+            if (type === 'game') {
+                // Mở app Phím tắt với deep link
+                window.location.href = 'shortcuts://create-shortcut';
+                showNotification('Đang mở Phím tắt...', 'success');
+            } else if (type === 'normal') {
+                window.location.href = 'shortcuts://create-shortcut';
+                showNotification('Đang mở Phím tắt...', 'success');
+            }
+        }
+        
+        function openAutomation() {
+            // Mở automation trong Phím tắt
+            window.location.href = 'shortcuts://create-automation';
+            showNotification('Đang mở Tự động hóa...', 'success');
+        }
+        
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = 'notification ' + type;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+        
+        // Kiểm tra xem có đang trong game không (đơn giản)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && gameModeActive) {
+                // Người dùng rời trang web
+                console.log('Game mode active, user left page');
+            }
+        });
+        
+        // Tự động hiển thị thông báo khi mở trang
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                showNotification('👋 Chào mừng! Sẵn sàng chiến game!', 'success');
+            }, 1000);
+        });
+        
+        // Xử lý khi không có JavaScript
+        console.log('🎮 Game Mode Ultimate - Phiên bản cuối cùng');
+    </script>
+</body>
+</html>
