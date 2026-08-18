@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>🍈 BLOX FRUIT PRO</title>
+    <title>👑 BLOX FRUIT PRO MAX</title>
     <style>
         :root {
             --primary: #ff6b35;
@@ -18,6 +18,10 @@
             --success: #00ff88;
             --danger: #ff4444;
             --warning: #ffaa00;
+            --gold: #ffd700;
+            --gold-dark: #b8860b;
+            --gold-light: #ffed4a;
+            --royal-gold: #f0c040;
         }
         
         * {
@@ -37,6 +41,11 @@
             color: var(--text-white);
             overflow-x: hidden;
             position: relative;
+            transition: background 0.5s ease;
+        }
+        
+        body.vip-mode {
+            background: linear-gradient(135deg, #0a0a0a, #1a1a00, #0a0a0a);
         }
         
         /* Background animation */
@@ -58,9 +67,23 @@
             opacity: 0.3;
         }
         
+        .gold-particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatGold linear infinite;
+            opacity: 0.5;
+            box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+        }
+        
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); }
             100% { transform: translateY(-100px) rotate(720deg); }
+        }
+        
+        @keyframes floatGold {
+            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); }
+            50% { transform: translateY(50vh) rotate(360deg) scale(1.2); }
+            100% { transform: translateY(-100px) rotate(720deg) scale(0.5); }
         }
         
         .container {
@@ -90,6 +113,10 @@
             filter: drop-shadow(0 0 20px rgba(255,107,53,0.5));
         }
         
+        .logo.vip {
+            filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
+        }
+        
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-15px); }
@@ -105,6 +132,14 @@
             text-shadow: none;
             margin-bottom: 5px;
             letter-spacing: 2px;
+            transition: all 0.5s ease;
+        }
+        
+        .title.vip {
+            background: linear-gradient(135deg, #ffd700, #ffed4a, #f0c040, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
         }
         
         .subtitle {
@@ -119,6 +154,105 @@
             50% { opacity: 1; }
         }
         
+        /* FPS Widget Nổi */
+        .fps-widget {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #00ff88;
+            border-radius: 10px;
+            padding: 8px 12px;
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 15px rgba(0,255,136,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .fps-widget.vip {
+            border-color: #ffd700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.5);
+            background: rgba(0,0,0,0.9);
+        }
+        
+        .fps-widget.hidden {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.5);
+        }
+        
+        .fps-widget .fps-value {
+            font-size: 20px;
+            font-weight: 900;
+            color: #00ff88;
+            text-shadow: 0 0 5px rgba(0,255,136,0.5);
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .fps-widget.vip .fps-value {
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255,215,0,0.8);
+        }
+        
+        .fps-widget .fps-label {
+            font-size: 10px;
+            color: #aaa;
+            letter-spacing: 0.5px;
+        }
+        
+        .fps-widget .toggle-btn {
+            width: 20px;
+            height: 20px;
+            background: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .fps-widget .toggle-btn:hover {
+            background: #444;
+            transform: scale(1.1);
+        }
+        
+        /* Toggle button for FPS widget */
+        .fps-toggle-main {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: rgba(0,0,0,0.8);
+            border: 2px solid #00ff88;
+            border-radius: 50%;
+            z-index: 9999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0,255,136,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        
+        .fps-toggle-main.vip {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255,215,0,0.5);
+        }
+        
+        .fps-toggle-main:hover {
+            transform: scale(1.1);
+        }
+        
         /* Status bar */
         .status-bar {
             background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,69,0,0.05));
@@ -130,6 +264,12 @@
             align-items: center;
             justify-content: space-between;
             animation: slideUp 0.5s ease 0.2s;
+            transition: all 0.5s ease;
+        }
+        
+        .status-bar.vip {
+            background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(240,192,64,0.1));
+            border: 1px solid rgba(255,215,0,0.5);
         }
         
         @keyframes slideUp {
@@ -158,9 +298,20 @@
             animation: none;
         }
         
+        .status-dot.vip {
+            background: #ffd700;
+            box-shadow: 0 0 20px #ffd700;
+            animation: pulseGold 1s infinite;
+        }
+        
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
+        }
+        
+        @keyframes pulseGold {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.3); opacity: 0.7; }
         }
         
         .status-text {
@@ -169,14 +320,7 @@
             letter-spacing: 0.5px;
         }
         
-        .fps-counter {
-            font-size: 20px;
-            font-weight: 900;
-            color: var(--success);
-            text-shadow: 0 0 10px rgba(0,255,136,0.5);
-        }
-        
-        /* Main button */
+        /* Main buttons */
         .main-btn {
             width: 100%;
             background: linear-gradient(135deg, #ff6b35, #ff4500);
@@ -223,63 +367,61 @@
             box-shadow: 0 10px 30px rgba(0,255,136,0.4);
         }
         
-        /* Quick actions */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-            animation: slideUp 0.5s ease 0.4s;
+        .main-btn.vip {
+            background: linear-gradient(135deg, #ffd700, #f0c040, #ffd700);
+            box-shadow: 0 10px 30px rgba(255,215,0,0.6);
+            color: #000;
+            animation: goldShine 2s infinite;
         }
         
-        .quick-btn {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 15px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--text-white);
+        @keyframes goldShine {
+            0%, 100% { box-shadow: 0 10px 30px rgba(255,215,0,0.4); }
+            50% { box-shadow: 0 10px 40px rgba(255,215,0,0.8); }
         }
         
-        .quick-btn:active {
-            transform: scale(0.95);
-            background: #2a2a2a;
-        }
-        
-        .quick-btn .icon {
-            font-size: 30px;
-            display: block;
-            margin-bottom: 8px;
-        }
-        
-        .quick-btn .label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        .quick-btn.enabled {
-            border-color: var(--success);
-            background: rgba(0,255,136,0.1);
-        }
-        
-        /* Settings section */
-        .settings-section {
+        /* Upgrade tables */
+        .upgrade-table {
             background: var(--bg-card);
             border-radius: 15px;
             padding: 20px;
             margin: 15px 0;
-            animation: slideUp 0.5s ease 0.5s;
+            animation: slideUp 0.5s ease 0.4s;
+            position: relative;
+            transition: all 0.5s ease;
         }
         
-        .settings-title {
+        .upgrade-table.vip-table {
+            background: linear-gradient(135deg, #1a1a00, #0a0a00);
+            border: 2px solid #ffd700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+        }
+        
+        .upgrade-table.highlight {
+            border-color: #ffd700;
+            box-shadow: 0 0 30px rgba(255,215,0,0.5);
+            animation: glowGold 2s infinite;
+        }
+        
+        @keyframes glowGold {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
+            50% { box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+        }
+        
+        .table-title {
             font-size: 18px;
             font-weight: 800;
             margin-bottom: 15px;
             color: var(--accent);
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .table-title.vip {
+            color: #ffd700;
+            font-size: 20px;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
         }
         
         .setting-item {
@@ -325,6 +467,14 @@
             background: var(--success);
         }
         
+        .toggle.vip-toggle {
+            background: #333;
+        }
+        
+        .toggle.vip-toggle.active {
+            background: #ffd700;
+        }
+        
         .toggle::after {
             content: '';
             width: 26px;
@@ -339,6 +489,53 @@
         
         .toggle.active::after {
             left: 22px;
+        }
+        
+        /* Quick actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+            animation: slideUp 0.5s ease 0.5s;
+        }
+        
+        .quick-btn {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-white);
+        }
+        
+        .quick-btn:active {
+            transform: scale(0.95);
+            background: #2a2a2a;
+        }
+        
+        .quick-btn.enabled {
+            border-color: var(--success);
+            background: rgba(0,255,136,0.1);
+        }
+        
+        .quick-btn.vip-enabled {
+            border-color: #ffd700;
+            background: rgba(255,215,0,0.1);
+        }
+        
+        .quick-btn .icon {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .quick-btn .label {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
         
         /* Tips section */
@@ -393,6 +590,12 @@
             border-radius: 12px;
             padding: 15px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .perf-item.vip-item {
+            background: rgba(255,215,0,0.1);
+            border: 1px solid rgba(255,215,0,0.3);
         }
         
         .perf-value {
@@ -409,6 +612,11 @@
         
         .perf-value.good {
             color: var(--success);
+        }
+        
+        .perf-value.gold {
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255,215,0,0.5);
         }
         
         .perf-value.warning {
@@ -431,7 +639,7 @@
             padding: 15px 25px;
             font-size: 14px;
             font-weight: 700;
-            z-index: 1000;
+            z-index: 10000;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             text-align: center;
             backdrop-filter: blur(20px);
@@ -453,6 +661,12 @@
             color: var(--danger);
         }
         
+        .notification.gold {
+            border-color: #ffd700;
+            color: #ffd700;
+            box-shadow: 0 0 30px rgba(255,215,0,0.5);
+        }
+        
         .notification.warning {
             border-color: var(--warning);
             color: var(--warning);
@@ -463,10 +677,24 @@
             .title { font-size: 24px; }
             .main-btn { font-size: 20px; padding: 20px; }
             .quick-actions { grid-template-columns: 1fr; }
+            .fps-widget { top: 5px; right: 5px; padding: 5px 8px; }
+            .fps-widget .fps-value { font-size: 16px; }
         }
     </style>
 </head>
 <body>
+    <!-- FPS Widget Nổi -->
+    <div class="fps-widget" id="fpsWidget" onclick="toggleFpsWidget()">
+        <span class="fps-value" id="fpsWidgetValue">0</span>
+        <span class="fps-label">FPS</span>
+        <div class="toggle-btn" onclick="event.stopPropagation(); toggleFpsWidget()">✕</div>
+    </div>
+    
+    <!-- FPS Toggle Button -->
+    <div class="fps-toggle-main" id="fpsToggleMain" onclick="toggleFpsWidget()">
+        📊
+    </div>
+    
     <!-- Background particles -->
     <div class="bg-animation" id="bgAnimation"></div>
     
@@ -476,13 +704,13 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <div class="logo">🍈</div>
-            <div class="title">BLOX FRUIT PRO</div>
-            <div class="subtitle">⚡ SIÊU PHẨM TỐI ƯU CHO iPHONE 8 PLUS ⚡</div>
+            <div class="logo" id="logo">🍈</div>
+            <div class="title" id="title">BLOX FRUIT PRO MAX</div>
+            <div class="subtitle">👑 PHIÊN BẢN VÔ HẠN · KHÔNG THỂ NÂNG CẤP HƠN</div>
         </div>
         
         <!-- Status -->
-        <div class="status-bar">
+        <div class="status-bar" id="statusBar">
             <div class="status-info">
                 <div class="status-dot" id="statusDot"></div>
                 <div class="status-text" id="statusText">CHƯA KÍCH HOẠT</div>
@@ -494,6 +722,82 @@
         <button class="main-btn" id="mainBtn" onclick="toggleProMode()">
             🚀 KÍCH HOẠT PRO MODE
         </button>
+        
+        <!-- Bảng Nâng Cấp 1 - Thường -->
+        <div class="upgrade-table" id="upgradeTable1">
+            <div class="table-title">
+                <span>📊</span> BẢNG NÂNG CẤP THƯỜNG
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">🌡️ Làm mát cơ bản</div>
+                    <div class="setting-desc">Giảm nhiệt CPU khi chơi</div>
+                </div>
+                <div class="toggle active" id="toggleCooling1" onclick="toggleSetting('cooling1', 'normal')"></div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">💨 Giảm lag thường</div>
+                    <div class="setting-desc">Tối ưu hiệu suất cơ bản</div>
+                </div>
+                <div class="toggle active" id="toggleLag1" onclick="toggleSetting('lag1', 'normal')"></div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">🧠 Giải phóng RAM</div>
+                    <div class="setting-desc">Đóng app nền tự động</div>
+                </div>
+                <div class="toggle active" id="toggleRam1" onclick="toggleSetting('ram1', 'normal')"></div>
+            </div>
+        </div>
+        
+        <!-- Bảng Nâng Cấp 2 - VIP -->
+        <div class="upgrade-table vip-table" id="upgradeTable2">
+            <div class="table-title vip">
+                <span>👑</span> BẢNG NÂNG CẤP VIP · HOÀNG KIM
+                <span>👑</span>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">⚡ Tăng tốc siêu cấp</div>
+                    <div class="setting-desc">Hiệu suất gấp 10 lần</div>
+                </div>
+                <div class="toggle vip-toggle" id="toggleSpeed2" onclick="toggleSetting('speed2', 'vip')"></div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">🔥 Làm mát hoàng kim</div>
+                    <div class="setting-desc">Nhiệt độ giảm 50%</div>
+                </div>
+                <div class="toggle vip-toggle" id="toggleCooling2" onclick="toggleSetting('cooling2', 'vip')"></div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">💎 FPS vô cực</div>
+                    <div class="setting-desc">Mượt không giật lag</div>
+                </div>
+                <div class="toggle vip-toggle" id="toggleFps2" onclick="toggleSetting('fps2', 'vip')"></div>
+            </div>
+            
+            <div class="setting-item">
+                <div class="setting-info">
+                    <div class="setting-name">🧬 Giải phóng tối đa</div>
+                    <div class="setting-desc">RAM tăng 10 lần trống</div>
+                </div>
+                <div class="toggle vip-toggle" id="toggleRam2" onclick="toggleSetting('ram2', 'vip')"></div>
+            </div>
+            
+            <!-- Nút kích hoạt VIP -->
+            <button class="main-btn vip" id="vipBtn" onclick="toggleVipMode()" style="margin-top: 15px;">
+                👑 KÍCH HOẠT VIP MODE
+            </button>
+        </div>
         
         <!-- Quick actions -->
         <div class="quick-actions">
@@ -517,62 +821,17 @@
         
         <!-- Performance meters -->
         <div class="perf-meter">
-            <div class="perf-item">
+            <div class="perf-item" id="perfItemFps">
                 <div class="perf-value good" id="perfFps">--</div>
                 <div class="perf-label">FPS DỰ KIẾN</div>
             </div>
-            <div class="perf-item">
+            <div class="perf-item" id="perfItemTemp">
                 <div class="perf-value warning" id="perfTemp">--</div>
                 <div class="perf-label">NHIỆT ĐỘ</div>
             </div>
-            <div class="perf-item">
+            <div class="perf-item" id="perfItemRam">
                 <div class="perf-value good" id="perfRam">--</div>
                 <div class="perf-label">RAM TRỐNG</div>
-            </div>
-        </div>
-        
-        <!-- Settings -->
-        <div class="settings-section">
-            <div class="settings-title">⚙️ TÙY CHỈNH PRO</div>
-            
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-name">🌡️ Chế độ làm mát</div>
-                    <div class="setting-desc">Giảm nhiệt CPU khi chơi</div>
-                </div>
-                <div class="toggle active" id="toggleCooling" onclick="toggleSetting('cooling')"></div>
-            </div>
-            
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-name">⚡ Tăng tốc đồ họa</div>
-                    <div class="setting-desc">Tối ưu hiệu suất Blox Fruit</div>
-                </div>
-                <div class="toggle active" id="toggleGraphics" onclick="toggleSetting('graphics')"></div>
-            </div>
-            
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-name">🧠 Giải phóng RAM</div>
-                    <div class="setting-desc">Đóng app nền tự động</div>
-                </div>
-                <div class="toggle active" id="toggleRam" onclick="toggleSetting('ram')"></div>
-            </div>
-            
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-name">📡 Tắt kết nối thừa</div>
-                    <div class="setting-desc">Bluetooth, Wi-Fi, AirDrop</div>
-                </div>
-                <div class="toggle active" id="toggleNetwork" onclick="toggleSetting('network')"></div>
-            </div>
-            
-            <div class="setting-item">
-                <div class="setting-info">
-                    <div class="setting-name">🎯 Chế độ tập trung</div>
-                    <div class="setting-desc">Chặn thông báo làm phiền</div>
-                </div>
-                <div class="toggle active" id="toggleFocus" onclick="toggleSetting('focus')"></div>
             </div>
         </div>
         
@@ -604,8 +863,11 @@
     
     <script>
         let proModeActive = false;
+        let vipModeActive = false;
         let fpsSimulation = 0;
         let tempSimulation = 35;
+        let fpsInterval;
+        let fpsWidgetVisible = true;
         
         // Tạo particles background
         function createParticles() {
@@ -625,6 +887,22 @@
             }
         }
         
+        // Tạo gold particles khi VIP mode
+        function createGoldParticles() {
+            const bg = document.getElementById('bgAnimation');
+            
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'gold-particle';
+                particle.style.width = Math.random() * 8 + 3 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = Math.random() * 8 + 3 + 's';
+                particle.style.animationDelay = Math.random() * 3 + 's';
+                bg.appendChild(particle);
+            }
+        }
+        
         // Hiển thị notification
         function showNotification(message, type = 'success') {
             const notification = document.getElementById('notification');
@@ -637,12 +915,35 @@
             }, 3000);
         }
         
+        // Toggle FPS Widget
+        function toggleFpsWidget() {
+            const widget = document.getElementById('fpsWidget');
+            const toggleBtn = document.getElementById('fpsToggleMain');
+            
+            fpsWidgetVisible = !fpsWidgetVisible;
+            
+            if (fpsWidgetVisible) {
+                widget.classList.remove('hidden');
+                toggleBtn.style.borderColor = '#00ff88';
+                toggleBtn.style.boxShadow = '0 0 20px rgba(0,255,136,0.3)';
+                if (vipModeActive) {
+                    widget.classList.add('vip');
+                    toggleBtn.classList.add('vip');
+                }
+            } else {
+                widget.classList.add('hidden');
+                toggleBtn.style.borderColor = '#666';
+                toggleBtn.style.boxShadow = 'none';
+            }
+        }
+        
         // Bật/tắt Pro Mode
         function toggleProMode() {
             proModeActive = !proModeActive;
             const btn = document.getElementById('mainBtn');
             const statusDot = document.getElementById('statusDot');
             const statusText = document.getElementById('statusText');
+            const statusBar = document.getElementById('statusBar');
             
             if (proModeActive) {
                 btn.textContent = '✅ PRO MODE ĐANG CHẠY';
@@ -670,21 +971,104 @@
             }
         }
         
-        // Bắt đầu tối ưu hóa
-        function startOptimization() {
-            // Mở cài đặt pin
-            setTimeout(() => {
-                window.location.href = 'App-Prefs:root=BATTERY_USAGE';
-            }, 500);
+        // Toggle VIP Mode
+        function toggleVipMode() {
+            vipModeActive = !vipModeActive;
+            const btn = document.getElementById('vipBtn');
+            const logo = document.getElementById('logo');
+            const title = document.getElementById('title');
+            const statusBar = document.getElementById('statusBar');
+            const statusDot = document.getElementById('statusDot');
+            const upgradeTable2 = document.getElementById('upgradeTable2');
+            const fpsWidget = document.getElementById('fpsWidget');
+            const fpsToggleMain = document.getElementById('fpsToggleMain');
             
-            // Hiển thị hướng dẫn
-            setTimeout(() => {
-                showNotification('💡 Bật Chế độ năng lượng thấp!', 'warning');
-            }, 1500);
+            if (vipModeActive) {
+                // Kích hoạt VIP Mode
+                btn.textContent = '👑 VIP MODE ĐANG CHẠY';
+                btn.style.background = 'linear-gradient(135deg, #b8860b, #ffd700, #b8860b)';
+                btn.style.boxShadow = '0 0 40px rgba(255,215,0,0.8)';
+                
+                logo.classList.add('vip');
+                title.classList.add('vip');
+                statusBar.classList.add('vip');
+                statusDot.classList.add('vip');
+                upgradeTable2.classList.add('highlight');
+                fpsWidget.classList.add('vip');
+                fpsToggleMain.classList.add('vip');
+                
+                // Thêm gold particles
+                createGoldParticles();
+                
+                showNotification('👑 VIP MODE ĐÃ KÍCH HOẠT! HIỆU SUẤT GẤP 10 LẦN!', 'gold');
+                
+                // Rung mạnh
+                if (navigator.vibrate) {
+                    navigator.vibrate([200, 100, 200, 100, 200]);
+                }
+                
+                // Tăng FPS simulation
+                if (proModeActive) {
+                    restartFpsSimulation();
+                }
+            } else {
+                btn.textContent = '👑 KÍCH HOẠT VIP MODE';
+                btn.style.background = 'linear-gradient(135deg, #ffd700, #f0c040, #ffd700)';
+                btn.style.boxShadow = '0 10px 30px rgba(255,215,0,0.6)';
+                
+                logo.classList.remove('vip');
+                title.classList.remove('vip');
+                statusBar.classList.remove('vip');
+                statusDot.classList.remove('vip');
+                upgradeTable2.classList.remove('highlight');
+                fpsWidget.classList.remove('vip');
+                fpsToggleMain.classList.remove('vip');
+                
+                showNotification('Đã tắt VIP Mode', 'error');
+                
+                if (proModeActive) {
+                    restartFpsSimulation();
+                }
+            }
         }
         
-        function stopOptimization() {
-            // Không cần làm gì đặc biệt
+        // Toggle settings
+        function toggleSetting(setting, type) {
+            const toggle = document.getElementById('toggle' + setting.charAt(0).toUpperCase() + setting.slice(1));
+            
+            if (type === 'vip') {
+                toggle.classList.toggle('active');
+                
+                const settings = {
+                    'speed2': 'Tăng tốc siêu cấp',
+                    'cooling2': 'Làm mát hoàng kim',
+                    'fps2': 'FPS vô cực',
+                    'ram2': 'Giải phóng tối đa'
+                };
+                
+                if (toggle.classList.contains('active')) {
+                    showNotification('👑 ' + settings[setting] + ' đã bật', 'gold');
+                    if (setting === 'fps2' && proModeActive) {
+                        restartFpsSimulation();
+                    }
+                } else {
+                    showNotification('❌ ' + settings[setting] + ' đã tắt', 'error');
+                }
+            } else {
+                toggle.classList.toggle('active');
+                
+                const settings = {
+                    'cooling1': 'Làm mát cơ bản',
+                    'lag1': 'Giảm lag thường',
+                    'ram1': 'Giải phóng RAM'
+                };
+                
+                if (toggle.classList.contains('active')) {
+                    showNotification('✅ ' + settings[setting] + ' đã bật', 'success');
+                } else {
+                    showNotification('❌ ' + settings[setting] + ' đã tắt', 'error');
+                }
+            }
         }
         
         // Quick actions
@@ -711,6 +1095,10 @@
             const btn = document.getElementById('btn' + action.charAt(0).toUpperCase() + action.slice(1));
             btn.classList.toggle('enabled');
             
+            if (vipModeActive) {
+                btn.classList.add('vip-enabled');
+            }
+            
             showNotification(actions[action].message, 'warning');
             
             setTimeout(() => {
@@ -718,58 +1106,73 @@
             }, 1000);
         }
         
-        // Toggle settings
-        function toggleSetting(setting) {
-            const toggle = document.getElementById('toggle' + setting.charAt(0).toUpperCase() + setting.slice(1));
-            toggle.classList.toggle('active');
+        // Bắt đầu tối ưu hóa
+        function startOptimization() {
+            // Mở cài đặt pin
+            setTimeout(() => {
+                window.location.href = 'App-Prefs:root=BATTERY_USAGE';
+            }, 500);
             
-            const settings = {
-                'cooling': 'Chế độ làm mát',
-                'graphics': 'Tăng tốc đồ họa',
-                'ram': 'Giải phóng RAM',
-                'network': 'Tắt kết nối thừa',
-                'focus': 'Chế độ tập trung'
-            };
-            
-            if (toggle.classList.contains('active')) {
-                showNotification('✅ ' + settings[setting] + ' đã bật', 'success');
-            } else {
-                showNotification('❌ ' + settings[setting] + ' đã tắt', 'error');
-            }
+            // Hiển thị hướng dẫn
+            setTimeout(() => {
+                showNotification('💡 Bật Chế độ năng lượng thấp!', 'warning');
+            }, 1500);
+        }
+        
+        function stopOptimization() {
+            // Không cần làm gì đặc biệt
         }
         
         // FPS Simulation
         function startFpsSimulation() {
-            fpsSimulation = 45;
+            fpsSimulation = vipModeActive ? 80 : 45;
             updatePerformanceMeters();
             
             fpsInterval = setInterval(() => {
-                // Giả lập FPS dao động
-                fpsSimulation = Math.floor(Math.random() * 15 + 45); // 45-60 FPS
-                tempSimulation = Math.floor(Math.random() * 8 + 35); // 35-43°C
+                if (vipModeActive) {
+                    fpsSimulation = Math.floor(Math.random() * 30 + 80); // 80-110 FPS
+                    tempSimulation = Math.floor(Math.random() * 5 + 30); // 30-35°C
+                } else {
+                    fpsSimulation = Math.floor(Math.random() * 15 + 45); // 45-60 FPS
+                    tempSimulation = Math.floor(Math.random() * 8 + 35); // 35-43°C
+                }
                 updatePerformanceMeters();
-            }, 2000);
+                updateFpsWidget();
+            }, 100);
         }
         
         function stopFpsSimulation() {
             clearInterval(fpsInterval);
             document.getElementById('fpsCounter').textContent = '0 FPS';
+            document.getElementById('fpsWidgetValue').textContent = '0';
             document.getElementById('perfFps').textContent = '--';
             document.getElementById('perfTemp').textContent = '--';
             document.getElementById('perfRam').textContent = '--';
         }
         
-        function updatePerformanceMeters() {
+        function restartFpsSimulation() {
+            stopFpsSimulation();
+            startFpsSimulation();
+        }
+        
+        function updateFpsWidget() {
+            document.getElementById('fpsWidgetValue').textContent = fpsSimulation;
             document.getElementById('fpsCounter').textContent = fpsSimulation + ' FPS';
+        }
+        
+        function updatePerformanceMeters() {
             document.getElementById('perfFps').textContent = fpsSimulation + ' FPS';
             document.getElementById('perfTemp').textContent = tempSimulation + '°C';
             
             // RAM trống giả lập
-            const ramFree = Math.floor(Math.random() * 500 + 800); // 800-1300 MB
+            const ramFree = vipModeActive ? 
+                Math.floor(Math.random() * 2000 + 3000) : // 3000-5000 MB VIP
+                Math.floor(Math.random() * 500 + 800); // 800-1300 MB thường
             document.getElementById('perfRam').textContent = ramFree + ' MB';
             
             // Cập nhật màu sắc
             updateMeterColors();
+            updatePerfItemsStyle();
         }
         
         function updateMeterColors() {
@@ -778,41 +1181,64 @@
             const ramElement = document.getElementById('perfRam');
             
             // FPS colors
-            if (fpsSimulation >= 50) {
-                fpsElement.className = 'perf-value good';
-            } else if (fpsSimulation >= 40) {
-                fpsElement.className = 'perf-value warning';
-            } else {
-                fpsElement.className = 'perf-value bad';
-            }
-            
-            // Temperature colors
-            if (tempSimulation <= 38) {
+            if (vipModeActive) {
+                fpsElement.className = 'perf-value gold';
                 tempElement.className = 'perf-value good';
-            } else if (tempSimulation <= 42) {
-                tempElement.className = 'perf-value warning';
+                ramElement.className = 'perf-value gold';
             } else {
-                tempElement.className = 'perf-value bad';
+                if (fpsSimulation >= 50) {
+                    fpsElement.className = 'perf-value good';
+                } else if (fpsSimulation >= 40) {
+                    fpsElement.className = 'perf-value warning';
+                } else {
+                    fpsElement.className = 'perf-value bad';
+                }
+                
+                if (tempSimulation <= 38) {
+                    tempElement.className = 'perf-value good';
+                } else if (tempSimulation <= 42) {
+                    tempElement.className = 'perf-value warning';
+                } else {
+                    tempElement.className = 'perf-value bad';
+                }
+                
+                ramElement.className = 'perf-value good';
             }
+        }
+        
+        function updatePerfItemsStyle() {
+            const items = ['perfItemFps', 'perfItemTemp', 'perfItemRam'];
+            
+            items.forEach(item => {
+                const element = document.getElementById(item);
+                if (vipModeActive) {
+                    element.classList.add('vip-item');
+                } else {
+                    element.classList.remove('vip-item');
+                }
+            });
         }
         
         // Khởi tạo
         window.addEventListener('load', () => {
             createParticles();
             
+            // Cập nhật FPS widget ban đầu
+            document.getElementById('fpsWidgetValue').textContent = '0';
+            
             setTimeout(() => {
-                showNotification('🍈 Sẵn sàng chiến Blox Fruit!', 'success');
+                showNotification('👑 Sẵn sàng chiến Blox Fruit!', 'success');
             }, 1000);
         });
         
-        // Xử lý khi rời trang
+        // Xử lý khi rời trang - FPS widget vẫn chạy
         document.addEventListener('visibilitychange', () => {
             if (document.hidden && proModeActive) {
-                console.log('Pro Mode active, user left page');
+                console.log('Pro Mode active, FPS widget still running');
             }
         });
         
-        console.log('🍈 Blox Fruit Pro Mode - Phiên bản Ultimate VIP');
+        console.log('👑 Blox Fruit Pro Max - Phiên bản Vô Hạn · Không thể nâng cấp hơn');
     </script>
 </body>
 </html>
