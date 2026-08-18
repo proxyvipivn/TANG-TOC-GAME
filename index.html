@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>👑 BLOX FRUIT PRO MAX</title>
+    <title>👑 BLOX FRUIT PRO MAX 3D</title>
     <style>
         :root {
             --primary: #ff6b35;
@@ -36,20 +36,21 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-dark);
+            background: #000;
             min-height: 100vh;
             color: var(--text-white);
             overflow-x: hidden;
             position: relative;
+            perspective: 1000px;
             transition: background 0.5s ease;
         }
         
         body.vip-mode {
-            background: linear-gradient(135deg, #0a0a0a, #1a1a00, #0a0a0a);
+            background: #0a0a00;
         }
         
-        /* Background animation */
-        .bg-animation {
+        /* 3D Background */
+        .bg-3d {
             position: fixed;
             top: 0;
             left: 0;
@@ -58,32 +59,36 @@
             pointer-events: none;
             z-index: 0;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
         
         .particle {
             position: absolute;
             border-radius: 50%;
-            animation: float linear infinite;
-            opacity: 0.3;
+            animation: float3d linear infinite;
+            opacity: 0.4;
+            transform-style: preserve-3d;
         }
         
         .gold-particle {
             position: absolute;
             border-radius: 50%;
-            animation: floatGold linear infinite;
-            opacity: 0.5;
-            box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700;
+            animation: floatGold3d linear infinite;
+            opacity: 0.6;
+            box-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700, 0 0 45px #ffd700;
+            transform-style: preserve-3d;
         }
         
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100px) rotate(720deg); }
+        @keyframes float3d {
+            0% { transform: translateY(100vh) translateZ(-200px) rotate(0deg) scale(0.5); }
+            50% { transform: translateY(50vh) translateZ(0px) rotate(360deg) scale(1); }
+            100% { transform: translateY(-100px) translateZ(-200px) rotate(720deg) scale(0.5); }
         }
         
-        @keyframes floatGold {
-            0% { transform: translateY(100vh) rotate(0deg) scale(0.5); }
-            50% { transform: translateY(50vh) rotate(360deg) scale(1.2); }
-            100% { transform: translateY(-100px) rotate(720deg) scale(0.5); }
+        @keyframes floatGold3d {
+            0% { transform: translateY(100vh) translateZ(-300px) rotate(0deg) scale(0.3); }
+            50% { transform: translateY(30vh) translateZ(100px) rotate(540deg) scale(1.5); }
+            100% { transform: translateY(-100px) translateZ(-300px) rotate(1080deg) scale(0.3); }
         }
         
         .container {
@@ -92,215 +97,309 @@
             padding: 15px;
             position: relative;
             z-index: 1;
+            transform-style: preserve-3d;
+        }
+        
+        /* Splash Screen - TĂNG TỐC GAME */
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            animation: splashExit 1s ease 2s forwards;
+            transform-style: preserve-3d;
+        }
+        
+        .splash-logo {
+            font-size: 100px;
+            animation: splashLogo 2s ease infinite;
+            transform-style: preserve-3d;
+        }
+        
+        .splash-text {
+            font-size: 40px;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ff6b35, #ffd700, #ff4500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: splashText 2s ease infinite;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+        
+        .splash-subtitle {
+            font-size: 16px;
+            color: #aaa;
+            margin-top: 10px;
+            animation: splashSubtitle 1s ease infinite;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes splashLogo {
+            0%, 100% { transform: translateZ(0) rotate(0deg) scale(1); }
+            25% { transform: translateZ(100px) rotate(90deg) scale(1.2); }
+            50% { transform: translateZ(0) rotate(180deg) scale(1); }
+            75% { transform: translateZ(100px) rotate(270deg) scale(1.2); }
+        }
+        
+        @keyframes splashText {
+            0%, 100% { transform: translateZ(0) scale(1); text-shadow: 0 0 20px rgba(255,107,53,0.5); }
+            50% { transform: translateZ(50px) scale(1.1); text-shadow: 0 0 40px rgba(255,215,0,0.8); }
+        }
+        
+        @keyframes splashSubtitle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes splashExit {
+            0% { opacity: 1; transform: translateZ(0) scale(1); }
+            100% { opacity: 0; transform: translateZ(-500px) scale(2); visibility: hidden; }
         }
         
         /* Header */
         .header {
             text-align: center;
             margin-bottom: 20px;
-            animation: slideDown 0.6s ease;
+            animation: slideDown3d 0.8s ease;
+            transform-style: preserve-3d;
         }
         
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideDown3d {
+            from { opacity: 0; transform: translateY(-50px) translateZ(-200px); }
+            to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
         
         .logo {
-            font-size: 70px;
+            font-size: 80px;
             margin-bottom: 10px;
-            animation: bounce 2s infinite;
-            filter: drop-shadow(0 0 20px rgba(255,107,53,0.5));
+            animation: bounce3d 2s infinite;
+            filter: drop-shadow(0 0 30px rgba(255,107,53,0.6));
+            transform-style: preserve-3d;
         }
         
         .logo.vip {
-            filter: drop-shadow(0 0 30px rgba(255,215,0,0.8));
+            filter: drop-shadow(0 0 40px rgba(255,215,0,0.9));
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        @keyframes bounce3d {
+            0%, 100% { transform: translateY(0) translateZ(0); }
+            50% { transform: translateY(-20px) translateZ(50px); }
         }
         
         .title {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 900;
             background: linear-gradient(135deg, #ff6b35, #ff4500, #ffd700);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: none;
             margin-bottom: 5px;
             letter-spacing: 2px;
             transition: all 0.5s ease;
+            animation: titleGlow 3s infinite;
         }
         
         .title.vip {
             background: linear-gradient(135deg, #ffd700, #ffed4a, #f0c040, #ffd700);
             -webkit-background-clip: text;
             background-clip: text;
-            filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+            filter: drop-shadow(0 0 15px rgba(255,215,0,0.6));
         }
         
-        .subtitle {
-            color: var(--text-gray);
-            font-size: 13px;
-            letter-spacing: 1px;
-            animation: shimmer 2s infinite;
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
         }
         
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
-        }
-        
-        /* FPS Widget Nổi */
+        /* FPS Widget Nổi - Fixed */
         .fps-widget {
             position: fixed;
             top: 10px;
             right: 10px;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.9);
             border: 2px solid #00ff88;
-            border-radius: 10px;
-            padding: 8px 12px;
-            z-index: 9999;
+            border-radius: 12px;
+            padding: 10px 15px;
+            z-index: 99998;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 15px rgba(0,255,136,0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 20px rgba(0,255,136,0.4);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            transform-style: preserve-3d;
+            animation: widgetAppear 0.5s ease;
         }
         
         .fps-widget.vip {
             border-color: #ffd700;
-            box-shadow: 0 0 20px rgba(255,215,0,0.5);
-            background: rgba(0,0,0,0.9);
+            box-shadow: 0 0 30px rgba(255,215,0,0.6);
+            background: rgba(0,0,0,0.95);
         }
         
-        .fps-widget.hidden {
+        .fps-widget.hidden-widget {
             opacity: 0;
             pointer-events: none;
-            transform: scale(0.5);
+            transform: translateX(100px) rotate(90deg);
+        }
+        
+        @keyframes widgetAppear {
+            from { opacity: 0; transform: translateX(100px) rotate(180deg); }
+            to { opacity: 1; transform: translateX(0) rotate(0deg); }
         }
         
         .fps-widget .fps-value {
-            font-size: 20px;
+            font-size: 28px;
             font-weight: 900;
             color: #00ff88;
-            text-shadow: 0 0 5px rgba(0,255,136,0.5);
-            min-width: 40px;
+            text-shadow: 0 0 10px rgba(0,255,136,0.8);
+            min-width: 50px;
             text-align: center;
+            animation: fpsPulse 1s infinite;
         }
         
         .fps-widget.vip .fps-value {
             color: #ffd700;
-            text-shadow: 0 0 10px rgba(255,215,0,0.8);
+            text-shadow: 0 0 15px rgba(255,215,0,0.9);
+        }
+        
+        @keyframes fpsPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         
         .fps-widget .fps-label {
-            font-size: 10px;
+            font-size: 12px;
             color: #aaa;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
         
-        .fps-widget .toggle-btn {
-            width: 20px;
-            height: 20px;
-            background: #333;
+        .fps-widget .close-widget {
+            width: 30px;
+            height: 30px;
+            background: rgba(255,255,255,0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
         
-        .fps-widget .toggle-btn:hover {
-            background: #444;
-            transform: scale(1.1);
+        .fps-widget .close-widget:active {
+            transform: scale(0.8);
+            background: rgba(255,255,255,0.2);
         }
         
-        /* Toggle button for FPS widget */
+        /* FPS Toggle Button */
         .fps-toggle-main {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: rgba(0,0,0,0.8);
-            border: 2px solid #00ff88;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background: rgba(0,0,0,0.9);
+            border: 3px solid #00ff88;
             border-radius: 50%;
-            z-index: 9999;
+            z-index: 99997;
             cursor: pointer;
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(0,255,136,0.3);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 0 30px rgba(0,255,136,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
+            font-size: 30px;
+            animation: togglePulse 2s infinite;
         }
         
         .fps-toggle-main.vip {
             border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
+            box-shadow: 0 0 40px rgba(255,215,0,0.7);
+            background: rgba(0,0,0,0.95);
         }
         
-        .fps-toggle-main:hover {
-            transform: scale(1.1);
+        @keyframes togglePulse {
+            0%, 100% { box-shadow: 0 0 30px rgba(0,255,136,0.5); }
+            50% { box-shadow: 0 0 50px rgba(0,255,136,0.8); }
+        }
+        
+        .fps-toggle-main.vip {
+            animation: togglePulseVip 2s infinite;
+        }
+        
+        @keyframes togglePulseVip {
+            0%, 100% { box-shadow: 0 0 40px rgba(255,215,0,0.7); }
+            50% { box-shadow: 0 0 60px rgba(255,215,0,1); }
+        }
+        
+        .fps-toggle-main:active {
+            transform: scale(0.9);
         }
         
         /* Status bar */
         .status-bar {
             background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(255,69,0,0.05));
             border: 1px solid rgba(255,107,53,0.3);
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            animation: slideUp 0.5s ease 0.2s;
+            animation: slideUp3d 0.6s ease 0.2s;
             transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
         }
         
         .status-bar.vip {
             background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(240,192,64,0.1));
-            border: 1px solid rgba(255,215,0,0.5);
+            border: 2px solid rgba(255,215,0,0.6);
+            box-shadow: 0 0 30px rgba(255,215,0,0.3);
         }
         
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes slideUp3d {
+            from { opacity: 0; transform: translateY(50px) translateZ(-100px); }
+            to { opacity: 1; transform: translateY(0) translateZ(0); }
         }
         
         .status-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
         
         .status-dot {
-            width: 12px;
-            height: 12px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             background: var(--danger);
-            box-shadow: 0 0 10px var(--danger);
+            box-shadow: 0 0 15px var(--danger);
             animation: pulse 1s infinite;
         }
         
         .status-dot.active {
             background: var(--success);
-            box-shadow: 0 0 15px var(--success);
+            box-shadow: 0 0 20px var(--success);
             animation: none;
         }
         
         .status-dot.vip {
             background: #ffd700;
-            box-shadow: 0 0 20px #ffd700;
+            box-shadow: 0 0 30px #ffd700;
             animation: pulseGold 1s infinite;
         }
         
@@ -311,13 +410,13 @@
         
         @keyframes pulseGold {
             0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.3); opacity: 0.7; }
+            50% { transform: scale(1.5); opacity: 0.7; }
         }
         
         .status-text {
-            font-size: 13px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1px;
         }
         
         /* Main buttons */
@@ -325,24 +424,25 @@
             width: 100%;
             background: linear-gradient(135deg, #ff6b35, #ff4500);
             border: none;
-            border-radius: 20px;
-            padding: 25px;
-            font-size: 24px;
+            border-radius: 25px;
+            padding: 30px;
+            font-size: 28px;
             font-weight: 900;
             color: white;
             cursor: pointer;
             position: relative;
             overflow: hidden;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 30px rgba(255,69,0,0.4);
+            letter-spacing: 3px;
+            box-shadow: 0 15px 40px rgba(255,69,0,0.5);
             transition: all 0.3s ease;
-            animation: slideUp 0.5s ease 0.3s;
+            animation: slideUp3d 0.6s ease 0.3s;
             text-transform: uppercase;
+            transform-style: preserve-3d;
         }
         
         .main-btn:active {
-            transform: scale(0.95);
-            box-shadow: 0 5px 15px rgba(255,69,0,0.3);
+            transform: scale(0.95) translateZ(-50px);
+            box-shadow: 0 5px 20px rgba(255,69,0,0.3);
         }
         
         .main-btn::before {
@@ -352,9 +452,9 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
             transform: rotate(45deg);
-            animation: shine 3s infinite;
+            animation: shine 2s infinite;
         }
         
         @keyframes shine {
@@ -364,156 +464,145 @@
         
         .main-btn.active {
             background: linear-gradient(135deg, #00ff88, #00cc66);
-            box-shadow: 0 10px 30px rgba(0,255,136,0.4);
+            box-shadow: 0 15px 40px rgba(0,255,136,0.5);
         }
         
         .main-btn.vip {
             background: linear-gradient(135deg, #ffd700, #f0c040, #ffd700);
-            box-shadow: 0 10px 30px rgba(255,215,0,0.6);
+            box-shadow: 0 15px 50px rgba(255,215,0,0.7);
             color: #000;
-            animation: goldShine 2s infinite;
+            animation: goldShine3d 2s infinite;
         }
         
-        @keyframes goldShine {
-            0%, 100% { box-shadow: 0 10px 30px rgba(255,215,0,0.4); }
-            50% { box-shadow: 0 10px 40px rgba(255,215,0,0.8); }
+        @keyframes goldShine3d {
+            0%, 100% { box-shadow: 0 15px 40px rgba(255,215,0,0.5); }
+            50% { box-shadow: 0 15px 60px rgba(255,215,0,0.9); }
         }
         
         /* Upgrade tables */
         .upgrade-table {
             background: var(--bg-card);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            animation: slideUp 0.5s ease 0.4s;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            animation: slideUp3d 0.6s ease 0.4s;
             position: relative;
             transition: all 0.5s ease;
+            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .upgrade-table:hover {
+            transform: translateZ(30px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         
         .upgrade-table.vip-table {
             background: linear-gradient(135deg, #1a1a00, #0a0a00);
             border: 2px solid #ffd700;
-            box-shadow: 0 0 20px rgba(255,215,0,0.3);
+            box-shadow: 0 0 30px rgba(255,215,0,0.4);
         }
         
         .upgrade-table.highlight {
             border-color: #ffd700;
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
-            animation: glowGold 2s infinite;
+            box-shadow: 0 0 50px rgba(255,215,0,0.6);
+            animation: glowGold3d 2s infinite;
         }
         
-        @keyframes glowGold {
-            0%, 100% { box-shadow: 0 0 20px rgba(255,215,0,0.3); }
-            50% { box-shadow: 0 0 40px rgba(255,215,0,0.6); }
+        @keyframes glowGold3d {
+            0%, 100% { box-shadow: 0 0 30px rgba(255,215,0,0.4); }
+            50% { box-shadow: 0 0 60px rgba(255,215,0,0.8); }
         }
         
         .table-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 800;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             color: var(--accent);
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
         }
         
         .table-title.vip {
             color: #ffd700;
-            font-size: 20px;
-            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+            font-size: 22px;
+            text-shadow: 0 0 15px rgba(255,215,0,0.6);
         }
         
-        .setting-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .setting-item:last-child {
-            border-bottom: none;
-        }
-        
-        .setting-info {
-            flex: 1;
-        }
-        
-        .setting-name {
-            font-size: 14px;
-            font-weight: 700;
-            margin-bottom: 3px;
-        }
-        
-        .setting-desc {
-            font-size: 11px;
-            color: var(--text-gray);
-        }
-        
+        /* Toggle Switch */
         .toggle {
-            width: 50px;
-            height: 30px;
+            width: 60px;
+            height: 35px;
             background: #333;
-            border-radius: 15px;
+            border-radius: 20px;
             position: relative;
             cursor: pointer;
             transition: all 0.3s ease;
             flex-shrink: 0;
-            margin-left: 10px;
+            margin-left: 15px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.3);
         }
         
         .toggle.active {
             background: var(--success);
-        }
-        
-        .toggle.vip-toggle {
-            background: #333;
+            box-shadow: 0 0 15px rgba(0,255,136,0.5);
         }
         
         .toggle.vip-toggle.active {
             background: #ffd700;
+            box-shadow: 0 0 20px rgba(255,215,0,0.7);
         }
         
         .toggle::after {
             content: '';
-            width: 26px;
-            height: 26px;
+            width: 30px;
+            height: 30px;
             background: white;
             border-radius: 50%;
             position: absolute;
-            top: 2px;
-            left: 2px;
-            transition: all 0.3s ease;
+            top: 2.5px;
+            left: 3px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         
         .toggle.active::after {
-            left: 22px;
+            left: 27px;
         }
         
         /* Quick actions */
         .quick-actions {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-            animation: slideUp 0.5s ease 0.5s;
+            gap: 15px;
+            margin: 20px 0;
+            animation: slideUp3d 0.6s ease 0.5s;
         }
         
         .quick-btn {
             background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 15px;
-            padding: 15px;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s ease;
             color: var(--text-white);
+            transform-style: preserve-3d;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .quick-btn:active {
-            transform: scale(0.95);
+            transform: scale(0.9) translateZ(-30px);
             background: #2a2a2a;
+        }
+        
+        .quick-btn:hover {
+            transform: translateZ(20px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
         
         .quick-btn.enabled {
@@ -524,107 +613,116 @@
         .quick-btn.vip-enabled {
             border-color: #ffd700;
             background: rgba(255,215,0,0.1);
+            box-shadow: 0 0 20px rgba(255,215,0,0.3);
         }
         
         .quick-btn .icon {
-            font-size: 30px;
+            font-size: 40px;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
         
         .quick-btn .label {
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        
-        /* Tips section */
-        .tips-section {
-            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,53,0.05));
-            border: 1px solid rgba(255,215,0,0.3);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 15px 0;
-            animation: slideUp 0.5s ease 0.6s;
-        }
-        
-        .tips-title {
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 800;
-            margin-bottom: 15px;
-            color: var(--accent);
-        }
-        
-        .tip-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 10px;
-            padding: 10px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 10px;
-        }
-        
-        .tip-icon {
-            font-size: 24px;
-            flex-shrink: 0;
-        }
-        
-        .tip-text {
-            font-size: 13px;
-            color: var(--text-gray);
-            line-height: 1.4;
+            letter-spacing: 1px;
         }
         
         /* Performance meter */
         .perf-meter {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-            animation: slideUp 0.5s ease 0.7s;
+            gap: 15px;
+            margin: 20px 0;
+            animation: slideUp3d 0.6s ease 0.7s;
         }
         
         .perf-item {
             background: var(--bg-card);
-            border-radius: 12px;
-            padding: 15px;
+            border-radius: 15px;
+            padding: 20px;
             text-align: center;
             transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .perf-item:hover {
+            transform: translateZ(15px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
         }
         
         .perf-item.vip-item {
             background: rgba(255,215,0,0.1);
-            border: 1px solid rgba(255,215,0,0.3);
+            border: 2px solid rgba(255,215,0,0.4);
+            box-shadow: 0 0 25px rgba(255,215,0,0.3);
         }
         
         .perf-value {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 900;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
         }
         
         .perf-label {
-            font-size: 11px;
+            font-size: 12px;
             color: var(--text-gray);
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
         
         .perf-value.good {
             color: var(--success);
+            text-shadow: 0 0 10px rgba(0,255,136,0.5);
         }
         
         .perf-value.gold {
             color: #ffd700;
-            text-shadow: 0 0 10px rgba(255,215,0,0.5);
+            text-shadow: 0 0 15px rgba(255,215,0,0.6);
         }
         
-        .perf-value.warning {
-            color: var(--warning);
+        /* Tips section */
+        .tips-section {
+            background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(255,107,53,0.05));
+            border: 2px solid rgba(255,215,0,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 20px 0;
+            animation: slideUp3d 0.6s ease 0.8s;
         }
         
-        .perf-value.bad {
-            color: var(--danger);
+        .tips-title {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+        
+        .tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .tip-item:hover {
+            transform: translateX(10px);
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .tip-icon {
+            font-size: 30px;
+            flex-shrink: 0;
+        }
+        
+        .tip-text {
+            font-size: 14px;
+            color: var(--text-gray);
+            line-height: 1.5;
         }
         
         /* Notification */
@@ -635,59 +733,71 @@
             transform: translateX(-50%);
             background: rgba(0,0,0,0.95);
             border: 2px solid;
-            border-radius: 15px;
-            padding: 15px 25px;
-            font-size: 14px;
-            font-weight: 700;
-            z-index: 10000;
+            border-radius: 20px;
+            padding: 20px 30px;
+            font-size: 16px;
+            font-weight: 800;
+            z-index: 99999;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             text-align: center;
             backdrop-filter: blur(20px);
             white-space: nowrap;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            transform-style: preserve-3d;
         }
         
         .notification.show {
-            top: 20px;
+            top: 30px;
         }
         
         .notification.success {
             border-color: var(--success);
             color: var(--success);
+            box-shadow: 0 0 30px rgba(0,255,136,0.3);
         }
         
         .notification.error {
             border-color: var(--danger);
             color: var(--danger);
+            box-shadow: 0 0 30px rgba(255,68,68,0.3);
         }
         
         .notification.gold {
             border-color: #ffd700;
             color: #ffd700;
-            box-shadow: 0 0 30px rgba(255,215,0,0.5);
+            box-shadow: 0 0 40px rgba(255,215,0,0.5);
         }
         
         .notification.warning {
             border-color: var(--warning);
             color: var(--warning);
+            box-shadow: 0 0 30px rgba(255,170,0,0.3);
         }
         
         /* Responsive */
         @media (max-width: 350px) {
-            .title { font-size: 24px; }
-            .main-btn { font-size: 20px; padding: 20px; }
+            .title { font-size: 26px; }
+            .main-btn { font-size: 22px; padding: 25px; }
             .quick-actions { grid-template-columns: 1fr; }
-            .fps-widget { top: 5px; right: 5px; padding: 5px 8px; }
-            .fps-widget .fps-value { font-size: 16px; }
+            .fps-widget { top: 5px; right: 5px; padding: 8px 10px; }
+            .fps-widget .fps-value { font-size: 22px; }
+            .fps-toggle-main { width: 60px; height: 60px; bottom: 20px; right: 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- FPS Widget Nổi -->
-    <div class="fps-widget" id="fpsWidget" onclick="toggleFpsWidget()">
+    <!-- Splash Screen - TĂNG TỐC GAME -->
+    <div class="splash-screen" id="splashScreen">
+        <div class="splash-logo">🚀</div>
+        <div class="splash-text">TĂNG TỐC GAME</div>
+        <div class="splash-subtitle">👑 BLOX FRUIT PRO MAX 3D</div>
+    </div>
+    
+    <!-- FPS Widget Nổi - Luôn hiển thị -->
+    <div class="fps-widget" id="fpsWidget">
         <span class="fps-value" id="fpsWidgetValue">0</span>
         <span class="fps-label">FPS</span>
-        <div class="toggle-btn" onclick="event.stopPropagation(); toggleFpsWidget()">✕</div>
+        <div class="close-widget" onclick="event.stopPropagation(); toggleFpsWidget()">✕</div>
     </div>
     
     <!-- FPS Toggle Button -->
@@ -695,8 +805,8 @@
         📊
     </div>
     
-    <!-- Background particles -->
-    <div class="bg-animation" id="bgAnimation"></div>
+    <!-- Background 3D -->
+    <div class="bg-3d" id="bgAnimation"></div>
     
     <!-- Notification -->
     <div class="notification" id="notification"></div>
@@ -706,7 +816,7 @@
         <div class="header">
             <div class="logo" id="logo">🍈</div>
             <div class="title" id="title">BLOX FRUIT PRO MAX</div>
-            <div class="subtitle">👑 PHIÊN BẢN VÔ HẠN · KHÔNG THỂ NÂNG CẤP HƠN</div>
+            <div class="subtitle">👑 PHIÊN BẢN 3D ULTIMATE · KHÔNG THỂ NÂNG CẤP HƠN</div>
         </div>
         
         <!-- Status -->
@@ -794,7 +904,7 @@
             </div>
             
             <!-- Nút kích hoạt VIP -->
-            <button class="main-btn vip" id="vipBtn" onclick="toggleVipMode()" style="margin-top: 15px;">
+            <button class="main-btn vip" id="vipBtn" onclick="toggleVipMode()" style="margin-top: 20px;">
                 👑 KÍCH HOẠT VIP MODE
             </button>
         </div>
@@ -869,15 +979,46 @@
         let fpsInterval;
         let fpsWidgetVisible = true;
         
-        // Tạo particles background
+        // Lưu trạng thái vào localStorage
+        function saveState() {
+            localStorage.setItem('proMode', proModeActive);
+            localStorage.setItem('vipMode', vipModeActive);
+            localStorage.setItem('fpsWidgetVisible', fpsWidgetVisible);
+        }
+        
+        // Load trạng thái từ localStorage
+        function loadState() {
+            const savedProMode = localStorage.getItem('proMode');
+            const savedVipMode = localStorage.getItem('vipMode');
+            const savedFpsWidget = localStorage.getItem('fpsWidgetVisible');
+            
+            if (savedProMode === 'true') {
+                proModeActive = true;
+                updateProModeUI();
+                startFpsSimulation();
+            }
+            
+            if (savedVipMode === 'true') {
+                vipModeActive = true;
+                updateVipModeUI();
+                createGoldParticles();
+            }
+            
+            if (savedFpsWidget === 'false') {
+                fpsWidgetVisible = false;
+                document.getElementById('fpsWidget').classList.add('hidden-widget');
+            }
+        }
+        
+        // Tạo particles 3D
         function createParticles() {
             const bg = document.getElementById('bgAnimation');
             const colors = ['#ff6b35', '#ffd700', '#ff4500', '#00ff88'];
             
-            for (let i = 0; i < 20; i++) {
+            for (let i = 0; i < 30; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.width = Math.random() * 15 + 5 + 'px';
                 particle.style.height = particle.style.width;
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.left = Math.random() * 100 + '%';
@@ -891,10 +1032,10 @@
         function createGoldParticles() {
             const bg = document.getElementById('bgAnimation');
             
-            for (let i = 0; i < 30; i++) {
+            for (let i = 0; i < 40; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'gold-particle';
-                particle.style.width = Math.random() * 8 + 3 + 'px';
+                particle.style.width = Math.random() * 10 + 3 + 'px';
                 particle.style.height = particle.style.width;
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.animationDuration = Math.random() * 8 + 3 + 's';
@@ -923,57 +1064,91 @@
             fpsWidgetVisible = !fpsWidgetVisible;
             
             if (fpsWidgetVisible) {
-                widget.classList.remove('hidden');
+                widget.classList.remove('hidden-widget');
                 toggleBtn.style.borderColor = '#00ff88';
-                toggleBtn.style.boxShadow = '0 0 20px rgba(0,255,136,0.3)';
+                toggleBtn.style.boxShadow = '0 0 30px rgba(0,255,136,0.5)';
                 if (vipModeActive) {
                     widget.classList.add('vip');
                     toggleBtn.classList.add('vip');
                 }
             } else {
-                widget.classList.add('hidden');
+                widget.classList.add('hidden-widget');
                 toggleBtn.style.borderColor = '#666';
                 toggleBtn.style.boxShadow = 'none';
             }
+            
+            saveState();
         }
         
         // Bật/tắt Pro Mode
         function toggleProMode() {
             proModeActive = !proModeActive;
+            updateProModeUI();
+            
+            if (proModeActive) {
+                startOptimization();
+                showNotification('🚀 PRO MODE ĐÃ BẬT!', 'success');
+                
+                if (navigator.vibrate) {
+                    navigator.vibrate([100, 50, 100]);
+                }
+                
+                startFpsSimulation();
+            } else {
+                stopOptimization();
+                showNotification('Đã tắt Pro Mode', 'error');
+                stopFpsSimulation();
+            }
+            
+            saveState();
+        }
+        
+        function updateProModeUI() {
             const btn = document.getElementById('mainBtn');
             const statusDot = document.getElementById('statusDot');
             const statusText = document.getElementById('statusText');
-            const statusBar = document.getElementById('statusBar');
             
             if (proModeActive) {
                 btn.textContent = '✅ PRO MODE ĐANG CHẠY';
                 btn.classList.add('active');
                 statusDot.classList.add('active');
                 statusText.textContent = 'PRO MODE ĐANG BẬT';
-                startOptimization();
-                showNotification('🚀 BLOX FRUIT PRO MODE ĐÃ BẬT!', 'success');
-                
-                // Rung thiết bị
-                if (navigator.vibrate) {
-                    navigator.vibrate([100, 50, 100]);
-                }
-                
-                // Bắt đầu simulation FPS
-                startFpsSimulation();
             } else {
                 btn.textContent = '🚀 KÍCH HOẠT PRO MODE';
                 btn.classList.remove('active');
                 statusDot.classList.remove('active');
                 statusText.textContent = 'CHƯA KÍCH HOẠT';
-                stopOptimization();
-                showNotification('Đã tắt Pro Mode', 'error');
-                stopFpsSimulation();
             }
         }
         
         // Toggle VIP Mode
         function toggleVipMode() {
             vipModeActive = !vipModeActive;
+            updateVipModeUI();
+            
+            if (vipModeActive) {
+                createGoldParticles();
+                showNotification('👑 VIP MODE ĐÃ KÍCH HOẠT! HIỆU SUẤT GẤP 10 LẦN!', 'gold');
+                
+                if (navigator.vibrate) {
+                    navigator.vibrate([200, 100, 200, 100, 200]);
+                }
+                
+                if (proModeActive) {
+                    restartFpsSimulation();
+                }
+            } else {
+                showNotification('Đã tắt VIP Mode', 'error');
+                
+                if (proModeActive) {
+                    restartFpsSimulation();
+                }
+            }
+            
+            saveState();
+        }
+        
+        function updateVipModeUI() {
             const btn = document.getElementById('vipBtn');
             const logo = document.getElementById('logo');
             const title = document.getElementById('title');
@@ -984,10 +1159,9 @@
             const fpsToggleMain = document.getElementById('fpsToggleMain');
             
             if (vipModeActive) {
-                // Kích hoạt VIP Mode
                 btn.textContent = '👑 VIP MODE ĐANG CHẠY';
                 btn.style.background = 'linear-gradient(135deg, #b8860b, #ffd700, #b8860b)';
-                btn.style.boxShadow = '0 0 40px rgba(255,215,0,0.8)';
+                btn.style.boxShadow = '0 15px 50px rgba(255,215,0,0.8)';
                 
                 logo.classList.add('vip');
                 title.classList.add('vip');
@@ -996,25 +1170,10 @@
                 upgradeTable2.classList.add('highlight');
                 fpsWidget.classList.add('vip');
                 fpsToggleMain.classList.add('vip');
-                
-                // Thêm gold particles
-                createGoldParticles();
-                
-                showNotification('👑 VIP MODE ĐÃ KÍCH HOẠT! HIỆU SUẤT GẤP 10 LẦN!', 'gold');
-                
-                // Rung mạnh
-                if (navigator.vibrate) {
-                    navigator.vibrate([200, 100, 200, 100, 200]);
-                }
-                
-                // Tăng FPS simulation
-                if (proModeActive) {
-                    restartFpsSimulation();
-                }
             } else {
                 btn.textContent = '👑 KÍCH HOẠT VIP MODE';
                 btn.style.background = 'linear-gradient(135deg, #ffd700, #f0c040, #ffd700)';
-                btn.style.boxShadow = '0 10px 30px rgba(255,215,0,0.6)';
+                btn.style.boxShadow = '0 15px 40px rgba(255,215,0,0.5)';
                 
                 logo.classList.remove('vip');
                 title.classList.remove('vip');
@@ -1023,12 +1182,6 @@
                 upgradeTable2.classList.remove('highlight');
                 fpsWidget.classList.remove('vip');
                 fpsToggleMain.classList.remove('vip');
-                
-                showNotification('Đã tắt VIP Mode', 'error');
-                
-                if (proModeActive) {
-                    restartFpsSimulation();
-                }
             }
         }
         
@@ -1069,6 +1222,8 @@
                     showNotification('❌ ' + settings[setting] + ' đã tắt', 'error');
                 }
             }
+            
+            saveState();
         }
         
         // Quick actions
@@ -1108,12 +1263,10 @@
         
         // Bắt đầu tối ưu hóa
         function startOptimization() {
-            // Mở cài đặt pin
             setTimeout(() => {
                 window.location.href = 'App-Prefs:root=BATTERY_USAGE';
             }, 500);
             
-            // Hiển thị hướng dẫn
             setTimeout(() => {
                 showNotification('💡 Bật Chế độ năng lượng thấp!', 'warning');
             }, 1500);
@@ -1127,6 +1280,7 @@
         function startFpsSimulation() {
             fpsSimulation = vipModeActive ? 80 : 45;
             updatePerformanceMeters();
+            updateFpsWidget();
             
             fpsInterval = setInterval(() => {
                 if (vipModeActive) {
@@ -1164,13 +1318,11 @@
             document.getElementById('perfFps').textContent = fpsSimulation + ' FPS';
             document.getElementById('perfTemp').textContent = tempSimulation + '°C';
             
-            // RAM trống giả lập
             const ramFree = vipModeActive ? 
-                Math.floor(Math.random() * 2000 + 3000) : // 3000-5000 MB VIP
-                Math.floor(Math.random() * 500 + 800); // 800-1300 MB thường
+                Math.floor(Math.random() * 2000 + 3000) : 
+                Math.floor(Math.random() * 500 + 800);
             document.getElementById('perfRam').textContent = ramFree + ' MB';
             
-            // Cập nhật màu sắc
             updateMeterColors();
             updatePerfItemsStyle();
         }
@@ -1180,7 +1332,6 @@
             const tempElement = document.getElementById('perfTemp');
             const ramElement = document.getElementById('perfRam');
             
-            // FPS colors
             if (vipModeActive) {
                 fpsElement.className = 'perf-value gold';
                 tempElement.className = 'perf-value good';
@@ -1222,23 +1373,17 @@
         // Khởi tạo
         window.addEventListener('load', () => {
             createParticles();
+            loadState();
             
-            // Cập nhật FPS widget ban đầu
-            document.getElementById('fpsWidgetValue').textContent = '0';
-            
+            // Tự động ẩn splash screen sau 2 giây
             setTimeout(() => {
-                showNotification('👑 Sẵn sàng chiến Blox Fruit!', 'success');
-            }, 1000);
+                const splash = document.getElementById('splashScreen');
+                splash.style.display = 'none';
+                showNotification('🚀 TĂNG TỐC GAME SẴN SÀNG!', 'success');
+            }, 2000);
         });
         
-        // Xử lý khi rời trang - FPS widget vẫn chạy
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && proModeActive) {
-                console.log('Pro Mode active, FPS widget still running');
-            }
-        });
-        
-        console.log('👑 Blox Fruit Pro Max - Phiên bản Vô Hạn · Không thể nâng cấp hơn');
+        console.log('👑 Blox Fruit Pro Max 3D - Phiên bản Vô Hạn · Không thể nâng cấp hơn');
     </script>
 </body>
 </html>
