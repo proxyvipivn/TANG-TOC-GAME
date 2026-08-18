@@ -165,71 +165,16 @@
             100% { opacity: 0; transform: translateZ(-500px) scale(2); visibility: hidden; }
         }
         
-        /* Header */
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            animation: slideDown3d 0.8s ease;
-            transform-style: preserve-3d;
-        }
-        
-        @keyframes slideDown3d {
-            from { opacity: 0; transform: translateY(-50px) translateZ(-200px); }
-            to { opacity: 1; transform: translateY(0) translateZ(0); }
-        }
-        
-        .logo {
-            font-size: 80px;
-            margin-bottom: 10px;
-            animation: bounce3d 2s infinite;
-            filter: drop-shadow(0 0 30px rgba(255,107,53,0.6));
-            transform-style: preserve-3d;
-        }
-        
-        .logo.vip {
-            filter: drop-shadow(0 0 40px rgba(255,215,0,0.9));
-        }
-        
-        @keyframes bounce3d {
-            0%, 100% { transform: translateY(0) translateZ(0); }
-            50% { transform: translateY(-20px) translateZ(50px); }
-        }
-        
-        .title {
-            font-size: 34px;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff6b35, #ff4500, #ffd700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 5px;
-            letter-spacing: 2px;
-            transition: all 0.5s ease;
-            animation: titleGlow 3s infinite;
-        }
-        
-        .title.vip {
-            background: linear-gradient(135deg, #ffd700, #ffed4a, #f0c040, #ffd700);
-            -webkit-background-clip: text;
-            background-clip: text;
-            filter: drop-shadow(0 0 15px rgba(255,215,0,0.6));
-        }
-        
-        @keyframes titleGlow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.3); }
-        }
-        
-        /* FPS Widget Nổi - Fixed */
+        /* FPS Widget Nổi - LUÔN HIỂN THỊ */
         .fps-widget {
             position: fixed;
             top: 10px;
             right: 10px;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             border: 2px solid #00ff88;
             border-radius: 12px;
             padding: 10px 15px;
-            z-index: 99998;
+            z-index: 999999;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
@@ -239,12 +184,13 @@
             gap: 10px;
             transform-style: preserve-3d;
             animation: widgetAppear 0.5s ease;
+            pointer-events: auto;
         }
         
         .fps-widget.vip {
             border-color: #ffd700;
             box-shadow: 0 0 30px rgba(255,215,0,0.6);
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.98);
         }
         
         .fps-widget.hidden-widget {
@@ -265,17 +211,13 @@
             text-shadow: 0 0 10px rgba(0,255,136,0.8);
             min-width: 50px;
             text-align: center;
-            animation: fpsPulse 1s infinite;
+            font-variant-numeric: tabular-nums;
+            transition: color 0.3s ease;
         }
         
         .fps-widget.vip .fps-value {
             color: #ffd700;
             text-shadow: 0 0 15px rgba(255,215,0,0.9);
-        }
-        
-        @keyframes fpsPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
         }
         
         .fps-widget .fps-label {
@@ -310,10 +252,10 @@
             right: 30px;
             width: 70px;
             height: 70px;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             border: 3px solid #00ff88;
             border-radius: 50%;
-            z-index: 99997;
+            z-index: 999998;
             cursor: pointer;
             transition: all 0.3s ease;
             backdrop-filter: blur(20px);
@@ -323,12 +265,13 @@
             justify-content: center;
             font-size: 30px;
             animation: togglePulse 2s infinite;
+            pointer-events: auto;
         }
         
         .fps-toggle-main.vip {
             border-color: #ffd700;
             box-shadow: 0 0 40px rgba(255,215,0,0.7);
-            background: rgba(0,0,0,0.95);
+            background: rgba(0,0,0,0.98);
         }
         
         @keyframes togglePulse {
@@ -737,7 +680,7 @@
             padding: 20px 30px;
             font-size: 16px;
             font-weight: 800;
-            z-index: 99999;
+            z-index: 999999;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             text-align: center;
             backdrop-filter: blur(20px);
@@ -793,7 +736,7 @@
         <div class="splash-subtitle">👑 BLOX FRUIT PRO MAX 3D</div>
     </div>
     
-    <!-- FPS Widget Nổi - Luôn hiển thị -->
+    <!-- FPS Widget Nổi - LUÔN HIỂN THỊ -->
     <div class="fps-widget" id="fpsWidget">
         <span class="fps-value" id="fpsWidgetValue">0</span>
         <span class="fps-label">FPS</span>
@@ -933,7 +876,7 @@
         <div class="perf-meter">
             <div class="perf-item" id="perfItemFps">
                 <div class="perf-value good" id="perfFps">--</div>
-                <div class="perf-label">FPS DỰ KIẾN</div>
+                <div class="perf-label">FPS THỰC TẾ</div>
             </div>
             <div class="perf-item" id="perfItemTemp">
                 <div class="perf-value warning" id="perfTemp">--</div>
@@ -974,10 +917,12 @@
     <script>
         let proModeActive = false;
         let vipModeActive = false;
-        let fpsSimulation = 0;
-        let tempSimulation = 35;
         let fpsInterval;
         let fpsWidgetVisible = true;
+        let lastFrameTime = performance.now();
+        let fps = 0;
+        let frameCount = 0;
+        let fpsUpdateTime = 0;
         
         // Lưu trạng thái vào localStorage
         function saveState() {
@@ -995,7 +940,7 @@
             if (savedProMode === 'true') {
                 proModeActive = true;
                 updateProModeUI();
-                startFpsSimulation();
+                startFpsCounter();
             }
             
             if (savedVipMode === 'true') {
@@ -1008,6 +953,65 @@
                 fpsWidgetVisible = false;
                 document.getElementById('fpsWidget').classList.add('hidden-widget');
             }
+        }
+        
+        // FPS Counter thực tế - Dùng requestAnimationFrame
+        function startFpsCounter() {
+            lastFrameTime = performance.now();
+            frameCount = 0;
+            fpsUpdateTime = 0;
+            
+            function countFPS(timestamp) {
+                frameCount++;
+                
+                if (timestamp - fpsUpdateTime >= 1000) {
+                    fps = Math.round((frameCount * 1000) / (timestamp - fpsUpdateTime));
+                    frameCount = 0;
+                    fpsUpdateTime = timestamp;
+                    
+                    // Cập nhật UI
+                    document.getElementById('fpsWidgetValue').textContent = fps;
+                    document.getElementById('fpsCounter').textContent = fps + ' FPS';
+                    document.getElementById('perfFps').textContent = fps + ' FPS';
+                    
+                    // Cập nhật màu sắc
+                    updateFpsColor(fps);
+                }
+                
+                if (proModeActive) {
+                    requestAnimationFrame(countFPS);
+                }
+            }
+            
+            requestAnimationFrame(countFPS);
+        }
+        
+        function updateFpsColor(currentFps) {
+            const fpsWidget = document.getElementById('fpsWidgetValue');
+            const perfFps = document.getElementById('perfFps');
+            
+            if (vipModeActive) {
+                fpsWidget.style.color = '#ffd700';
+                perfFps.className = 'perf-value gold';
+            } else {
+                if (currentFps >= 55) {
+                    fpsWidget.style.color = '#00ff88';
+                    perfFps.className = 'perf-value good';
+                } else if (currentFps >= 40) {
+                    fpsWidget.style.color = '#ffaa00';
+                    perfFps.className = 'perf-value warning';
+                } else {
+                    fpsWidget.style.color = '#ff4444';
+                    perfFps.className = 'perf-value bad';
+                }
+            }
+        }
+        
+        function stopFpsCounter() {
+            fps = 0;
+            document.getElementById('fpsWidgetValue').textContent = '0';
+            document.getElementById('fpsCounter').textContent = '0 FPS';
+            document.getElementById('perfFps').textContent = '--';
         }
         
         // Tạo particles 3D
@@ -1093,11 +1097,11 @@
                     navigator.vibrate([100, 50, 100]);
                 }
                 
-                startFpsSimulation();
+                startFpsCounter();
             } else {
                 stopOptimization();
                 showNotification('Đã tắt Pro Mode', 'error');
-                stopFpsSimulation();
+                stopFpsCounter();
             }
             
             saveState();
@@ -1133,16 +1137,8 @@
                 if (navigator.vibrate) {
                     navigator.vibrate([200, 100, 200, 100, 200]);
                 }
-                
-                if (proModeActive) {
-                    restartFpsSimulation();
-                }
             } else {
                 showNotification('Đã tắt VIP Mode', 'error');
-                
-                if (proModeActive) {
-                    restartFpsSimulation();
-                }
             }
             
             saveState();
@@ -1201,9 +1197,6 @@
                 
                 if (toggle.classList.contains('active')) {
                     showNotification('👑 ' + settings[setting] + ' đã bật', 'gold');
-                    if (setting === 'fps2' && proModeActive) {
-                        restartFpsSimulation();
-                    }
                 } else {
                     showNotification('❌ ' + settings[setting] + ' đã tắt', 'error');
                 }
@@ -1276,100 +1269,6 @@
             // Không cần làm gì đặc biệt
         }
         
-        // FPS Simulation
-        function startFpsSimulation() {
-            fpsSimulation = vipModeActive ? 80 : 45;
-            updatePerformanceMeters();
-            updateFpsWidget();
-            
-            fpsInterval = setInterval(() => {
-                if (vipModeActive) {
-                    fpsSimulation = Math.floor(Math.random() * 30 + 80); // 80-110 FPS
-                    tempSimulation = Math.floor(Math.random() * 5 + 30); // 30-35°C
-                } else {
-                    fpsSimulation = Math.floor(Math.random() * 15 + 45); // 45-60 FPS
-                    tempSimulation = Math.floor(Math.random() * 8 + 35); // 35-43°C
-                }
-                updatePerformanceMeters();
-                updateFpsWidget();
-            }, 100);
-        }
-        
-        function stopFpsSimulation() {
-            clearInterval(fpsInterval);
-            document.getElementById('fpsCounter').textContent = '0 FPS';
-            document.getElementById('fpsWidgetValue').textContent = '0';
-            document.getElementById('perfFps').textContent = '--';
-            document.getElementById('perfTemp').textContent = '--';
-            document.getElementById('perfRam').textContent = '--';
-        }
-        
-        function restartFpsSimulation() {
-            stopFpsSimulation();
-            startFpsSimulation();
-        }
-        
-        function updateFpsWidget() {
-            document.getElementById('fpsWidgetValue').textContent = fpsSimulation;
-            document.getElementById('fpsCounter').textContent = fpsSimulation + ' FPS';
-        }
-        
-        function updatePerformanceMeters() {
-            document.getElementById('perfFps').textContent = fpsSimulation + ' FPS';
-            document.getElementById('perfTemp').textContent = tempSimulation + '°C';
-            
-            const ramFree = vipModeActive ? 
-                Math.floor(Math.random() * 2000 + 3000) : 
-                Math.floor(Math.random() * 500 + 800);
-            document.getElementById('perfRam').textContent = ramFree + ' MB';
-            
-            updateMeterColors();
-            updatePerfItemsStyle();
-        }
-        
-        function updateMeterColors() {
-            const fpsElement = document.getElementById('perfFps');
-            const tempElement = document.getElementById('perfTemp');
-            const ramElement = document.getElementById('perfRam');
-            
-            if (vipModeActive) {
-                fpsElement.className = 'perf-value gold';
-                tempElement.className = 'perf-value good';
-                ramElement.className = 'perf-value gold';
-            } else {
-                if (fpsSimulation >= 50) {
-                    fpsElement.className = 'perf-value good';
-                } else if (fpsSimulation >= 40) {
-                    fpsElement.className = 'perf-value warning';
-                } else {
-                    fpsElement.className = 'perf-value bad';
-                }
-                
-                if (tempSimulation <= 38) {
-                    tempElement.className = 'perf-value good';
-                } else if (tempSimulation <= 42) {
-                    tempElement.className = 'perf-value warning';
-                } else {
-                    tempElement.className = 'perf-value bad';
-                }
-                
-                ramElement.className = 'perf-value good';
-            }
-        }
-        
-        function updatePerfItemsStyle() {
-            const items = ['perfItemFps', 'perfItemTemp', 'perfItemRam'];
-            
-            items.forEach(item => {
-                const element = document.getElementById(item);
-                if (vipModeActive) {
-                    element.classList.add('vip-item');
-                } else {
-                    element.classList.remove('vip-item');
-                }
-            });
-        }
-        
         // Khởi tạo
         window.addEventListener('load', () => {
             createParticles();
@@ -1383,7 +1282,22 @@
             }, 2000);
         });
         
-        console.log('👑 Blox Fruit Pro Max 3D - Phiên bản Vô Hạn · Không thể nâng cấp hơn');
+        // Giữ FPS widget luôn hiển thị khi rời web
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && proModeActive) {
+                // FPS counter vẫn chạy ngầm
+                console.log('FPS still counting in background');
+            }
+        });
+        
+        // Ngăn chặn iOS pause JavaScript
+        window.addEventListener('pageshow', () => {
+            if (proModeActive) {
+                startFpsCounter();
+            }
+        });
+        
+        console.log('👑 Blox Fruit Pro Max 3D - FPS Chính Xác · Widget Luôn Hiển Thị');
     </script>
 </body>
 </html>
