@@ -2,15 +2,16 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tăng Tốc Roblox 🚀 - Bản Siêu VIP Pro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Tăng Tốc Roblox 🚀 - Siêu VIP Pro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #07070f;
-            --bg-secondary: #0d0d1a;
+            --bg-primary: #06060f;
+            --bg-secondary: #0a0a1a;
             --bg-card: rgba(255, 255, 255, 0.04);
             --bg-card-hover: rgba(255, 255, 255, 0.07);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.12);
             --glass-blur: blur(20px);
             --accent-cyan: #00e5ff;
             --accent-blue: #2979ff;
@@ -22,11 +23,12 @@
             --text-primary: #ffffff;
             --text-secondary: #b0bec5;
             --text-muted: #78909c;
-            --glow-cyan: 0 0 20px rgba(0, 229, 255, 0.4);
-            --glow-purple: 0 0 20px rgba(124, 77, 255, 0.4);
-            --glow-green: 0 0 20px rgba(0, 230, 118, 0.4);
-            --glow-red: 0 0 20px rgba(255, 23, 68, 0.4);
-            --font-main: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --glow-cyan: 0 0 25px rgba(0, 229, 255, 0.4);
+            --glow-purple: 0 0 25px rgba(124, 77, 255, 0.4);
+            --glow-green: 0 0 25px rgba(0, 230, 118, 0.4);
+            --glow-red: 0 0 25px rgba(255, 23, 68, 0.4);
+            --font-display: 'Orbitron', monospace;
+            --font-body: 'Rajdhani', sans-serif;
             --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
@@ -41,7 +43,7 @@
         }
 
         body {
-            font-family: var(--font-main);
+            font-family: var(--font-body);
             background: var(--bg-primary);
             color: var(--text-primary);
             min-height: 100vh;
@@ -51,6 +53,7 @@
             user-select: none;
             -webkit-user-select: none;
             -webkit-tap-highlight-color: transparent;
+            perspective: 1200px;
         }
 
         /* ===== CANVAS PARTICLES ===== */
@@ -69,64 +72,66 @@
             position: fixed;
             border-radius: 50%;
             filter: blur(80px);
-            opacity: 0.25;
+            opacity: 0.22;
             z-index: 0;
             pointer-events: none;
-            animation: orbFloat 15s ease-in-out infinite;
+            animation: orbFloat 18s ease-in-out infinite;
         }
         .bg-orb:nth-child(1) {
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             background: var(--accent-cyan);
-            top: -150px;
-            left: -150px;
+            top: -200px;
+            left: -200px;
             animation-delay: 0s;
         }
         .bg-orb:nth-child(2) {
-            width: 400px;
-            height: 400px;
+            width: 500px;
+            height: 500px;
             background: var(--accent-purple);
-            bottom: -100px;
-            right: -100px;
-            animation-delay: -5s;
+            bottom: -150px;
+            right: -150px;
+            animation-delay: -6s;
         }
         .bg-orb:nth-child(3) {
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             background: var(--accent-blue);
             top: 40%;
-            left: 60%;
-            animation-delay: -10s;
+            left: 65%;
+            animation-delay: -12s;
             opacity: 0.15;
+        }
+        .bg-orb:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            background: var(--accent-pink);
+            bottom: 20%;
+            left: 10%;
+            animation-delay: -9s;
+            opacity: 0.12;
         }
 
         @keyframes orbFloat {
-            0%,
-            100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(30px, -40px) scale(1.05);
-            }
-            50% {
-                transform: translate(-20px, 30px) scale(0.95);
-            }
-            75% {
-                transform: translate(40px, 20px) scale(1.02);
-            }
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(40px, -50px) scale(1.08); }
+            50% { transform: translate(-30px, 40px) scale(0.95); }
+            75% { transform: translate(50px, 25px) scale(1.05); }
         }
 
-        /* ===== MAIN CONTAINER ===== */
+        /* ===== MAIN CONTAINER with 3D tilt ===== */
         .main-container {
             position: relative;
             z-index: 1;
-            max-width: 480px;
+            max-width: 520px;
             margin: 0 auto;
             padding: 20px 16px 40px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             gap: 16px;
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out;
         }
 
         /* ===== HEADER ===== */
@@ -136,60 +141,57 @@
             animation: fadeInDown 0.8s ease-out;
         }
         .header .logo-icon {
-            font-size: 48px;
+            font-size: 56px;
             display: block;
             margin-bottom: 8px;
             animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
         }
         .header h1 {
-            font-size: 28px;
-            font-weight: 800;
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 900;
             background: linear-gradient(135deg, #00e5ff, #7c4dff, #ff4081);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -0.5px;
+            letter-spacing: 1px;
             line-height: 1.2;
+            text-shadow: none;
         }
         .header .subtitle {
-            font-size: 13px;
+            font-size: 15px;
             color: var(--text-secondary);
             margin-top: 6px;
-            letter-spacing: 0.5px;
-            font-weight: 500;
+            letter-spacing: 1px;
+            font-weight: 600;
         }
         .header .badge-vip {
             display: inline-block;
             margin-top: 10px;
-            padding: 4px 16px;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 145, 0, 0.25));
-            border: 1px solid rgba(255, 215, 0, 0.4);
-            border-radius: 20px;
-            font-size: 11px;
+            padding: 6px 20px;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 145, 0, 0.3));
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            border-radius: 25px;
+            font-size: 12px;
             font-weight: 700;
             color: #ffd700;
             letter-spacing: 2px;
             text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            animation: badgeGlow 3s ease-in-out infinite;
         }
-
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
+        }
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes pulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.08);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
         }
 
         /* ===== CARDS ===== */
@@ -204,10 +206,13 @@
             animation: fadeInUp 0.6s ease-out;
             position: relative;
             overflow: hidden;
+            transform-style: preserve-3d;
         }
         .card:hover {
             background: var(--bg-card-hover);
-            border-color: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.18);
+            transform: translateZ(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
         .card::before {
             content: '';
@@ -215,45 +220,40 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.5), rgba(124, 77, 255, 0.5), transparent);
         }
-
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         .card-title {
-            font-size: 15px;
+            font-family: var(--font-display);
+            font-size: 16px;
             font-weight: 700;
             margin-bottom: 16px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             color: var(--text-primary);
-            letter-spacing: 0.3px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         .card-title .icon {
-            font-size: 20px;
+            font-size: 22px;
         }
 
-        /* ===== TOGGLE SWITCH ===== */
+        /* ===== TOGGLE SECTION ===== */
         .toggle-section {
             text-align: center;
-            padding: 28px 20px;
+            padding: 30px 20px;
             background: linear-gradient(135deg, rgba(0, 229, 255, 0.05), rgba(124, 77, 255, 0.08));
-            border: 1px solid rgba(0, 229, 255, 0.2);
+            border: 1px solid rgba(0, 229, 255, 0.3);
             border-radius: var(--radius-xl);
             position: relative;
             overflow: hidden;
             animation: fadeInUp 0.6s ease-out 0.1s backwards;
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.1);
         }
         .toggle-section::after {
             content: '';
@@ -262,80 +262,79 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(0, 229, 255, 0.05), transparent, rgba(124, 77, 255, 0.05), transparent);
-            animation: rotateBg 8s linear infinite;
+            background: conic-gradient(from 0deg, transparent, rgba(0, 229, 255, 0.06), transparent, rgba(124, 77, 255, 0.06), transparent);
+            animation: rotateBg 10s linear infinite;
             pointer-events: none;
         }
         @keyframes rotateBg {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
-
         .toggle-label {
-            font-size: 20px;
-            font-weight: 800;
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
             margin-bottom: 20px;
             position: relative;
             z-index: 1;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
         }
         .toggle-label .highlight {
             color: var(--accent-cyan);
+            text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
         }
-
         .toggle-wrapper {
             position: relative;
             z-index: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
         .toggle-status-text {
-            font-size: 14px;
-            font-weight: 600;
+            font-size: 16px;
+            font-weight: 700;
             color: var(--text-muted);
-            min-width: 50px;
+            min-width: 60px;
             transition: var(--transition);
+            letter-spacing: 1px;
         }
         .toggle-status-text.active {
             color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
         }
-
         .toggle-switch {
             position: relative;
-            width: 80px;
-            height: 44px;
+            width: 90px;
+            height: 48px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 22px;
+            border-radius: 26px;
             cursor: pointer;
             transition: var(--transition);
             border: 2px solid rgba(255, 255, 255, 0.15);
             flex-shrink: 0;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
         }
         .toggle-switch.active {
             background: linear-gradient(135deg, #00e5ff, #7c4dff);
             border-color: transparent;
-            box-shadow: 0 0 25px rgba(0, 229, 255, 0.5), 0 0 50px rgba(124, 77, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.6), 0 0 60px rgba(124, 77, 255, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.3);
         }
         .toggle-switch .knob {
             position: absolute;
             top: 3px;
             left: 3px;
-            width: 34px;
-            height: 34px;
+            width: 38px;
+            height: 38px;
             background: #fff;
             border-radius: 50%;
             transition: var(--transition);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
         .toggle-switch.active .knob {
-            left: 39px;
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+            left: 45px;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
+            background: #fff;
         }
 
         /* ===== DEVICE INFO ===== */
@@ -346,10 +345,10 @@
             padding: 14px 16px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
         .device-icon {
-            font-size: 36px;
+            font-size: 40px;
             flex-shrink: 0;
             animation: pulse 3s ease-in-out infinite;
         }
@@ -358,151 +357,143 @@
             min-width: 0;
         }
         .device-name {
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             color: var(--text-primary);
+            letter-spacing: 0.5px;
         }
         .device-spec {
             font-size: 12px;
             color: var(--text-muted);
-            margin-top: 2px;
+            margin-top: 3px;
+            letter-spacing: 0.3px;
         }
         .device-badge {
-            padding: 4px 10px;
+            padding: 4px 12px;
             background: rgba(0, 229, 255, 0.1);
-            border-radius: 12px;
-            font-size: 10px;
+            border-radius: 15px;
+            font-size: 11px;
             font-weight: 600;
             color: var(--accent-cyan);
             white-space: nowrap;
             letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 229, 255, 0.25);
         }
 
         /* ===== METRICS GRID ===== */
         .metrics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: 12px;
         }
         .metric-item {
-            padding: 14px;
+            padding: 16px;
             background: rgba(255, 255, 255, 0.03);
             border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             text-align: center;
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
         .metric-item:hover {
             background: rgba(255, 255, 255, 0.06);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         .metric-value {
-            font-size: 22px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-family: var(--font-display);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
             transition: var(--transition);
+            line-height: 1.2;
         }
-        .metric-value.cyan {
-            color: var(--accent-cyan);
-        }
-        .metric-value.purple {
-            color: var(--accent-purple);
-        }
-        .metric-value.green {
-            color: var(--accent-green);
-        }
-        .metric-value.orange {
-            color: var(--accent-orange);
-        }
-        .metric-value.pink {
-            color: var(--accent-pink);
-        }
-        .metric-value.red {
-            color: var(--accent-red);
-        }
+        .metric-value.cyan { color: var(--accent-cyan); text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
+        .metric-value.purple { color: var(--accent-purple); text-shadow: 0 0 15px rgba(124, 77, 255, 0.5); }
+        .metric-value.green { color: var(--accent-green); text-shadow: 0 0 15px rgba(0, 230, 118, 0.5); }
+        .metric-value.orange { color: var(--accent-orange); text-shadow: 0 0 15px rgba(255, 145, 0, 0.5); }
+        .metric-value.pink { color: var(--accent-pink); text-shadow: 0 0 15px rgba(255, 64, 129, 0.5); }
+        .metric-value.red { color: var(--accent-red); text-shadow: 0 0 15px rgba(255, 23, 68, 0.5); }
         .metric-label {
             font-size: 11px;
             color: var(--text-muted);
-            margin-top: 4px;
+            margin-top: 5px;
             font-weight: 600;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
         .metric-bar {
             width: 100%;
-            height: 4px;
+            height: 6px;
             background: rgba(255, 255, 255, 0.08);
-            border-radius: 2px;
-            margin-top: 8px;
+            border-radius: 3px;
+            margin-top: 10px;
             overflow: hidden;
         }
         .metric-bar .fill {
             height: 100%;
-            border-radius: 2px;
-            transition: width 0.5s ease;
+            border-radius: 3px;
+            transition: width 0.6s ease;
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
         }
 
         /* ===== OPTIMIZATION LIST ===== */
         .opt-list {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 6px;
         }
         .opt-item {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.02);
             border-radius: var(--radius-sm);
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 500;
+            letter-spacing: 0.3px;
         }
         .opt-item .opt-icon {
-            font-size: 18px;
+            font-size: 20px;
             flex-shrink: 0;
         }
         .opt-item .opt-text {
             flex: 1;
         }
         .opt-item .opt-status {
-            font-size: 14px;
+            font-size: 16px;
             flex-shrink: 0;
             opacity: 0;
             transition: var(--transition);
+            color: var(--accent-green);
+            text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
         }
         .opt-item.done {
             background: rgba(0, 230, 118, 0.08);
-            border-color: rgba(0, 230, 118, 0.25);
+            border-color: rgba(0, 230, 118, 0.3);
         }
         .opt-item.done .opt-status {
             opacity: 1;
-            color: var(--accent-green);
         }
         .opt-item.active-opt {
             background: rgba(0, 229, 255, 0.08);
-            border-color: rgba(0, 229, 255, 0.3);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.1);
+            border-color: rgba(0, 229, 255, 0.35);
+            box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
         }
         .opt-item .loading-dots::after {
             content: '';
             animation: dots 1.2s steps(4, end) infinite;
         }
         @keyframes dots {
-            0% {
-                content: '';
-            }
-            25% {
-                content: '.';
-            }
-            50% {
-                content: '..';
-            }
-            75% {
-                content: '...';
-            }
+            0% { content: ''; }
+            25% { content: '.'; }
+            50% { content: '..'; }
+            75% { content: '...'; }
         }
 
         /* ===== TIMER ===== */
@@ -511,9 +502,10 @@
             padding: 10px 0;
         }
         .timer-value {
-            font-size: 36px;
-            font-weight: 800;
-            letter-spacing: 2px;
+            font-family: var(--font-display);
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: 3px;
             font-variant-numeric: tabular-nums;
             background: linear-gradient(135deg, #00e5ff, #7c4dff);
             -webkit-background-clip: text;
@@ -525,29 +517,25 @@
             font-size: 12px;
             color: var(--text-muted);
             font-weight: 600;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 4px;
+            margin-top: 6px;
         }
         .timer-warning {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--accent-red);
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 8px;
             display: none;
+            letter-spacing: 0.5px;
         }
         .timer-warning.show {
             display: block;
             animation: blinkWarning 1s ease-in-out infinite;
         }
         @keyframes blinkWarning {
-            0%,
-            100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.4;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
         /* ===== RESET BUTTON ===== */
@@ -555,33 +543,45 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 10px;
             width: 100%;
-            padding: 14px;
+            padding: 16px;
             background: rgba(255, 23, 68, 0.1);
-            border: 1px solid rgba(255, 23, 68, 0.3);
+            border: 1px solid rgba(255, 23, 68, 0.35);
             border-radius: var(--radius-md);
             color: var(--accent-red);
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: var(--transition);
-            letter-spacing: 0.5px;
-            font-family: inherit;
+            letter-spacing: 1px;
+            font-family: var(--font-body);
+            text-transform: uppercase;
         }
         .reset-btn:hover {
             background: rgba(255, 23, 68, 0.2);
-            border-color: rgba(255, 23, 68, 0.5);
-            box-shadow: 0 0 20px rgba(255, 23, 68, 0.2);
-            transform: translateY(-1px);
+            border-color: rgba(255, 23, 68, 0.6);
+            box-shadow: 0 0 25px rgba(255, 23, 68, 0.3);
+            transform: translateY(-2px);
         }
         .reset-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.97);
         }
         .reset-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
+        }
+
+        /* ===== SYSTEM LOAD WARNING CARD ===== */
+        #systemLoadCard {
+            border-color: rgba(255, 145, 0, 0.5);
+            background: rgba(255, 145, 0, 0.05);
+            box-shadow: 0 0 30px rgba(255, 145, 0, 0.15);
+        }
+        #systemLoadCard .card-title {
+            color: var(--accent-orange);
         }
 
         /* ===== NOTIFICATION ===== */
@@ -598,49 +598,41 @@
         .notification {
             padding: 14px 18px;
             background: rgba(13, 13, 26, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
             border-radius: var(--radius-md);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--text-primary);
             pointer-events: auto;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
             animation: slideInRight 0.4s ease-out;
-            max-width: 320px;
+            max-width: 340px;
             line-height: 1.4;
+            letter-spacing: 0.5px;
         }
         .notification.success {
-            border-color: rgba(0, 230, 118, 0.4);
-            box-shadow: 0 0 20px rgba(0, 230, 118, 0.2);
+            border-color: rgba(0, 230, 118, 0.5);
+            box-shadow: 0 0 25px rgba(0, 230, 118, 0.25);
         }
         .notification.warning {
-            border-color: rgba(255, 145, 0, 0.4);
-            box-shadow: 0 0 20px rgba(255, 145, 0, 0.2);
+            border-color: rgba(255, 145, 0, 0.5);
+            box-shadow: 0 0 25px rgba(255, 145, 0, 0.25);
         }
         .notification.error {
-            border-color: rgba(255, 23, 68, 0.4);
-            box-shadow: 0 0 20px rgba(255, 23, 68, 0.2);
+            border-color: rgba(255, 23, 68, 0.5);
+            box-shadow: 0 0 25px rgba(255, 23, 68, 0.25);
         }
         @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
         }
         .notification.fade-out {
             animation: slideOutRight 0.4s ease-in forwards;
         }
         @keyframes slideOutRight {
-            to {
-                opacity: 0;
-                transform: translateX(60px);
-            }
+            to { opacity: 0; transform: translateX(60px); }
         }
 
         /* ===== LOADING OVERLAY ===== */
@@ -650,101 +642,55 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(7, 7, 15, 0.95);
+            background: rgba(6, 6, 15, 0.97);
             z-index: 50;
             display: none;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            gap: 20px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            gap: 25px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
         .loading-overlay.show {
             display: flex;
         }
         .loading-spinner {
-            width: 60px;
-            height: 60px;
-            border: 3px solid rgba(255, 255, 255, 0.1);
-            border-top: 3px solid var(--accent-cyan);
+            width: 70px;
+            height: 70px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid var(--accent-cyan);
+            border-right: 4px solid var(--accent-purple);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
         }
         @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
+            to { transform: rotate(360deg); }
         }
         .loading-text {
-            font-size: 16px;
+            font-family: var(--font-display);
+            font-size: 18px;
             font-weight: 700;
             color: var(--text-primary);
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
+            text-align: center;
+            padding: 0 20px;
         }
         .loading-progress {
-            width: 250px;
-            height: 6px;
+            width: 300px;
+            height: 8px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
         }
         .loading-progress .fill {
             height: 100%;
             background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            border-radius: 3px;
+            border-radius: 4px;
             transition: width 0.3s ease;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            text-align: center;
-            font-size: 11px;
-            color: var(--text-muted);
-            padding: 10px 0 20px;
-            letter-spacing: 0.5px;
-        }
-        .footer .version {
-            font-weight: 700;
-            color: var(--accent-cyan);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 400px) {
-            .main-container {
-                padding: 12px 10px 30px;
-                gap: 12px;
-            }
-            .header h1 {
-                font-size: 22px;
-            }
-            .metrics-grid {
-                gap: 8px;
-            }
-            .metric-value {
-                font-size: 18px;
-            }
-            .timer-value {
-                font-size: 28px;
-            }
-            .card {
-                padding: 16px;
-            }
-        }
-
-        /* ===== SCROLLBAR ===== */
-        ::-webkit-scrollbar {
-            width: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.15);
-            border-radius: 2px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
         }
 
         /* ===== ROBLOX REDIRECT MODAL ===== */
@@ -754,85 +700,125 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 200;
             display: none;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
         }
         .roblox-modal.show {
             display: flex;
         }
         .roblox-modal-content {
             background: var(--bg-secondary);
-            border: 1px solid rgba(0, 229, 255, 0.3);
+            border: 2px solid rgba(0, 229, 255, 0.5);
             border-radius: var(--radius-xl);
-            padding: 30px 24px;
+            padding: 35px 25px;
             text-align: center;
-            max-width: 360px;
+            max-width: 380px;
             width: 100%;
-            box-shadow: 0 0 50px rgba(0, 229, 255, 0.2), 0 0 100px rgba(124, 77, 255, 0.15);
+            box-shadow: 0 0 60px rgba(0, 229, 255, 0.3), 0 0 120px rgba(124, 77, 255, 0.2);
             animation: modalPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
         @keyframes modalPop {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
         }
         .roblox-modal-content .icon {
-            font-size: 60px;
+            font-size: 70px;
             margin-bottom: 12px;
             animation: pulse 1.5s ease-in-out infinite;
         }
         .roblox-modal-content h2 {
-            font-size: 20px;
-            font-weight: 800;
-            margin-bottom: 8px;
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 10px;
             color: var(--text-primary);
+            letter-spacing: 1px;
         }
         .roblox-modal-content p {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-secondary);
             margin-bottom: 20px;
-            line-height: 1.5;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
         }
         .roblox-btn {
             display: inline-block;
-            padding: 14px 28px;
+            padding: 15px 30px;
             background: linear-gradient(135deg, #00e5ff, #7c4dff);
             border: none;
             border-radius: var(--radius-md);
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
             font-weight: 700;
             cursor: pointer;
             text-decoration: none;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             transition: var(--transition);
-            box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
-            font-family: inherit;
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.4);
+            font-family: var(--font-body);
+            text-transform: uppercase;
         }
         .roblox-btn:hover {
-            box-shadow: 0 6px 30px rgba(0, 229, 255, 0.5);
-            transform: translateY(-2px);
+            box-shadow: 0 12px 40px rgba(0, 229, 255, 0.7);
+            transform: translateY(-3px);
         }
         .roblox-btn:active {
-            transform: scale(0.97);
+            transform: scale(0.96);
         }
         .roblox-modal-content .countdown {
-            font-size: 40px;
-            font-weight: 800;
+            font-family: var(--font-display);
+            font-size: 48px;
+            font-weight: 700;
             color: var(--accent-cyan);
             margin: 10px 0;
             font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 10px 0 20px;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .footer .version {
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 1px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 400px) {
+            .main-container { padding: 12px 8px 30px; gap: 12px; }
+            .header h1 { font-size: 24px; }
+            .metrics-grid { gap: 8px; }
+            .metric-value { font-size: 22px; }
+            .timer-value { font-size: 30px; }
+            .card { padding: 16px; }
+            .toggle-switch { width: 75px; height: 40px; }
+            .toggle-switch .knob { width: 32px; height: 32px; }
+            .toggle-switch.active .knob { left: 37px; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+
+        /* ===== 3D TILT EFFECT ===== */
+        .tilt-container {
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out;
         }
     </style>
 </head>
@@ -843,6 +829,7 @@
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
+    <div class="bg-orb"></div>
 
     <!-- Notification Area -->
     <div class="notification-area" id="notificationArea"></div>
@@ -850,33 +837,31 @@
     <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
-        <div class="loading-text" id="loadingText">Đang khởi tạo hệ thống...</div>
-        <div class="loading-progress">
-            <div class="fill" id="loadingFill" style="width: 0%;"></div>
-        </div>
+        <div class="loading-text" id="loadingText">Đang khởi tạo hệ thống tăng tốc...</div>
+        <div class="loading-progress"><div class="fill" id="loadingFill" style="width: 0%;"></div></div>
     </div>
 
     <!-- Roblox Redirect Modal -->
     <div class="roblox-modal" id="robloxModal">
         <div class="roblox-modal-content">
             <div class="icon">🎮</div>
-            <h2>Hoàn Tất Tăng Tốc!</h2>
+            <h2>HOÀN TẤT TĂNG TỐC!</h2>
             <p>Hệ thống đã tối ưu xong. Bạn sẽ được đưa đến <strong>Roblox Quốc Tế</strong> ngay bây giờ!</p>
             <div class="countdown" id="redirectCountdown">3</div>
-            <p style="font-size: 11px; color: var(--text-muted);">Tự động chuyển hướng...</p>
+            <p style="font-size: 12px; color: var(--text-muted);">Tự động chuyển hướng...</p>
             <button class="roblox-btn" id="enterRobloxBtn" onclick="goToRoblox()">🚀 Vào Roblox Ngay</button>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div class="main-container">
+    <div class="main-container" id="mainContainer">
 
         <!-- Header -->
         <div class="header">
             <span class="logo-icon">⚡</span>
-            <h1>Tăng Tốc Roblox</h1>
-            <p class="subtitle">Bản Siêu VIP Pro - Tối Ưu Hóa Tối Đa</p>
-            <span class="badge-vip">🏆 Ultra VIP Edition</span>
+            <h1>TĂNG TỐC ROBLOX</h1>
+            <p class="subtitle">🚀 Siêu VIP Pro - Tối ưu hóa tuyệt đối</p>
+            <span class="badge-vip">👑 Ultra VIP Edition</span>
         </div>
 
         <!-- Toggle Section -->
@@ -894,7 +879,7 @@
 
         <!-- Device Info -->
         <div class="card">
-            <div class="card-title"><span class="icon">📱</span> Thiết Bị Của Bạn</div>
+            <div class="card-title"><span class="icon">📱</span> THIẾT BỊ CỦA BẠN</div>
             <div class="device-info">
                 <span class="device-icon">📱</span>
                 <div class="device-details">
@@ -907,7 +892,7 @@
 
         <!-- System Metrics -->
         <div class="card">
-            <div class="card-title"><span class="icon">📊</span> Theo Dõi Hiệu Suất</div>
+            <div class="card-title"><span class="icon">📊</span> THEO DÕI HIỆU SUẤT</div>
             <div class="metrics-grid">
                 <div class="metric-item">
                     <div class="metric-value cyan" id="metricFps">60</div>
@@ -944,59 +929,27 @@
 
         <!-- Optimization Features -->
         <div class="card">
-            <div class="card-title"><span class="icon">⚡</span> Tính Năng Tối Ưu</div>
+            <div class="card-title"><span class="icon">⚡</span> TÍNH NĂNG TỐI ƯU</div>
             <div class="opt-list" id="optList">
-                <div class="opt-item" data-opt="0">
-                    <span class="opt-icon">🔄</span>
-                    <span class="opt-text">Giảm lác máy (Frame Drop)</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="1">
-                    <span class="opt-icon">💨</span>
-                    <span class="opt-text">Tăng mượt máy tổng thể</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="2">
-                    <span class="opt-icon">🧠</span>
-                    <span class="opt-text">Tăng cường CPU xử lý</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="3">
-                    <span class="opt-icon">🎯</span>
-                    <span class="opt-text">Tăng cấu hình mượt tối đa</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="4">
-                    <span class="opt-icon">🔋</span>
-                    <span class="opt-text">Tăng pin - giảm lác hiệu quả</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="5">
-                    <span class="opt-icon">❄️</span>
-                    <span class="opt-text">Làm máy đỡ nóng - giảm giật lác</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="6">
-                    <span class="opt-icon">🧊</span>
-                    <span class="opt-text">Làm lạnh máy để chơi game mượt</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="7">
-                    <span class="opt-icon">👁️</span>
-                    <span class="opt-text">Ẩn tất cả yếu tố gây giật lác</span>
-                    <span class="opt-status">✓</span>
-                </div>
-                <div class="opt-item" data-opt="8">
-                    <span class="opt-icon">💾</span>
-                    <span class="opt-text">Tăng bộ nhớ - chống văng game</span>
-                    <span class="opt-status">✓</span>
-                </div>
+                <div class="opt-item" data-opt="0"><span class="opt-icon">🔄</span><span class="opt-text">Giảm lác máy (Frame Drop)</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="1"><span class="opt-icon">💨</span><span class="opt-text">Tăng mượt máy tổng thể</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="2"><span class="opt-icon">🧠</span><span class="opt-text">Tăng cường CPU xử lý</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="3"><span class="opt-icon">🎯</span><span class="opt-text">Tăng cấu hình mượt tối đa</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="4"><span class="opt-icon">🔋</span><span class="opt-text">Tăng pin - giảm lác hiệu quả</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="5"><span class="opt-icon">❄️</span><span class="opt-text">Làm máy đỡ nóng - giảm giật lác</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="6"><span class="opt-icon">🧊</span><span class="opt-text">Làm lạnh máy để chơi game mượt</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="7"><span class="opt-icon">👁️</span><span class="opt-text">Ẩn tất cả yếu tố gây giật lác</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="8"><span class="opt-icon">💾</span><span class="opt-text">Tăng bộ nhớ - chống văng game</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="9"><span class="opt-icon">🌡️</span><span class="opt-text">Nhận biết nóng máy (tối ưu)</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="10"><span class="opt-icon">📉</span><span class="opt-text">Nhận biết máy lác (tối ưu)</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="11"><span class="opt-icon">❄️</span><span class="opt-text">Làm mát máy (tối ưu)</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="12"><span class="opt-icon">⚙️</span><span class="opt-text">Tối ưu CPU (tối ưu)</span><span class="opt-status">✓</span></div>
             </div>
         </div>
 
         <!-- Timer Section -->
         <div class="card">
-            <div class="card-title"><span class="icon">⏱️</span> Thời Gian Hoạt Động</div>
+            <div class="card-title"><span class="icon">⏱️</span> THỜI GIAN HOẠT ĐỘNG</div>
             <div class="timer-display">
                 <div class="timer-value" id="timerValue">02:00:00</div>
                 <div class="timer-label">Tự động reset sau 2 giờ</div>
@@ -1004,14 +957,12 @@
             </div>
         </div>
 
-        <!-- System Load Warning -->
-        <div class="card" id="systemLoadCard" style="display:none; border-color: rgba(255, 145, 0, 0.4);">
-            <div class="card-title" style="color: var(--accent-orange);">
-                <span class="icon">⚠️</span> Cảnh Báo Hệ Thống
-            </div>
-            <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;">
+        <!-- System Load Warning Card -->
+        <div class="card" id="systemLoadCard" style="display:none;">
+            <div class="card-title" style="color: var(--accent-orange);"><span class="icon">⚠️</span> CẢNH BÁO HỆ THỐNG</div>
+            <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; letter-spacing: 0.3px;">
                 Máy của bạn đang đạt <strong style="color: var(--accent-orange);">giới hạn hiệu suất</strong>.
-                Để có trải nghiệm tốt hơn, hãy nhấn nút <strong>Reset</strong> bên dưới để hệ thống làm mới hoàn toàn.
+                Để có trải nghiệm tốt hơn, hãy nhấn nút <strong style="color: var(--accent-red);">RESET</strong> bên dưới để hệ thống làm mới hoàn toàn.
             </p>
         </div>
 
@@ -1022,17 +973,16 @@
 
         <!-- Footer -->
         <div class="footer">
-            <span class="version">⚡ Tăng Tốc Roblox Ultra VIP v4.0</span><br>
-            © 2026 - Bản quyền thuộc về <strong>NgocBong</strong> • Tối ưu cho iPhone 8 Plus
+            <span class="version">⚡ Tăng Tốc Roblox Ultra VIP v5.0</span><br>
+            © 2026 - Bản quyền thuộc về <strong style="color: var(--accent-cyan);">NgocBong</strong> • Tối ưu cho iPhone 8 Plus
         </div>
     </div>
 
     <script>
         (function() {
             // ==================== STATE ====================
-            const STATE_KEY = 'roblox_accelerator_state';
-            const TIMER_KEY = 'roblox_accelerator_timer';
-            const RESET_KEY = 'roblox_accelerator_reset_count';
+            const STATE_KEY = 'roblox_accel_v5_state';
+            const TIMER_KEY = 'roblox_accel_v5_timer';
 
             let isActive = false;
             let isOptimizing = false;
@@ -1040,12 +990,20 @@
             let timerInterval = null;
             let fpsInterval = null;
             let systemLoadInterval = null;
-            let metricAnimationInterval = null;
-            let resetCount = parseInt(localStorage.getItem(RESET_KEY) || '0');
+            let metricsInterval = null;
+            let resetCount = 0;
             let systemLoad = 0;
             let startTime = null;
             let endTime = null;
             let optimizationStartTime = null;
+            let actualFPS = 60;
+            let frameCount = 0;
+            let lastFPSTime = performance.now();
+            let cpuLoadEstimate = 35;
+            let batteryLevel = 75;
+            let temperature = 38;
+            let usedMemory = 62; // percent
+            let boostLevel = 0;
 
             // ==================== DOM ELEMENTS ====================
             const toggleSwitch = document.getElementById('toggleSwitch');
@@ -1061,8 +1019,9 @@
             const redirectCountdown = document.getElementById('redirectCountdown');
             const notificationArea = document.getElementById('notificationArea');
             const optItems = document.querySelectorAll('.opt-item');
+            const mainContainer = document.getElementById('mainContainer');
 
-            // Metrics
+            // Metrics elements
             const metricFps = document.getElementById('metricFps');
             const metricCpu = document.getElementById('metricCpu');
             const metricRam = document.getElementById('metricRam');
@@ -1077,10 +1036,6 @@
             const boostBar = document.getElementById('boostBar');
 
             // ==================== FPS MEASUREMENT ====================
-            let actualFPS = 60;
-            let frameCount = 0;
-            let lastFPSTime = performance.now();
-
             function measureFPS() {
                 frameCount++;
                 const now = performance.now();
@@ -1089,6 +1044,10 @@
                     actualFPS = Math.round((frameCount * 1000) / elapsed);
                     frameCount = 0;
                     lastFPSTime = now;
+                    // Estimate CPU load from frame timing: if actual FPS is lower than 60, CPU is more loaded
+                    const expectedFPS = 60;
+                    const loadPercent = Math.max(0, Math.min(100, 100 - (actualFPS / expectedFPS) * 100));
+                    cpuLoadEstimate = Math.round(loadPercent * 0.7 + 30); // baseline 30% idle
                 }
                 requestAnimationFrame(measureFPS);
             }
@@ -1107,24 +1066,23 @@
             window.addEventListener('resize', resizeCanvas);
 
             class Particle {
-                constructor() {
-                    this.reset();
-                }
+                constructor() { this.reset(); }
                 reset() {
                     this.x = Math.random() * canvas.width;
                     this.y = Math.random() * canvas.height;
                     this.size = Math.random() * 2.5 + 0.5;
                     this.speedX = (Math.random() - 0.5) * 0.3;
                     this.speedY = (Math.random() - 0.5) * 0.3;
-                    this.opacity = Math.random() * 0.5 + 0.1;
-                    this.color = `rgba(${Math.random() > 0.5 ? '0, 229, 255' : '124, 77, 255'}, ${this.opacity})`;
+                    this.opacity = Math.random() * 0.5 + 0.15;
+                    const colorChoice = Math.random();
+                    if (colorChoice < 0.4) this.color = `rgba(0, 229, 255, ${this.opacity})`;
+                    else if (colorChoice < 0.7) this.color = `rgba(124, 77, 255, ${this.opacity})`;
+                    else this.color = `rgba(255, 64, 129, ${this.opacity})`;
                 }
                 update() {
                     this.x += this.speedX;
                     this.y += this.speedY;
-                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
-                        this.reset();
-                    }
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
                 }
                 draw() {
                     ctx.beginPath();
@@ -1133,20 +1091,24 @@
                     ctx.fill();
                 }
             }
-
-            for (let i = 0; i < 80; i++) {
-                particles.push(new Particle());
-            }
+            for (let i = 0; i < 100; i++) particles.push(new Particle());
 
             function animateParticles() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => {
-                    p.update();
-                    p.draw();
-                });
+                particles.forEach(p => { p.update(); p.draw(); });
                 requestAnimationFrame(animateParticles);
             }
             animateParticles();
+
+            // ==================== 3D TILT EFFECT ====================
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 2;
+                const y = (e.clientY / window.innerHeight - 0.5) * 2;
+                mainContainer.style.transform = `rotateY(${x * 3}deg) rotateX(${-y * 3}deg) translateZ(0)`;
+            });
+            document.addEventListener('mouseleave', () => {
+                mainContainer.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
+            });
 
             // ==================== NOTIFICATIONS ====================
             function showNotification(message, type = 'success', duration = 4000) {
@@ -1165,21 +1127,36 @@
                 const ua = navigator.userAgent;
                 const deviceName = document.getElementById('deviceName');
                 const deviceSpec = document.getElementById('deviceSpec');
-                if (/iPhone/.test(ua)) {
+                const isIOS = /iPhone|iPad|iPod/.test(ua);
+                const isAndroid = /Android/.test(ua);
+                if (isIOS) {
                     deviceName.textContent = 'iPhone 8 Plus';
-                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM';
-                } else if (/Android/.test(ua)) {
+                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM • 6 nhân';
+                } else if (isAndroid) {
                     deviceName.textContent = 'Thiết bị Android';
-                    deviceSpec.textContent = 'Android • Chip ARM • RAM tối ưu';
-                } else if (/iPad/.test(ua)) {
-                    deviceName.textContent = 'iPad';
-                    deviceSpec.textContent = 'iPadOS • Chip Apple • RAM tối ưu';
+                    deviceSpec.textContent = 'Android • Chip tối ưu • RAM đa nhiệm';
                 } else {
                     deviceName.textContent = 'iPhone 8 Plus';
-                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM';
+                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM • 6 nhân';
+                }
+                // Try to get accurate battery
+                if (navigator.getBattery) {
+                    navigator.getBattery().then(battery => {
+                        batteryLevel = battery.level * 100;
+                        updateBatteryDisplay();
+                        battery.addEventListener('levelchange', () => {
+                            batteryLevel = battery.level * 100;
+                            updateBatteryDisplay();
+                        });
+                    }).catch(() => {});
                 }
             }
             detectDevice();
+
+            function updateBatteryDisplay() {
+                metricBattery.textContent = Math.round(batteryLevel) + '%';
+                batteryBar.style.width = batteryLevel + '%';
+            }
 
             // ==================== TOGGLE ACCELERATOR ====================
             function toggleAccelerator() {
@@ -1272,9 +1249,7 @@
                 }, stepInterval);
 
                 // Set first item as active
-                optItems.forEach(el => {
-                    el.classList.remove('done', 'active-opt');
-                });
+                optItems.forEach(el => { el.classList.remove('done', 'active-opt'); });
                 optItems[0]?.classList.add('active-opt');
             }
 
@@ -1287,7 +1262,7 @@
                 // Boost metrics
                 boostMetrics();
 
-                showNotification('✅ Tăng tốc hoàn tất! Hiệu suất đã tăng tối đa!', 'success');
+                showNotification('✅ Tăng tốc hoàn tất! Hiệu suất tăng tối đa!', 'success');
                 startTimer();
                 startSystemMonitoring();
 
@@ -1299,14 +1274,17 @@
 
             function boostMetrics() {
                 // Animate metrics to optimized values
-                animateMetric(metricCpu, 'cpuBar', 85, '%', 3000);
-                animateMetric(metricRam, 'ramBar', 92, '%', 3000);
-                animateMetric(metricTemp, 'tempBar', 28, '°C', 3000);
-                animateMetric(metricBattery, 'batteryBar', 88, '%', 3000);
-                animateMetric(metricBoost, 'boostBar', 100, '%', 3000);
+                animateMetric('cpu', 'cpuBar', 85, '%', 3000);
+                animateMetric('ram', 'ramBar', 92, '%', 3000);
+                animateMetric('temp', 'tempBar', 28, '°C', 3000);
+                animateMetric('battery', 'batteryBar', Math.max(50, batteryLevel - 5), '%', 3000);
+                animateMetric('boost', 'boostBar', 100, '%', 3000);
+                boostLevel = 100;
             }
 
-            function animateMetric(element, barElement, targetValue, suffix, duration) {
+            function animateMetric(type, barId, targetValue, suffix, duration) {
+                const element = type === 'cpu' ? metricCpu : type === 'ram' ? metricRam : type === 'temp' ? metricTemp : type === 'battery' ? metricBattery : metricBoost;
+                const barElement = document.getElementById(barId);
                 const startValue = parseFloat(element.textContent) || 0;
                 const startTime = Date.now();
                 const animInterval = setInterval(() => {
@@ -1316,11 +1294,11 @@
                     const current = startValue + (targetValue - startValue) * eased;
                     element.textContent = Math.round(current) + suffix;
                     const barWidth = Math.min(current, 100);
-                    if (barElement) barElement.style.width = barWidth + '%';
+                    barElement.style.width = barWidth + '%';
                     if (progress >= 1) {
                         clearInterval(animInterval);
                         element.textContent = targetValue + suffix;
-                        if (barElement) barElement.style.width = targetValue + '%';
+                        barElement.style.width = targetValue + '%';
                     }
                 }, 50);
             }
@@ -1351,7 +1329,6 @@
 
             // ==================== TIMER ====================
             function startTimer() {
-                // Restore from localStorage if exists
                 const savedTime = localStorage.getItem(TIMER_KEY);
                 if (savedTime && optimizationDone) {
                     startTime = parseInt(savedTime);
@@ -1386,14 +1363,12 @@
                     String(minutes).padStart(2, '0') + ':' +
                     String(seconds).padStart(2, '0');
 
-                // Show warning when less than 5 minutes remaining
                 if (remaining < 5 * 60 * 1000 && remaining > 0) {
                     timerWarning.classList.add('show');
                 } else {
                     timerWarning.classList.remove('show');
                 }
 
-                // Auto-reset when timer reaches 0
                 if (remaining <= 0) {
                     autoReset();
                 }
@@ -1408,9 +1383,9 @@
             // ==================== SYSTEM MONITORING ====================
             function startSystemMonitoring() {
                 stopSystemMonitoring();
+                systemLoad = 0;
                 systemLoadInterval = setInterval(() => {
-                    // Simulate system load gradually increasing
-                    systemLoad = Math.min(100, systemLoad + (Math.random() * 2 + 0.5));
+                    systemLoad = Math.min(100, systemLoad + (Math.random() * 2.5 + 0.8));
                     updateSystemLoadDisplay();
                     if (systemLoad >= 85 && systemLoad < 100) {
                         systemLoadCard.style.display = 'block';
@@ -1418,9 +1393,9 @@
                     } else if (systemLoad >= 100) {
                         systemLoadCard.style.display = 'block';
                         showNotification('⚠️ Máy đã đạt giới hạn! Hãy nhấn Reset để tiếp tục!', 'warning', 6000);
-                        systemLoad = 85; // Cap
+                        systemLoad = 85;
                     }
-                }, 3000);
+                }, 5000);
             }
 
             function stopSystemMonitoring() {
@@ -1431,7 +1406,7 @@
             }
 
             function updateSystemLoadDisplay() {
-                // Update metrics based on load
+                // Simulate metrics based on load
                 const cpuLoad = Math.min(95, 35 + systemLoad * 0.6);
                 const ramLoad = Math.min(95, 62 + systemLoad * 0.3);
                 const tempLoad = Math.min(50, 38 + systemLoad * 0.15);
@@ -1441,8 +1416,60 @@
                 ramBar.style.width = ramLoad + '%';
                 metricTemp.textContent = Math.round(tempLoad) + '°C';
                 tempBar.style.width = tempLoad + '%';
-                metricBattery.textContent = Math.max(50, Math.round(88 - systemLoad * 0.3)) + '%';
-                batteryBar.style.width = Math.max(50, 88 - systemLoad * 0.3) + '%';
+                metricBattery.textContent = Math.max(50, Math.round(batteryLevel - systemLoad * 0.3)) + '%';
+                batteryBar.style.width = Math.max(50, batteryLevel - systemLoad * 0.3) + '%';
+            }
+
+            // ==================== REAL-TIME METRICS UPDATE ====================
+            function startMetricsUpdater() {
+                metricsInterval = setInterval(() => {
+                    // FPS
+                    if (isActive && optimizationDone) {
+                        const boostedFPS = Math.min(120, Math.round(actualFPS * 1.5));
+                        metricFps.textContent = boostedFPS;
+                        fpsBar.style.width = Math.min(100, (boostedFPS / 120) * 100) + '%';
+                    } else {
+                        metricFps.textContent = actualFPS;
+                        fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
+                    }
+
+                    // CPU
+                    metricCpu.textContent = Math.round(cpuLoadEstimate) + '%';
+                    cpuBar.style.width = cpuLoadEstimate + '%';
+
+                    // Temperature (simulate)
+                    if (isActive && optimizationDone) {
+                        temperature = 28 + systemLoad * 0.1;
+                    } else {
+                        temperature = 38 + systemLoad * 0.1;
+                    }
+                    metricTemp.textContent = Math.round(temperature) + '°C';
+                    tempBar.style.width = Math.min(100, temperature) + '%';
+
+                    // Memory (simulate)
+                    if (isActive && optimizationDone) {
+                        usedMemory = Math.min(95, 62 + systemLoad * 0.25);
+                    } else {
+                        usedMemory = 62;
+                    }
+                    metricRam.textContent = Math.round(usedMemory) + '%';
+                    ramBar.style.width = usedMemory + '%';
+
+                    // Battery
+                    if (batteryLevel > 0) {
+                        metricBattery.textContent = Math.round(batteryLevel) + '%';
+                        batteryBar.style.width = batteryLevel + '%';
+                    }
+
+                    // Boost Level
+                    if (isActive && optimizationDone) {
+                        boostLevel = Math.min(100, boostLevel + 0.5);
+                    } else {
+                        boostLevel = Math.max(0, boostLevel - 1);
+                    }
+                    metricBoost.textContent = Math.round(boostLevel) + '%';
+                    boostBar.style.width = boostLevel + '%';
+                }, 1000);
             }
 
             // ==================== RESET SYSTEM ====================
@@ -1451,18 +1478,15 @@
                     showNotification('Hệ thống đang tối ưu, không thể reset!', 'warning');
                     return;
                 }
-                resetCount++;
-                localStorage.setItem(RESET_KEY, resetCount.toString());
                 showNotification('🔄 Đang reset toàn bộ hệ thống...', 'warning', 3000);
 
-                // Animate reset
                 loadingOverlay.classList.add('show');
                 loadingFill.style.width = '0%';
                 loadingText.textContent = 'Đang reset hệ thống...';
 
                 let prog = 0;
                 const resetInterval = setInterval(() => {
-                    prog += 10;
+                    prog += 12;
                     loadingFill.style.width = prog + '%';
                     if (prog >= 100) {
                         clearInterval(resetInterval);
@@ -1481,12 +1505,14 @@
                 systemLoad = 0;
                 startTime = null;
                 endTime = null;
+                boostLevel = 0;
                 updateToggleUI();
                 resetBtn.disabled = true;
                 systemLoadCard.style.display = 'none';
                 timerWarning.classList.remove('show');
                 timerValue.textContent = '02:00:00';
                 localStorage.removeItem(TIMER_KEY);
+                localStorage.removeItem(STATE_KEY);
 
                 // Reset metrics
                 metricCpu.textContent = '35%';
@@ -1499,6 +1525,8 @@
                 batteryBar.style.width = '75%';
                 metricBoost.textContent = '0%';
                 boostBar.style.width = '0%';
+                metricFps.textContent = actualFPS;
+                fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
 
                 // Reset optimization items
                 optItems.forEach(el => {
@@ -1506,7 +1534,6 @@
                 });
 
                 showNotification('✅ Reset hoàn tất! Hệ thống sẵn sàng cho lần tăng tốc mới!', 'success', 5000);
-                saveState();
             }
 
             // ==================== PERSISTENCE ====================
@@ -1514,9 +1541,10 @@
                 const state = {
                     isActive: isActive,
                     optimizationDone: optimizationDone,
-                    resetCount: resetCount,
                     systemLoad: systemLoad,
                     startTime: startTime,
+                    boostLevel: boostLevel,
+                    batteryLevel: batteryLevel
                 };
                 localStorage.setItem(STATE_KEY, JSON.stringify(state));
             }
@@ -1528,9 +1556,10 @@
                         const state = JSON.parse(saved);
                         isActive = state.isActive || false;
                         optimizationDone = state.optimizationDone || false;
-                        resetCount = state.resetCount || 0;
                         systemLoad = state.systemLoad || 0;
                         startTime = state.startTime || null;
+                        boostLevel = state.boostLevel || 0;
+                        if (state.batteryLevel) batteryLevel = state.batteryLevel;
                         if (startTime) {
                             endTime = startTime + 2 * 60 * 60 * 1000;
                         }
@@ -1539,86 +1568,55 @@
                             startTimer();
                             startSystemMonitoring();
                             resetBtn.disabled = false;
-                            if (systemLoad >= 85) {
-                                systemLoadCard.style.display = 'block';
-                            }
+                            if (systemLoad >= 85) systemLoadCard.style.display = 'block';
                         } else if (isActive && !optimizationDone) {
-                            // Resume optimization if it was interrupted
-                            isActive = false;
+                            // Resume optimization from scratch
+                            isActive = true;
                             optimizationDone = false;
                             updateToggleUI();
-                            saveState();
+                            startOptimization();
                         }
                     }
-                } catch (e) {
-                    console.log('No saved state found');
-                }
+                } catch (e) {}
             }
 
             // ==================== INITIALIZATION ====================
             function init() {
                 loadState();
-                // Start FPS metric updater
-                fpsInterval = setInterval(() => {
-                    if (isActive && optimizationDone) {
-                        const boostedFPS = Math.min(120, Math.round(actualFPS * 1.5));
-                        metricFps.textContent = boostedFPS;
-                        fpsBar.style.width = Math.min(100, (boostedFPS / 120) * 100) + '%';
-                    } else {
-                        metricFps.textContent = actualFPS;
-                        fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
-                    }
-                }, 500);
-
+                startMetricsUpdater();
                 // Initial notification
                 setTimeout(() => {
                     showNotification('👋 Chào mừng đến với Tăng Tốc Roblox Ultra VIP!', 'success');
                 }, 800);
             }
-
             init();
 
-            // Expose functions to global scope
+            // Expose functions
             window.toggleAccelerator = toggleAccelerator;
             window.resetSystem = resetSystem;
             window.goToRoblox = goToRoblox;
-            window.showRobloxRedirect = showRobloxRedirect;
 
-            // Handle page visibility change - timer continues in background
+            // Handle page visibility - timer continues in background
             document.addEventListener('visibilitychange', () => {
                 if (document.visibilityState === 'visible' && isActive && optimizationDone) {
                     updateTimer();
                 }
             });
 
-            // Handle beforeunload to save state
-            window.addEventListener('beforeunload', () => {
-                saveState();
-            });
-
-            // Periodic state save
+            // Save state periodically
             setInterval(() => {
-                if (isActive) {
-                    saveState();
-                }
-            }, 30000);
+                if (isActive) saveState();
+            }, 10000);
 
-            // Keyboard shortcut for toggle
+            // Keyboard shortcuts
             document.addEventListener('keydown', (e) => {
                 if (e.key === 't' || e.key === 'T') {
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        toggleAccelerator();
-                    }
+                    if (e.ctrlKey || e.metaKey) { e.preventDefault(); toggleAccelerator(); }
                 }
                 if (e.key === 'r' || e.key === 'R') {
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        resetSystem();
-                    }
+                    if (e.ctrlKey || e.metaKey) { e.preventDefault(); resetSystem(); }
                 }
             });
-
         })();
     </script>
 </body>
