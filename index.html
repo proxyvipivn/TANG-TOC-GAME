@@ -53,7 +53,7 @@
             user-select: none;
             -webkit-user-select: none;
             -webkit-tap-highlight-color: transparent;
-            perspective: 1200px;
+            /* Đã loại bỏ perspective để tránh lỗi đen màn hình */
         }
 
         /* ===== CANVAS PARTICLES ===== */
@@ -119,7 +119,7 @@
             75% { transform: translate(50px, 25px) scale(1.05); }
         }
 
-        /* ===== MAIN CONTAINER with 3D tilt ===== */
+        /* ===== MAIN CONTAINER ===== */
         .main-container {
             position: relative;
             z-index: 1;
@@ -130,8 +130,7 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease-out;
+            /* Đã loại bỏ transform-style và perspective */
         }
 
         /* ===== HEADER ===== */
@@ -157,7 +156,6 @@
             background-clip: text;
             letter-spacing: 1px;
             line-height: 1.2;
-            text-shadow: none;
         }
         .header .subtitle {
             font-size: 15px;
@@ -206,12 +204,10 @@
             animation: fadeInUp 0.6s ease-out;
             position: relative;
             overflow: hidden;
-            transform-style: preserve-3d;
         }
         .card:hover {
             background: var(--bg-card-hover);
             border-color: rgba(255, 255, 255, 0.18);
-            transform: translateZ(10px);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
         .card::before {
@@ -458,13 +454,8 @@
             font-weight: 500;
             letter-spacing: 0.3px;
         }
-        .opt-item .opt-icon {
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-        .opt-item .opt-text {
-            flex: 1;
-        }
+        .opt-item .opt-icon { font-size: 20px; flex-shrink: 0; }
+        .opt-item .opt-text { flex: 1; }
         .opt-item .opt-status {
             font-size: 16px;
             flex-shrink: 0;
@@ -477,30 +468,15 @@
             background: rgba(0, 230, 118, 0.08);
             border-color: rgba(0, 230, 118, 0.3);
         }
-        .opt-item.done .opt-status {
-            opacity: 1;
-        }
+        .opt-item.done .opt-status { opacity: 1; }
         .opt-item.active-opt {
             background: rgba(0, 229, 255, 0.08);
             border-color: rgba(0, 229, 255, 0.35);
             box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
         }
-        .opt-item .loading-dots::after {
-            content: '';
-            animation: dots 1.2s steps(4, end) infinite;
-        }
-        @keyframes dots {
-            0% { content: ''; }
-            25% { content: '.'; }
-            50% { content: '..'; }
-            75% { content: '...'; }
-        }
 
         /* ===== TIMER ===== */
-        .timer-display {
-            text-align: center;
-            padding: 10px 0;
-        }
+        .timer-display { text-align: center; padding: 10px 0; }
         .timer-value {
             font-family: var(--font-display);
             font-size: 38px;
@@ -564,9 +540,7 @@
             box-shadow: 0 0 25px rgba(255, 23, 68, 0.3);
             transform: translateY(-2px);
         }
-        .reset-btn:active {
-            transform: scale(0.97);
-        }
+        .reset-btn:active { transform: scale(0.97); }
         .reset-btn:disabled {
             opacity: 0.4;
             cursor: not-allowed;
@@ -580,9 +554,7 @@
             background: rgba(255, 145, 0, 0.05);
             box-shadow: 0 0 30px rgba(255, 145, 0, 0.15);
         }
-        #systemLoadCard .card-title {
-            color: var(--accent-orange);
-        }
+        #systemLoadCard .card-title { color: var(--accent-orange); }
 
         /* ===== NOTIFICATION ===== */
         .notification-area {
@@ -643,7 +615,7 @@
             width: 100%;
             height: 100%;
             background: rgba(6, 6, 15, 0.97);
-            z-index: 50;
+            z-index: 9999; /* Tăng z-index để phủ hết */
             display: none;
             justify-content: center;
             align-items: center;
@@ -652,9 +624,7 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
         }
-        .loading-overlay.show {
-            display: flex;
-        }
+        .loading-overlay.show { display: flex; }
         .loading-spinner {
             width: 70px;
             height: 70px;
@@ -665,9 +635,7 @@
             animation: spin 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
         }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
         .loading-text {
             font-family: var(--font-display);
             font-size: 18px;
@@ -701,7 +669,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.9);
-            z-index: 200;
+            z-index: 10000;
             display: none;
             justify-content: center;
             align-items: center;
@@ -709,9 +677,7 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
         }
-        .roblox-modal.show {
-            display: flex;
-        }
+        .roblox-modal.show { display: flex; }
         .roblox-modal-content {
             background: var(--bg-secondary);
             border: 2px solid rgba(0, 229, 255, 0.5);
@@ -768,9 +734,7 @@
             box-shadow: 0 12px 40px rgba(0, 229, 255, 0.7);
             transform: translateY(-3px);
         }
-        .roblox-btn:active {
-            transform: scale(0.96);
-        }
+        .roblox-btn:active { transform: scale(0.96); }
         .roblox-modal-content .countdown {
             font-family: var(--font-display);
             font-size: 48px;
@@ -814,12 +778,6 @@
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
-
-        /* ===== 3D TILT EFFECT ===== */
-        .tilt-container {
-            transform-style: preserve-3d;
-            transition: transform 0.2s ease-out;
-        }
     </style>
 </head>
 <body>
@@ -973,7 +931,7 @@
 
         <!-- Footer -->
         <div class="footer">
-            <span class="version">⚡ Tăng Tốc Roblox Ultra VIP v5.0</span><br>
+            <span class="version">⚡ Tăng Tốc Roblox Ultra VIP v5.1</span><br>
             © 2026 - Bản quyền thuộc về <strong style="color: var(--accent-cyan);">NgocBong</strong> • Tối ưu cho iPhone 8 Plus
         </div>
     </div>
@@ -995,15 +953,18 @@
             let systemLoad = 0;
             let startTime = null;
             let endTime = null;
-            let optimizationStartTime = null;
             let actualFPS = 60;
             let frameCount = 0;
             let lastFPSTime = performance.now();
             let cpuLoadEstimate = 35;
-            let batteryLevel = 75;
-            let temperature = 38;
-            let usedMemory = 62; // percent
+            let batteryLevel = 75; // Giá trị pin mặc định, sẽ được cập nhật
+            let temperature = 38;  // Nhiệt độ khởi tạo
+            let usedMemory = 62;    // Bộ nhớ đã dùng (%)
             let boostLevel = 0;
+            let batterySupported = false;
+            let batteryFallbackInterval = null;
+            let lastBatteryUpdate = Date.now();
+            const BATTERY_DRAIN_RATE = 0.05; // % mỗi 5 giây
 
             // ==================== DOM ELEMENTS ====================
             const toggleSwitch = document.getElementById('toggleSwitch');
@@ -1044,10 +1005,10 @@
                     actualFPS = Math.round((frameCount * 1000) / elapsed);
                     frameCount = 0;
                     lastFPSTime = now;
-                    // Estimate CPU load from frame timing: if actual FPS is lower than 60, CPU is more loaded
+                    // Ước tính CPU dựa trên FPS (nếu FPS giảm, CPU tăng)
                     const expectedFPS = 60;
                     const loadPercent = Math.max(0, Math.min(100, 100 - (actualFPS / expectedFPS) * 100));
-                    cpuLoadEstimate = Math.round(loadPercent * 0.7 + 30); // baseline 30% idle
+                    cpuLoadEstimate = Math.round(loadPercent * 0.6 + 30);
                 }
                 requestAnimationFrame(measureFPS);
             }
@@ -1100,16 +1061,6 @@
             }
             animateParticles();
 
-            // ==================== 3D TILT EFFECT ====================
-            document.addEventListener('mousemove', (e) => {
-                const x = (e.clientX / window.innerWidth - 0.5) * 2;
-                const y = (e.clientY / window.innerHeight - 0.5) * 2;
-                mainContainer.style.transform = `rotateY(${x * 3}deg) rotateX(${-y * 3}deg) translateZ(0)`;
-            });
-            document.addEventListener('mouseleave', () => {
-                mainContainer.style.transform = 'rotateY(0deg) rotateX(0deg) translateZ(0)';
-            });
-
             // ==================== NOTIFICATIONS ====================
             function showNotification(message, type = 'success', duration = 4000) {
                 const notif = document.createElement('div');
@@ -1127,31 +1078,47 @@
                 const ua = navigator.userAgent;
                 const deviceName = document.getElementById('deviceName');
                 const deviceSpec = document.getElementById('deviceSpec');
-                const isIOS = /iPhone|iPad|iPod/.test(ua);
-                const isAndroid = /Android/.test(ua);
-                if (isIOS) {
+                if (/iPhone|iPad|iPod/.test(ua)) {
                     deviceName.textContent = 'iPhone 8 Plus';
-                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM • 6 nhân';
-                } else if (isAndroid) {
+                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM';
+                } else if (/Android/.test(ua)) {
                     deviceName.textContent = 'Thiết bị Android';
                     deviceSpec.textContent = 'Android • Chip tối ưu • RAM đa nhiệm';
                 } else {
                     deviceName.textContent = 'iPhone 8 Plus';
-                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM • 6 nhân';
+                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM';
                 }
-                // Try to get accurate battery
+                // Battery API
                 if (navigator.getBattery) {
                     navigator.getBattery().then(battery => {
+                        batterySupported = true;
                         batteryLevel = battery.level * 100;
                         updateBatteryDisplay();
                         battery.addEventListener('levelchange', () => {
                             batteryLevel = battery.level * 100;
                             updateBatteryDisplay();
                         });
-                    }).catch(() => {});
+                    }).catch(() => {
+                        batterySupported = false;
+                        startBatteryFallback();
+                    });
+                } else {
+                    batterySupported = false;
+                    startBatteryFallback();
                 }
             }
             detectDevice();
+
+            function startBatteryFallback() {
+                if (batteryFallbackInterval) clearInterval(batteryFallbackInterval);
+                batteryFallbackInterval = setInterval(() => {
+                    // Giảm pin mô phỏng mỗi 5 giây
+                    if (batteryLevel > 5) {
+                        batteryLevel = Math.max(5, batteryLevel - BATTERY_DRAIN_RATE);
+                        updateBatteryDisplay();
+                    }
+                }, 5000);
+            }
 
             function updateBatteryDisplay() {
                 metricBattery.textContent = Math.round(batteryLevel) + '%';
@@ -1205,7 +1172,6 @@
             // ==================== OPTIMIZATION SEQUENCE ====================
             function startOptimization() {
                 isOptimizing = true;
-                optimizationStartTime = Date.now();
                 loadingOverlay.classList.add('show');
                 loadingFill.style.width = '0%';
                 loadingText.textContent = 'Đang khởi tạo hệ thống tăng tốc...';
@@ -1225,7 +1191,7 @@
 
                 let stepIndex = 0;
                 const totalSteps = optSteps.length;
-                const optDuration = 10000 + Math.random() * 10000; // 10-20 seconds
+                const optDuration = 10000 + Math.random() * 10000; // 10-20 giây
                 const stepInterval = optDuration / totalSteps;
 
                 const optInterval = setInterval(() => {
@@ -1233,7 +1199,6 @@
                         loadingText.textContent = optSteps[stepIndex];
                         const progress = ((stepIndex + 1) / totalSteps) * 100;
                         loadingFill.style.width = progress + '%';
-                        // Mark optimization items as done progressively
                         if (stepIndex < optItems.length) {
                             optItems[stepIndex].classList.add('done');
                             optItems[stepIndex].classList.remove('active-opt');
@@ -1248,7 +1213,7 @@
                     }
                 }, stepInterval);
 
-                // Set first item as active
+                // Reset trạng thái các mục
                 optItems.forEach(el => { el.classList.remove('done', 'active-opt'); });
                 optItems[0]?.classList.add('active-opt');
             }
@@ -1266,18 +1231,17 @@
                 startTimer();
                 startSystemMonitoring();
 
-                // Show Roblox redirect modal
+                // Hiển thị modal chuyển hướng Roblox
                 setTimeout(() => {
                     showRobloxRedirect();
                 }, 500);
             }
 
             function boostMetrics() {
-                // Animate metrics to optimized values
                 animateMetric('cpu', 'cpuBar', 85, '%', 3000);
                 animateMetric('ram', 'ramBar', 92, '%', 3000);
                 animateMetric('temp', 'tempBar', 28, '°C', 3000);
-                animateMetric('battery', 'batteryBar', Math.max(50, batteryLevel - 5), '%', 3000);
+                animateMetric('battery', 'batteryBar', Math.max(50, batteryLevel - 3), '%', 3000);
                 animateMetric('boost', 'boostBar', 100, '%', 3000);
                 boostLevel = 100;
             }
@@ -1332,7 +1296,7 @@
                 const savedTime = localStorage.getItem(TIMER_KEY);
                 if (savedTime && optimizationDone) {
                     startTime = parseInt(savedTime);
-                    endTime = startTime + 2 * 60 * 60 * 1000; // 2 hours
+                    endTime = startTime + 2 * 60 * 60 * 1000;
                 } else {
                     startTime = Date.now();
                     endTime = startTime + 2 * 60 * 60 * 1000;
@@ -1406,7 +1370,6 @@
             }
 
             function updateSystemLoadDisplay() {
-                // Simulate metrics based on load
                 const cpuLoad = Math.min(95, 35 + systemLoad * 0.6);
                 const ramLoad = Math.min(95, 62 + systemLoad * 0.3);
                 const tempLoad = Math.min(50, 38 + systemLoad * 0.15);
@@ -1437,16 +1400,17 @@
                     metricCpu.textContent = Math.round(cpuLoadEstimate) + '%';
                     cpuBar.style.width = cpuLoadEstimate + '%';
 
-                    // Temperature (simulate)
+                    // Nhiệt độ: cập nhật dựa trên tải hệ thống và trạng thái tăng tốc
                     if (isActive && optimizationDone) {
                         temperature = 28 + systemLoad * 0.1;
                     } else {
-                        temperature = 38 + systemLoad * 0.1;
+                        temperature = 38 + systemLoad * 0.15;
                     }
+                    temperature = Math.min(50, Math.max(25, temperature));
                     metricTemp.textContent = Math.round(temperature) + '°C';
-                    tempBar.style.width = Math.min(100, temperature) + '%';
+                    tempBar.style.width = temperature + '%';
 
-                    // Memory (simulate)
+                    // Bộ nhớ
                     if (isActive && optimizationDone) {
                         usedMemory = Math.min(95, 62 + systemLoad * 0.25);
                     } else {
@@ -1455,11 +1419,8 @@
                     metricRam.textContent = Math.round(usedMemory) + '%';
                     ramBar.style.width = usedMemory + '%';
 
-                    // Battery
-                    if (batteryLevel > 0) {
-                        metricBattery.textContent = Math.round(batteryLevel) + '%';
-                        batteryBar.style.width = batteryLevel + '%';
-                    }
+                    // Pin: hiển thị giá trị hiện tại (đã được cập nhật bởi Battery API hoặc fallback)
+                    updateBatteryDisplay();
 
                     // Boost Level
                     if (isActive && optimizationDone) {
@@ -1521,14 +1482,13 @@
                 ramBar.style.width = '62%';
                 metricTemp.textContent = '38°C';
                 tempBar.style.width = '38%';
-                metricBattery.textContent = '75%';
-                batteryBar.style.width = '75%';
+                metricBattery.textContent = Math.round(batteryLevel) + '%';
+                batteryBar.style.width = batteryLevel + '%';
                 metricBoost.textContent = '0%';
                 boostBar.style.width = '0%';
                 metricFps.textContent = actualFPS;
                 fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
 
-                // Reset optimization items
                 optItems.forEach(el => {
                     el.classList.remove('done', 'active-opt');
                 });
@@ -1570,7 +1530,6 @@
                             resetBtn.disabled = false;
                             if (systemLoad >= 85) systemLoadCard.style.display = 'block';
                         } else if (isActive && !optimizationDone) {
-                            // Resume optimization from scratch
                             isActive = true;
                             optimizationDone = false;
                             updateToggleUI();
@@ -1584,7 +1543,6 @@
             function init() {
                 loadState();
                 startMetricsUpdater();
-                // Initial notification
                 setTimeout(() => {
                     showNotification('👋 Chào mừng đến với Tăng Tốc Roblox Ultra VIP!', 'success');
                 }, 800);
@@ -1607,16 +1565,6 @@
             setInterval(() => {
                 if (isActive) saveState();
             }, 10000);
-
-            // Keyboard shortcuts
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 't' || e.key === 'T') {
-                    if (e.ctrlKey || e.metaKey) { e.preventDefault(); toggleAccelerator(); }
-                }
-                if (e.key === 'r' || e.key === 'R') {
-                    if (e.ctrlKey || e.metaKey) { e.preventDefault(); resetSystem(); }
-                }
-            });
         })();
     </script>
 </body>
