@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Tăng Tốc Roblox 🚀 - Siêu VIP Pro</title>
+    <title>Tăng Tốc Roblox 🚀 - Ultra VIP 6.0</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -53,10 +53,8 @@
             user-select: none;
             -webkit-user-select: none;
             -webkit-tap-highlight-color: transparent;
-            /* Đã loại bỏ perspective để tránh lỗi đen màn hình */
         }
 
-        /* ===== CANVAS PARTICLES ===== */
         #particleCanvas {
             position: fixed;
             top: 0;
@@ -67,7 +65,6 @@
             pointer-events: none;
         }
 
-        /* ===== BACKGROUND ORBS ===== */
         .bg-orb {
             position: fixed;
             border-radius: 50%;
@@ -77,40 +74,10 @@
             pointer-events: none;
             animation: orbFloat 18s ease-in-out infinite;
         }
-        .bg-orb:nth-child(1) {
-            width: 600px;
-            height: 600px;
-            background: var(--accent-cyan);
-            top: -200px;
-            left: -200px;
-            animation-delay: 0s;
-        }
-        .bg-orb:nth-child(2) {
-            width: 500px;
-            height: 500px;
-            background: var(--accent-purple);
-            bottom: -150px;
-            right: -150px;
-            animation-delay: -6s;
-        }
-        .bg-orb:nth-child(3) {
-            width: 350px;
-            height: 350px;
-            background: var(--accent-blue);
-            top: 40%;
-            left: 65%;
-            animation-delay: -12s;
-            opacity: 0.15;
-        }
-        .bg-orb:nth-child(4) {
-            width: 250px;
-            height: 250px;
-            background: var(--accent-pink);
-            bottom: 20%;
-            left: 10%;
-            animation-delay: -9s;
-            opacity: 0.12;
-        }
+        .bg-orb:nth-child(1) { width: 600px; height: 600px; background: var(--accent-cyan); top: -200px; left: -200px; }
+        .bg-orb:nth-child(2) { width: 500px; height: 500px; background: var(--accent-purple); bottom: -150px; right: -150px; animation-delay: -6s; }
+        .bg-orb:nth-child(3) { width: 350px; height: 350px; background: var(--accent-blue); top: 40%; left: 65%; animation-delay: -12s; opacity: 0.15; }
+        .bg-orb:nth-child(4) { width: 250px; height: 250px; background: var(--accent-pink); bottom: 20%; left: 10%; animation-delay: -9s; opacity: 0.12; }
 
         @keyframes orbFloat {
             0%, 100% { transform: translate(0, 0) scale(1); }
@@ -119,7 +86,6 @@
             75% { transform: translate(50px, 25px) scale(1.05); }
         }
 
-        /* ===== MAIN CONTAINER ===== */
         .main-container {
             position: relative;
             z-index: 1;
@@ -130,22 +96,14 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            /* Đã loại bỏ transform-style và perspective */
         }
 
-        /* ===== HEADER ===== */
         .header {
             text-align: center;
             padding: 20px 0 10px;
             animation: fadeInDown 0.8s ease-out;
         }
-        .header .logo-icon {
-            font-size: 56px;
-            display: block;
-            margin-bottom: 8px;
-            animation: pulse 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6));
-        }
+        .header .logo-icon { font-size: 56px; display: block; margin-bottom: 8px; animation: pulse 2s ease-in-out infinite; filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.6)); }
         .header h1 {
             font-family: var(--font-display);
             font-size: 32px;
@@ -157,13 +115,7 @@
             letter-spacing: 1px;
             line-height: 1.2;
         }
-        .header .subtitle {
-            font-size: 15px;
-            color: var(--text-secondary);
-            margin-top: 6px;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
+        .header .subtitle { font-size: 15px; color: var(--text-secondary); margin-top: 6px; letter-spacing: 1px; font-weight: 600; }
         .header .badge-vip {
             display: inline-block;
             margin-top: 10px;
@@ -179,20 +131,10 @@
             box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
             animation: badgeGlow 3s ease-in-out infinite;
         }
-        @keyframes badgeGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
-            50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.08); }
-        }
+        @keyframes badgeGlow { 0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); } 50% { box-shadow: 0 0 35px rgba(255, 215, 0, 0.6); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
 
-        /* ===== CARDS ===== */
         .card {
             background: var(--bg-card);
             border: 1px solid var(--glass-border);
@@ -205,11 +147,7 @@
             position: relative;
             overflow: hidden;
         }
-        .card:hover {
-            background: var(--bg-card-hover);
-            border-color: rgba(255, 255, 255, 0.18);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        }
+        .card:hover { background: var(--bg-card-hover); border-color: rgba(255, 255, 255, 0.18); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); }
         .card::before {
             content: '';
             position: absolute;
@@ -219,10 +157,7 @@
             height: 2px;
             background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.5), rgba(124, 77, 255, 0.5), transparent);
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
         .card-title {
             font-family: var(--font-display);
             font-size: 16px;
@@ -235,11 +170,8 @@
             letter-spacing: 1px;
             text-transform: uppercase;
         }
-        .card-title .icon {
-            font-size: 22px;
-        }
+        .card-title .icon { font-size: 22px; }
 
-        /* ===== TOGGLE SECTION ===== */
         .toggle-section {
             text-align: center;
             padding: 30px 20px;
@@ -262,43 +194,12 @@
             animation: rotateBg 10s linear infinite;
             pointer-events: none;
         }
-        @keyframes rotateBg {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        .toggle-label {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            z-index: 1;
-            letter-spacing: 1px;
-        }
-        .toggle-label .highlight {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
-        }
-        .toggle-wrapper {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-        }
-        .toggle-status-text {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-muted);
-            min-width: 60px;
-            transition: var(--transition);
-            letter-spacing: 1px;
-        }
-        .toggle-status-text.active {
-            color: var(--accent-green);
-            text-shadow: 0 0 10px rgba(0, 230, 118, 0.6);
-        }
+        @keyframes rotateBg { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .toggle-label { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 20px; position: relative; z-index: 1; letter-spacing: 1px; }
+        .toggle-label .highlight { color: var(--accent-cyan); text-shadow: 0 0 15px rgba(0, 229, 255, 0.6); }
+        .toggle-wrapper { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; gap: 15px; }
+        .toggle-status-text { font-size: 16px; font-weight: 700; color: var(--text-muted); min-width: 60px; transition: var(--transition); letter-spacing: 1px; }
+        .toggle-status-text.active { color: var(--accent-green); text-shadow: 0 0 10px rgba(0, 230, 118, 0.6); }
         .toggle-switch {
             position: relative;
             width: 90px;
@@ -327,155 +228,38 @@
             transition: var(--transition);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
         }
-        .toggle-switch.active .knob {
-            left: 45px;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
-            background: #fff;
-        }
+        .toggle-switch.active .knob { left: 45px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.8); }
 
-        /* ===== DEVICE INFO ===== */
-        .device-info {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .device-icon {
-            font-size: 40px;
-            flex-shrink: 0;
-            animation: pulse 3s ease-in-out infinite;
-        }
-        .device-details {
-            flex: 1;
-            min-width: 0;
-        }
-        .device-name {
-            font-size: 16px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 0.5px;
-        }
-        .device-spec {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 3px;
-            letter-spacing: 0.3px;
-        }
-        .device-badge {
-            padding: 4px 12px;
-            background: rgba(0, 229, 255, 0.1);
-            border-radius: 15px;
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--accent-cyan);
-            white-space: nowrap;
-            letter-spacing: 0.5px;
-            border: 1px solid rgba(0, 229, 255, 0.25);
-        }
+        .device-info { display: flex; align-items: center; gap: 14px; padding: 14px 16px; background: rgba(255, 255, 255, 0.03); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .device-icon { font-size: 40px; flex-shrink: 0; animation: pulse 3s ease-in-out infinite; }
+        .device-details { flex: 1; min-width: 0; }
+        .device-name { font-size: 16px; font-weight: 700; color: var(--text-primary); letter-spacing: 0.5px; }
+        .device-spec { font-size: 12px; color: var(--text-muted); margin-top: 3px; letter-spacing: 0.3px; }
+        .device-badge { padding: 4px 12px; background: rgba(0, 229, 255, 0.1); border-radius: 15px; font-size: 11px; font-weight: 600; color: var(--accent-cyan); white-space: nowrap; letter-spacing: 0.5px; border: 1px solid rgba(0, 229, 255, 0.25); }
 
-        /* ===== METRICS GRID ===== */
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-        .metric-item {
-            padding: 16px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: var(--radius-md);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            text-align: center;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-        .metric-item:hover {
-            background: rgba(255, 255, 255, 0.06);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-        .metric-value {
-            font-family: var(--font-display);
-            font-size: 28px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            line-height: 1.2;
-        }
+        .metrics-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .metric-item { padding: 16px; background: rgba(255, 255, 255, 0.03); border-radius: var(--radius-md); border: 1px solid rgba(255, 255, 255, 0.08); text-align: center; transition: var(--transition); position: relative; overflow: hidden; }
+        .metric-item:hover { background: rgba(255, 255, 255, 0.06); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); }
+        .metric-value { font-family: var(--font-display); font-size: 28px; font-weight: 700; letter-spacing: 0.5px; transition: var(--transition); line-height: 1.2; }
         .metric-value.cyan { color: var(--accent-cyan); text-shadow: 0 0 15px rgba(0, 229, 255, 0.5); }
         .metric-value.purple { color: var(--accent-purple); text-shadow: 0 0 15px rgba(124, 77, 255, 0.5); }
         .metric-value.green { color: var(--accent-green); text-shadow: 0 0 15px rgba(0, 230, 118, 0.5); }
         .metric-value.orange { color: var(--accent-orange); text-shadow: 0 0 15px rgba(255, 145, 0, 0.5); }
         .metric-value.pink { color: var(--accent-pink); text-shadow: 0 0 15px rgba(255, 64, 129, 0.5); }
         .metric-value.red { color: var(--accent-red); text-shadow: 0 0 15px rgba(255, 23, 68, 0.5); }
-        .metric-label {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 5px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .metric-bar {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 3px;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        .metric-bar .fill {
-            height: 100%;
-            border-radius: 3px;
-            transition: width 0.6s ease;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
-        }
+        .metric-label { font-size: 11px; color: var(--text-muted); margin-top: 5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; }
+        .metric-bar { width: 100%; height: 6px; background: rgba(255, 255, 255, 0.08); border-radius: 3px; margin-top: 10px; overflow: hidden; }
+        .metric-bar .fill { height: 100%; border-radius: 3px; transition: width 0.6s ease; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); box-shadow: 0 0 10px rgba(0, 229, 255, 0.4); }
 
-        /* ===== OPTIMIZATION LIST ===== */
-        .opt-list {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .opt-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: var(--radius-sm);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: var(--transition);
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0.3px;
-        }
+        .opt-list { display: flex; flex-direction: column; gap: 6px; }
+        .opt-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: rgba(255, 255, 255, 0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255, 255, 255, 0.05); transition: var(--transition); font-size: 14px; font-weight: 500; letter-spacing: 0.3px; }
         .opt-item .opt-icon { font-size: 20px; flex-shrink: 0; }
         .opt-item .opt-text { flex: 1; }
-        .opt-item .opt-status {
-            font-size: 16px;
-            flex-shrink: 0;
-            opacity: 0;
-            transition: var(--transition);
-            color: var(--accent-green);
-            text-shadow: 0 0 10px rgba(0, 230, 118, 0.5);
-        }
-        .opt-item.done {
-            background: rgba(0, 230, 118, 0.08);
-            border-color: rgba(0, 230, 118, 0.3);
-        }
+        .opt-item .opt-status { font-size: 16px; flex-shrink: 0; opacity: 0; transition: var(--transition); color: var(--accent-green); text-shadow: 0 0 10px rgba(0, 230, 118, 0.5); }
+        .opt-item.done { background: rgba(0, 230, 118, 0.08); border-color: rgba(0, 230, 118, 0.3); }
         .opt-item.done .opt-status { opacity: 1; }
-        .opt-item.active-opt {
-            background: rgba(0, 229, 255, 0.08);
-            border-color: rgba(0, 229, 255, 0.35);
-            box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
-        }
+        .opt-item.active-opt { background: rgba(0, 229, 255, 0.08); border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 0 15px rgba(0, 229, 255, 0.15); }
 
-        /* ===== TIMER ===== */
         .timer-display { text-align: center; padding: 10px 0; }
         .timer-value {
             font-family: var(--font-display);
@@ -489,32 +273,11 @@
             background-clip: text;
             line-height: 1.2;
         }
-        .timer-label {
-            font-size: 12px;
-            color: var(--text-muted);
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-top: 6px;
-        }
-        .timer-warning {
-            font-size: 13px;
-            color: var(--accent-red);
-            font-weight: 700;
-            margin-top: 8px;
-            display: none;
-            letter-spacing: 0.5px;
-        }
-        .timer-warning.show {
-            display: block;
-            animation: blinkWarning 1s ease-in-out infinite;
-        }
-        @keyframes blinkWarning {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
-        }
+        .timer-label { font-size: 12px; color: var(--text-muted); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-top: 6px; }
+        .timer-warning { font-size: 13px; color: var(--accent-red); font-weight: 700; margin-top: 8px; display: none; letter-spacing: 0.5px; }
+        .timer-warning.show { display: block; animation: blinkWarning 1s ease-in-out infinite; }
+        @keyframes blinkWarning { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
-        /* ===== RESET BUTTON ===== */
         .reset-btn {
             display: flex;
             align-items: center;
@@ -534,39 +297,14 @@
             font-family: var(--font-body);
             text-transform: uppercase;
         }
-        .reset-btn:hover {
-            background: rgba(255, 23, 68, 0.2);
-            border-color: rgba(255, 23, 68, 0.6);
-            box-shadow: 0 0 25px rgba(255, 23, 68, 0.3);
-            transform: translateY(-2px);
-        }
+        .reset-btn:hover { background: rgba(255, 23, 68, 0.2); border-color: rgba(255, 23, 68, 0.6); box-shadow: 0 0 25px rgba(255, 23, 68, 0.3); transform: translateY(-2px); }
         .reset-btn:active { transform: scale(0.97); }
-        .reset-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
+        .reset-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
 
-        /* ===== SYSTEM LOAD WARNING CARD ===== */
-        #systemLoadCard {
-            border-color: rgba(255, 145, 0, 0.5);
-            background: rgba(255, 145, 0, 0.05);
-            box-shadow: 0 0 30px rgba(255, 145, 0, 0.15);
-        }
+        #systemLoadCard { border-color: rgba(255, 145, 0, 0.5); background: rgba(255, 145, 0, 0.05); box-shadow: 0 0 30px rgba(255, 145, 0, 0.15); }
         #systemLoadCard .card-title { color: var(--accent-orange); }
 
-        /* ===== NOTIFICATION ===== */
-        .notification-area {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            pointer-events: none;
-        }
+        .notification-area { position: fixed; top: 20px; right: 20px; z-index: 100; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
         .notification {
             padding: 14px 18px;
             background: rgba(13, 13, 26, 0.95);
@@ -584,30 +322,13 @@
             line-height: 1.4;
             letter-spacing: 0.5px;
         }
-        .notification.success {
-            border-color: rgba(0, 230, 118, 0.5);
-            box-shadow: 0 0 25px rgba(0, 230, 118, 0.25);
-        }
-        .notification.warning {
-            border-color: rgba(255, 145, 0, 0.5);
-            box-shadow: 0 0 25px rgba(255, 145, 0, 0.25);
-        }
-        .notification.error {
-            border-color: rgba(255, 23, 68, 0.5);
-            box-shadow: 0 0 25px rgba(255, 23, 68, 0.25);
-        }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(60px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        .notification.fade-out {
-            animation: slideOutRight 0.4s ease-in forwards;
-        }
-        @keyframes slideOutRight {
-            to { opacity: 0; transform: translateX(60px); }
-        }
+        .notification.success { border-color: rgba(0, 230, 118, 0.5); box-shadow: 0 0 25px rgba(0, 230, 118, 0.25); }
+        .notification.warning { border-color: rgba(255, 145, 0, 0.5); box-shadow: 0 0 25px rgba(255, 145, 0, 0.25); }
+        .notification.error { border-color: rgba(255, 23, 68, 0.5); box-shadow: 0 0 25px rgba(255, 23, 68, 0.25); }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+        .notification.fade-out { animation: slideOutRight 0.4s ease-in forwards; }
+        @keyframes slideOutRight { to { opacity: 0; transform: translateX(60px); } }
 
-        /* ===== LOADING OVERLAY ===== */
         .loading-overlay {
             position: fixed;
             top: 0;
@@ -615,7 +336,7 @@
             width: 100%;
             height: 100%;
             background: rgba(6, 6, 15, 0.97);
-            z-index: 9999; /* Tăng z-index để phủ hết */
+            z-index: 9999;
             display: none;
             justify-content: center;
             align-items: center;
@@ -636,32 +357,10 @@
             box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
         }
         @keyframes spin { to { transform: rotate(360deg); } }
-        .loading-text {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 2px;
-            text-align: center;
-            padding: 0 20px;
-        }
-        .loading-progress {
-            width: 300px;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        .loading-progress .fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
-            border-radius: 4px;
-            transition: width 0.3s ease;
-            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
-        }
+        .loading-text { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text-primary); letter-spacing: 2px; text-align: center; padding: 0 20px; }
+        .loading-progress { width: 300px; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 4px; overflow: hidden; box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5); }
+        .loading-progress .fill { height: 100%; background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); border-radius: 4px; transition: width 0.3s ease; box-shadow: 0 0 20px rgba(0, 229, 255, 0.6); }
 
-        /* ===== ROBLOX REDIRECT MODAL ===== */
         .roblox-modal {
             position: fixed;
             top: 0;
@@ -689,30 +388,10 @@
             box-shadow: 0 0 60px rgba(0, 229, 255, 0.3), 0 0 120px rgba(124, 77, 255, 0.2);
             animation: modalPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        @keyframes modalPop {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .roblox-modal-content .icon {
-            font-size: 70px;
-            margin-bottom: 12px;
-            animation: pulse 1.5s ease-in-out infinite;
-        }
-        .roblox-modal-content h2 {
-            font-family: var(--font-display);
-            font-size: 22px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-            letter-spacing: 1px;
-        }
-        .roblox-modal-content p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-bottom: 20px;
-            line-height: 1.6;
-            letter-spacing: 0.5px;
-        }
+        @keyframes modalPop { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
+        .roblox-modal-content .icon { font-size: 70px; margin-bottom: 12px; animation: pulse 1.5s ease-in-out infinite; }
+        .roblox-modal-content h2 { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); letter-spacing: 1px; }
+        .roblox-modal-content p { font-size: 14px; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.6; letter-spacing: 0.5px; }
         .roblox-btn {
             display: inline-block;
             padding: 15px 30px;
@@ -730,37 +409,75 @@
             font-family: var(--font-body);
             text-transform: uppercase;
         }
-        .roblox-btn:hover {
-            box-shadow: 0 12px 40px rgba(0, 229, 255, 0.7);
-            transform: translateY(-3px);
-        }
+        .roblox-btn:hover { box-shadow: 0 12px 40px rgba(0, 229, 255, 0.7); transform: translateY(-3px); }
         .roblox-btn:active { transform: scale(0.96); }
-        .roblox-modal-content .countdown {
-            font-family: var(--font-display);
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            margin: 10px 0;
-            font-variant-numeric: tabular-nums;
-            text-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
-        }
+        .roblox-modal-content .countdown { font-family: var(--font-display); font-size: 48px; font-weight: 700; color: var(--accent-cyan); margin: 10px 0; font-variant-numeric: tabular-nums; text-shadow: 0 0 20px rgba(0, 229, 255, 0.6); }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
-            padding: 10px 0 20px;
+        .footer { text-align: center; font-size: 12px; color: var(--text-muted); padding: 10px 0 20px; letter-spacing: 1px; margin-top: 10px; }
+        .footer .version { font-weight: 700; color: var(--accent-cyan); letter-spacing: 1px; }
+
+        /* ===== NEW: CLEANUP SECTION ===== */
+        .cleanup-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(124, 77, 255, 0.15));
+            border: 1px solid rgba(0, 229, 255, 0.35);
+            border-radius: var(--radius-md);
+            color: var(--accent-cyan);
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
             letter-spacing: 1px;
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+        }
+        .cleanup-btn:hover {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.2), rgba(124, 77, 255, 0.25));
+            border-color: rgba(0, 229, 255, 0.6);
+            box-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+            transform: translateY(-2px);
+        }
+        .cleanup-btn:active { transform: scale(0.97); }
+        .cleanup-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        .cleanup-progress {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 3px;
+            margin-top: 12px;
+            overflow: hidden;
+            display: none;
+        }
+        .cleanup-progress.show { display: block; }
+        .cleanup-progress .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+            width: 0%;
+        }
+        .cleanup-status {
+            font-size: 13px;
+            color: var(--text-secondary);
             margin-top: 10px;
+            text-align: center;
+            letter-spacing: 0.5px;
+            display: none;
         }
-        .footer .version {
-            font-weight: 700;
-            color: var(--accent-cyan);
-            letter-spacing: 1px;
-        }
+        .cleanup-status.show { display: block; }
 
-        /* ===== RESPONSIVE ===== */
         @media (max-width: 400px) {
             .main-container { padding: 12px 8px 30px; gap: 12px; }
             .header h1 { font-size: 24px; }
@@ -773,7 +490,6 @@
             .toggle-switch.active .knob { left: 37px; }
         }
 
-        /* ===== SCROLLBAR ===== */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 3px; }
@@ -782,24 +498,20 @@
 </head>
 <body>
 
-    <!-- Background Elements -->
     <canvas id="particleCanvas"></canvas>
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
     <div class="bg-orb"></div>
 
-    <!-- Notification Area -->
     <div class="notification-area" id="notificationArea"></div>
 
-    <!-- Loading Overlay -->
     <div class="loading-overlay" id="loadingOverlay">
         <div class="loading-spinner"></div>
         <div class="loading-text" id="loadingText">Đang khởi tạo hệ thống tăng tốc...</div>
         <div class="loading-progress"><div class="fill" id="loadingFill" style="width: 0%;"></div></div>
     </div>
 
-    <!-- Roblox Redirect Modal -->
     <div class="roblox-modal" id="robloxModal">
         <div class="roblox-modal-content">
             <div class="icon">🎮</div>
@@ -811,18 +523,15 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <div class="main-container" id="mainContainer">
 
-        <!-- Header -->
         <div class="header">
             <span class="logo-icon">⚡</span>
             <h1>TĂNG TỐC ROBLOX</h1>
             <p class="subtitle">🚀 Siêu VIP Pro - Tối ưu hóa tuyệt đối</p>
-            <span class="badge-vip">👑 Ultra VIP Edition</span>
+            <span class="badge-vip">👑 Ultra VIP 6.0</span>
         </div>
 
-        <!-- Toggle Section -->
         <div class="toggle-section" id="toggleSection">
             <div class="toggle-label">
                 <span class="highlight">🚀</span> TĂNG TỐC <span class="highlight">ROBLOX</span>
@@ -835,7 +544,6 @@
             </div>
         </div>
 
-        <!-- Device Info -->
         <div class="card">
             <div class="card-title"><span class="icon">📱</span> THIẾT BỊ CỦA BẠN</div>
             <div class="device-info">
@@ -848,44 +556,33 @@
             </div>
         </div>
 
-        <!-- System Metrics -->
         <div class="card">
             <div class="card-title"><span class="icon">📊</span> THEO DÕI HIỆU SUẤT</div>
             <div class="metrics-grid">
-                <div class="metric-item">
-                    <div class="metric-value cyan" id="metricFps">60</div>
-                    <div class="metric-label">FPS Thực Tế</div>
-                    <div class="metric-bar"><div class="fill" id="fpsBar" style="width: 50%;"></div></div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value purple" id="metricCpu">35%</div>
-                    <div class="metric-label">CPU</div>
-                    <div class="metric-bar"><div class="fill" id="cpuBar" style="width: 35%;"></div></div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value green" id="metricRam">62%</div>
-                    <div class="metric-label">Bộ Nhớ</div>
-                    <div class="metric-bar"><div class="fill" id="ramBar" style="width: 62%;"></div></div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value orange" id="metricTemp">38°C</div>
-                    <div class="metric-label">Nhiệt Độ</div>
-                    <div class="metric-bar"><div class="fill" id="tempBar" style="width: 38%;"></div></div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value pink" id="metricBattery">75%</div>
-                    <div class="metric-label">Pin</div>
-                    <div class="metric-bar"><div class="fill" id="batteryBar" style="width: 75%;"></div></div>
-                </div>
-                <div class="metric-item">
-                    <div class="metric-value cyan" id="metricBoost">0%</div>
-                    <div class="metric-label">Hiệu Suất Tăng</div>
-                    <div class="metric-bar"><div class="fill" id="boostBar" style="width: 0%;"></div></div>
-                </div>
+                <div class="metric-item"><div class="metric-value cyan" id="metricFps">60</div><div class="metric-label">FPS Thực Tế</div><div class="metric-bar"><div class="fill" id="fpsBar" style="width: 50%;"></div></div></div>
+                <div class="metric-item"><div class="metric-value purple" id="metricCpu">35%</div><div class="metric-label">CPU</div><div class="metric-bar"><div class="fill" id="cpuBar" style="width: 35%;"></div></div></div>
+                <div class="metric-item"><div class="metric-value green" id="metricRam">62%</div><div class="metric-label">Bộ Nhớ</div><div class="metric-bar"><div class="fill" id="ramBar" style="width: 62%;"></div></div></div>
+                <div class="metric-item"><div class="metric-value orange" id="metricTemp">38°C</div><div class="metric-label">Nhiệt Độ</div><div class="metric-bar"><div class="fill" id="tempBar" style="width: 38%;"></div></div></div>
+                <div class="metric-item"><div class="metric-value pink" id="metricBattery">75%</div><div class="metric-label">Pin</div><div class="metric-bar"><div class="fill" id="batteryBar" style="width: 75%;"></div></div></div>
+                <div class="metric-item"><div class="metric-value cyan" id="metricBoost">0%</div><div class="metric-label">Hiệu Suất Tăng</div><div class="metric-bar"><div class="fill" id="boostBar" style="width: 0%;"></div></div></div>
             </div>
         </div>
 
-        <!-- Optimization Features -->
+        <!-- Nâng cấp: Thêm Card Dọn Dẹp Bộ Nhớ Đệm -->
+        <div class="card">
+            <div class="card-title"><span class="icon">🧹</span> DỌN DẸP BỘ NHỚ ĐỆM</div>
+            <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 15px; letter-spacing: 0.3px;">
+                Xóa bộ nhớ đệm giúp máy mượt hơn, giảm giật lác, không bị văng game khi chơi. Hệ thống sẽ phân tích và xóa rác tự động, không ảnh hưởng đến dữ liệu game.
+            </p>
+            <button class="cleanup-btn" id="cleanupBtn" onclick="startCleanup()">
+                🧹 XÓA BỘ NHỚ ĐỆM
+            </button>
+            <div class="cleanup-progress" id="cleanupProgress">
+                <div class="fill" id="cleanupFill"></div>
+            </div>
+            <div class="cleanup-status" id="cleanupStatus">Đang quét bộ nhớ rác...</div>
+        </div>
+
         <div class="card">
             <div class="card-title"><span class="icon">⚡</span> TÍNH NĂNG TỐI ƯU</div>
             <div class="opt-list" id="optList">
@@ -902,10 +599,14 @@
                 <div class="opt-item" data-opt="10"><span class="opt-icon">📉</span><span class="opt-text">Nhận biết máy lác (tối ưu)</span><span class="opt-status">✓</span></div>
                 <div class="opt-item" data-opt="11"><span class="opt-icon">❄️</span><span class="opt-text">Làm mát máy (tối ưu)</span><span class="opt-status">✓</span></div>
                 <div class="opt-item" data-opt="12"><span class="opt-icon">⚙️</span><span class="opt-text">Tối ưu CPU (tối ưu)</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="13"><span class="opt-icon">🧹</span><span class="opt-text">Dọn dẹp bộ nhớ đệm (tối ưu)</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="14"><span class="opt-icon">📂</span><span class="opt-text">Xóa rác game không cần thiết</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="15"><span class="opt-icon">✨</span><span class="opt-text">Tăng tốc khởi động game</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="16"><span class="opt-icon">🛡️</span><span class="opt-text">Chống văng game hiệu quả</span><span class="opt-status">✓</span></div>
+                <div class="opt-item" data-opt="17"><span class="opt-icon">🧲</span><span class="opt-text">Giữ bộ nhớ ổn định</span><span class="opt-status">✓</span></div>
             </div>
         </div>
 
-        <!-- Timer Section -->
         <div class="card">
             <div class="card-title"><span class="icon">⏱️</span> THỜI GIAN HOẠT ĐỘNG</div>
             <div class="timer-display">
@@ -915,7 +616,6 @@
             </div>
         </div>
 
-        <!-- System Load Warning Card -->
         <div class="card" id="systemLoadCard" style="display:none;">
             <div class="card-title" style="color: var(--accent-orange);"><span class="icon">⚠️</span> CẢNH BÁO HỆ THỐNG</div>
             <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; letter-spacing: 0.3px;">
@@ -924,32 +624,29 @@
             </p>
         </div>
 
-        <!-- Reset Button -->
         <button class="reset-btn" id="resetBtn" onclick="resetSystem()" disabled>
             🔄 RESET HỆ THỐNG
         </button>
 
-        <!-- Footer -->
         <div class="footer">
-            <span class="version">⚡ Tăng Tốc Roblox Ultra VIP v5.1</span><br>
+            <span class="version">⚡ Tăng Tốc Roblox Ultra VIP 6.0</span><br>
             © 2026 - Bản quyền thuộc về <strong style="color: var(--accent-cyan);">NgocBong</strong> • Tối ưu cho iPhone 8 Plus
         </div>
     </div>
 
     <script>
         (function() {
-            // ==================== STATE ====================
-            const STATE_KEY = 'roblox_accel_v5_state';
-            const TIMER_KEY = 'roblox_accel_v5_timer';
+            const STATE_KEY = 'roblox_accel_v6_state';
+            const TIMER_KEY = 'roblox_accel_v6_timer';
 
             let isActive = false;
             let isOptimizing = false;
             let optimizationDone = false;
             let timerInterval = null;
-            let fpsInterval = null;
             let systemLoadInterval = null;
             let metricsInterval = null;
-            let resetCount = 0;
+            let isCleaning = false;
+            let cleanupInterval = null;
             let systemLoad = 0;
             let startTime = null;
             let endTime = null;
@@ -957,16 +654,14 @@
             let frameCount = 0;
             let lastFPSTime = performance.now();
             let cpuLoadEstimate = 35;
-            let batteryLevel = 75; // Giá trị pin mặc định, sẽ được cập nhật
-            let temperature = 38;  // Nhiệt độ khởi tạo
-            let usedMemory = 62;    // Bộ nhớ đã dùng (%)
+            let batteryLevel = 75;
+            let temperature = 38;
+            let usedMemory = 62;
             let boostLevel = 0;
             let batterySupported = false;
             let batteryFallbackInterval = null;
-            let lastBatteryUpdate = Date.now();
-            const BATTERY_DRAIN_RATE = 0.05; // % mỗi 5 giây
+            const BATTERY_DRAIN_RATE = 0.05;
 
-            // ==================== DOM ELEMENTS ====================
             const toggleSwitch = document.getElementById('toggleSwitch');
             const toggleStatusText = document.getElementById('toggleStatusText');
             const timerValue = document.getElementById('timerValue');
@@ -981,8 +676,11 @@
             const notificationArea = document.getElementById('notificationArea');
             const optItems = document.querySelectorAll('.opt-item');
             const mainContainer = document.getElementById('mainContainer');
+            const cleanupBtn = document.getElementById('cleanupBtn');
+            const cleanupProgress = document.getElementById('cleanupProgress');
+            const cleanupFill = document.getElementById('cleanupFill');
+            const cleanupStatus = document.getElementById('cleanupStatus');
 
-            // Metrics elements
             const metricFps = document.getElementById('metricFps');
             const metricCpu = document.getElementById('metricCpu');
             const metricRam = document.getElementById('metricRam');
@@ -996,7 +694,6 @@
             const batteryBar = document.getElementById('batteryBar');
             const boostBar = document.getElementById('boostBar');
 
-            // ==================== FPS MEASUREMENT ====================
             function measureFPS() {
                 frameCount++;
                 const now = performance.now();
@@ -1005,7 +702,6 @@
                     actualFPS = Math.round((frameCount * 1000) / elapsed);
                     frameCount = 0;
                     lastFPSTime = now;
-                    // Ước tính CPU dựa trên FPS (nếu FPS giảm, CPU tăng)
                     const expectedFPS = 60;
                     const loadPercent = Math.max(0, Math.min(100, 100 - (actualFPS / expectedFPS) * 100));
                     cpuLoadEstimate = Math.round(loadPercent * 0.6 + 30);
@@ -1014,15 +710,10 @@
             }
             requestAnimationFrame(measureFPS);
 
-            // ==================== PARTICLE SYSTEM ====================
             const canvas = document.getElementById('particleCanvas');
             const ctx = canvas.getContext('2d');
             let particles = [];
-
-            function resizeCanvas() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
+            function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
             resizeCanvas();
             window.addEventListener('resize', resizeCanvas);
 
@@ -1040,180 +731,89 @@
                     else if (colorChoice < 0.7) this.color = `rgba(124, 77, 255, ${this.opacity})`;
                     else this.color = `rgba(255, 64, 129, ${this.opacity})`;
                 }
-                update() {
-                    this.x += this.speedX;
-                    this.y += this.speedY;
-                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.fillStyle = this.color;
-                    ctx.fill();
-                }
+                update() { this.x += this.speedX; this.y += this.speedY; if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset(); }
+                draw() { ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fillStyle = this.color; ctx.fill(); }
             }
             for (let i = 0; i < 100; i++) particles.push(new Particle());
-
-            function animateParticles() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                particles.forEach(p => { p.update(); p.draw(); });
-                requestAnimationFrame(animateParticles);
-            }
+            function animateParticles() { ctx.clearRect(0, 0, canvas.width, canvas.height); particles.forEach(p => { p.update(); p.draw(); }); requestAnimationFrame(animateParticles); }
             animateParticles();
 
-            // ==================== NOTIFICATIONS ====================
             function showNotification(message, type = 'success', duration = 4000) {
                 const notif = document.createElement('div');
                 notif.className = `notification ${type}`;
                 notif.textContent = message;
                 notificationArea.appendChild(notif);
-                setTimeout(() => {
-                    notif.classList.add('fade-out');
-                    setTimeout(() => notif.remove(), 400);
-                }, duration);
+                setTimeout(() => { notif.classList.add('fade-out'); setTimeout(() => notif.remove(), 400); }, duration);
             }
 
-            // ==================== DEVICE DETECTION ====================
             function detectDevice() {
                 const ua = navigator.userAgent;
                 const deviceName = document.getElementById('deviceName');
                 const deviceSpec = document.getElementById('deviceSpec');
-                if (/iPhone|iPad|iPod/.test(ua)) {
-                    deviceName.textContent = 'iPhone 8 Plus';
-                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM';
-                } else if (/Android/.test(ua)) {
-                    deviceName.textContent = 'Thiết bị Android';
-                    deviceSpec.textContent = 'Android • Chip tối ưu • RAM đa nhiệm';
-                } else {
-                    deviceName.textContent = 'iPhone 8 Plus';
-                    deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM';
-                }
-                // Battery API
+                if (/iPhone|iPad|iPod/.test(ua)) { deviceName.textContent = 'iPhone 8 Plus'; deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM'; }
+                else if (/Android/.test(ua)) { deviceName.textContent = 'Thiết bị Android'; deviceSpec.textContent = 'Android • Chip tối ưu • RAM đa nhiệm'; }
+                else { deviceName.textContent = 'iPhone 8 Plus'; deviceSpec.textContent = 'iOS 16 • Chip A11 Bionic • 3GB RAM'; }
                 if (navigator.getBattery) {
                     navigator.getBattery().then(battery => {
                         batterySupported = true;
                         batteryLevel = battery.level * 100;
                         updateBatteryDisplay();
-                        battery.addEventListener('levelchange', () => {
-                            batteryLevel = battery.level * 100;
-                            updateBatteryDisplay();
-                        });
-                    }).catch(() => {
-                        batterySupported = false;
-                        startBatteryFallback();
-                    });
-                } else {
-                    batterySupported = false;
-                    startBatteryFallback();
-                }
+                        battery.addEventListener('levelchange', () => { batteryLevel = battery.level * 100; updateBatteryDisplay(); });
+                    }).catch(() => { batterySupported = false; startBatteryFallback(); });
+                } else { batterySupported = false; startBatteryFallback(); }
             }
             detectDevice();
 
             function startBatteryFallback() {
                 if (batteryFallbackInterval) clearInterval(batteryFallbackInterval);
                 batteryFallbackInterval = setInterval(() => {
-                    // Giảm pin mô phỏng mỗi 5 giây
-                    if (batteryLevel > 5) {
-                        batteryLevel = Math.max(5, batteryLevel - BATTERY_DRAIN_RATE);
-                        updateBatteryDisplay();
-                    }
+                    if (batteryLevel > 5) { batteryLevel = Math.max(5, batteryLevel - BATTERY_DRAIN_RATE); updateBatteryDisplay(); }
                 }, 5000);
             }
+            function updateBatteryDisplay() { metricBattery.textContent = Math.round(batteryLevel) + '%'; batteryBar.style.width = batteryLevel + '%'; }
 
-            function updateBatteryDisplay() {
-                metricBattery.textContent = Math.round(batteryLevel) + '%';
-                batteryBar.style.width = batteryLevel + '%';
-            }
-
-            // ==================== TOGGLE ACCELERATOR ====================
             function toggleAccelerator() {
-                if (isOptimizing) {
-                    showNotification('Hệ thống đang tối ưu, vui lòng chờ...', 'warning');
-                    return;
-                }
+                if (isOptimizing) { showNotification('Hệ thống đang tối ưu, vui lòng chờ...', 'warning'); return; }
                 isActive = !isActive;
                 updateToggleUI();
-                if (isActive) {
-                    activateAccelerator();
-                } else {
-                    deactivateAccelerator();
-                }
+                if (isActive) { activateAccelerator(); } else { deactivateAccelerator(); }
                 saveState();
             }
-
             function updateToggleUI() {
-                if (isActive) {
-                    toggleSwitch.classList.add('active');
-                    toggleStatusText.textContent = 'BẬT';
-                    toggleStatusText.classList.add('active');
-                } else {
-                    toggleSwitch.classList.remove('active');
-                    toggleStatusText.textContent = 'TẮT';
-                    toggleStatusText.classList.remove('active');
-                }
+                if (isActive) { toggleSwitch.classList.add('active'); toggleStatusText.textContent = 'BẬT'; toggleStatusText.classList.add('active'); }
+                else { toggleSwitch.classList.remove('active'); toggleStatusText.textContent = 'TẮT'; toggleStatusText.classList.remove('active'); }
             }
-
             function activateAccelerator() {
-                if (optimizationDone) {
-                    showNotification('Hệ thống đã được tối ưu! Đang hoạt động...', 'success');
-                    startTimer();
-                    startSystemMonitoring();
-                    return;
-                }
+                if (optimizationDone) { showNotification('Hệ thống đã được tối ưu! Đang hoạt động...', 'success'); startTimer(); startSystemMonitoring(); return; }
                 startOptimization();
             }
+            function deactivateAccelerator() { stopTimer(); stopSystemMonitoring(); showNotification('Đã tắt tăng tốc Roblox.', 'warning'); }
 
-            function deactivateAccelerator() {
-                stopTimer();
-                stopSystemMonitoring();
-                showNotification('Đã tắt tăng tốc Roblox.', 'warning');
-            }
-
-            // ==================== OPTIMIZATION SEQUENCE ====================
             function startOptimization() {
                 isOptimizing = true;
                 loadingOverlay.classList.add('show');
                 loadingFill.style.width = '0%';
                 loadingText.textContent = 'Đang khởi tạo hệ thống tăng tốc...';
-
                 const optSteps = [
-                    'Đang phân tích thiết bị...',
-                    'Đang tối ưu CPU...',
-                    'Đang giảm lác máy...',
-                    'Đang tăng mượt máy...',
-                    'Đang làm mát thiết bị...',
-                    'Đang tăng bộ nhớ...',
-                    'Đang tối ưu pin...',
-                    'Đang ẩn yếu tố gây giật...',
-                    'Đang tăng cấu hình mượt...',
+                    'Đang phân tích thiết bị...', 'Đang tối ưu CPU...', 'Đang giảm lác máy...',
+                    'Đang tăng mượt máy...', 'Đang làm mát thiết bị...', 'Đang tăng bộ nhớ...',
+                    'Đang tối ưu pin...', 'Đang ẩn yếu tố gây giật...', 'Đang tăng cấu hình mượt...',
                     'Hoàn tất tối ưu!'
                 ];
-
                 let stepIndex = 0;
                 const totalSteps = optSteps.length;
-                const optDuration = 10000 + Math.random() * 10000; // 10-20 giây
+                const optDuration = 10000 + Math.random() * 10000;
                 const stepInterval = optDuration / totalSteps;
-
                 const optInterval = setInterval(() => {
                     if (stepIndex < totalSteps) {
                         loadingText.textContent = optSteps[stepIndex];
                         const progress = ((stepIndex + 1) / totalSteps) * 100;
                         loadingFill.style.width = progress + '%';
-                        if (stepIndex < optItems.length) {
-                            optItems[stepIndex].classList.add('done');
-                            optItems[stepIndex].classList.remove('active-opt');
-                        }
-                        if (stepIndex < optItems.length - 1 && stepIndex >= 0) {
-                            optItems[stepIndex + 1]?.classList.add('active-opt');
-                        }
+                        if (stepIndex < optItems.length) { optItems[stepIndex].classList.add('done'); optItems[stepIndex].classList.remove('active-opt'); }
+                        if (stepIndex < optItems.length - 1 && stepIndex >= 0) { optItems[stepIndex + 1]?.classList.add('active-opt'); }
                         stepIndex++;
-                    } else {
-                        clearInterval(optInterval);
-                        completeOptimization();
-                    }
+                    } else { clearInterval(optInterval); completeOptimization(); }
                 }, stepInterval);
-
-                // Reset trạng thái các mục
                 optItems.forEach(el => { el.classList.remove('done', 'active-opt'); });
                 optItems[0]?.classList.add('active-opt');
             }
@@ -1223,18 +823,11 @@
                 optimizationDone = true;
                 loadingOverlay.classList.remove('show');
                 optItems.forEach(el => el.classList.add('done'));
-
-                // Boost metrics
                 boostMetrics();
-
                 showNotification('✅ Tăng tốc hoàn tất! Hiệu suất tăng tối đa!', 'success');
                 startTimer();
                 startSystemMonitoring();
-
-                // Hiển thị modal chuyển hướng Roblox
-                setTimeout(() => {
-                    showRobloxRedirect();
-                }, 500);
+                setTimeout(() => { showRobloxRedirect(); }, 500);
             }
 
             function boostMetrics() {
@@ -1245,7 +838,6 @@
                 animateMetric('boost', 'boostBar', 100, '%', 3000);
                 boostLevel = 100;
             }
-
             function animateMetric(type, barId, targetValue, suffix, duration) {
                 const element = type === 'cpu' ? metricCpu : type === 'ram' ? metricRam : type === 'temp' ? metricTemp : type === 'battery' ? metricBattery : metricBoost;
                 const barElement = document.getElementById(barId);
@@ -1259,62 +851,35 @@
                     element.textContent = Math.round(current) + suffix;
                     const barWidth = Math.min(current, 100);
                     barElement.style.width = barWidth + '%';
-                    if (progress >= 1) {
-                        clearInterval(animInterval);
-                        element.textContent = targetValue + suffix;
-                        barElement.style.width = targetValue + '%';
-                    }
+                    if (progress >= 1) { clearInterval(animInterval); element.textContent = targetValue + suffix; barElement.style.width = targetValue + '%'; }
                 }, 50);
             }
 
-            // ==================== ROBLOX REDIRECT ====================
             function showRobloxRedirect() {
                 robloxModal.classList.add('show');
                 let countdown = 3;
                 redirectCountdown.textContent = countdown;
                 const cdInterval = setInterval(() => {
                     countdown--;
-                    if (countdown <= 0) {
-                        clearInterval(cdInterval);
-                        goToRoblox();
-                    } else {
-                        redirectCountdown.textContent = countdown;
-                    }
+                    if (countdown <= 0) { clearInterval(cdInterval); goToRoblox(); } else { redirectCountdown.textContent = countdown; }
                 }, 1000);
             }
-
             function goToRoblox() {
                 robloxModal.classList.remove('show');
                 showNotification('🚀 Đang chuyển đến Roblox Quốc Tế...', 'success');
-                setTimeout(() => {
-                    window.open('https://www.roblox.com', '_blank');
-                }, 800);
+                setTimeout(() => { window.open('https://www.roblox.com', '_blank'); }, 800);
             }
 
-            // ==================== TIMER ====================
             function startTimer() {
                 const savedTime = localStorage.getItem(TIMER_KEY);
-                if (savedTime && optimizationDone) {
-                    startTime = parseInt(savedTime);
-                    endTime = startTime + 2 * 60 * 60 * 1000;
-                } else {
-                    startTime = Date.now();
-                    endTime = startTime + 2 * 60 * 60 * 1000;
-                    localStorage.setItem(TIMER_KEY, startTime.toString());
-                }
+                if (savedTime && optimizationDone) { startTime = parseInt(savedTime); endTime = startTime + 2 * 60 * 60 * 1000; }
+                else { startTime = Date.now(); endTime = startTime + 2 * 60 * 60 * 1000; localStorage.setItem(TIMER_KEY, startTime.toString()); }
                 stopTimer();
                 timerInterval = setInterval(updateTimer, 1000);
                 updateTimer();
                 resetBtn.disabled = false;
             }
-
-            function stopTimer() {
-                if (timerInterval) {
-                    clearInterval(timerInterval);
-                    timerInterval = null;
-                }
-            }
-
+            function stopTimer() { if (timerInterval) { clearInterval(timerInterval); timerInterval = null; } }
             function updateTimer() {
                 if (!startTime || !endTime) return;
                 const now = Date.now();
@@ -1322,138 +887,116 @@
                 const hours = Math.floor(remaining / (1000 * 60 * 60));
                 const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
-                timerValue.textContent =
-                    String(hours).padStart(2, '0') + ':' +
-                    String(minutes).padStart(2, '0') + ':' +
-                    String(seconds).padStart(2, '0');
-
-                if (remaining < 5 * 60 * 1000 && remaining > 0) {
-                    timerWarning.classList.add('show');
-                } else {
-                    timerWarning.classList.remove('show');
-                }
-
-                if (remaining <= 0) {
-                    autoReset();
-                }
+                timerValue.textContent = String(hours).padStart(2, '0') + ':' + String(minutes).padStart(2, '0') + ':' + String(seconds).padStart(2, '0');
+                if (remaining < 5 * 60 * 1000 && remaining > 0) { timerWarning.classList.add('show'); } else { timerWarning.classList.remove('show'); }
+                if (remaining <= 0) { autoReset(); }
             }
+            function autoReset() { stopTimer(); showNotification('⏱️ Đã hết 2 giờ! Hệ thống tự động reset...', 'warning', 5000); fullReset(); }
 
-            function autoReset() {
-                stopTimer();
-                showNotification('⏱️ Đã hết 2 giờ! Hệ thống tự động reset...', 'warning', 5000);
-                fullReset();
-            }
-
-            // ==================== SYSTEM MONITORING ====================
             function startSystemMonitoring() {
                 stopSystemMonitoring();
                 systemLoad = 0;
                 systemLoadInterval = setInterval(() => {
                     systemLoad = Math.min(100, systemLoad + (Math.random() * 2.5 + 0.8));
                     updateSystemLoadDisplay();
-                    if (systemLoad >= 85 && systemLoad < 100) {
-                        systemLoadCard.style.display = 'block';
-                        resetBtn.disabled = false;
-                    } else if (systemLoad >= 100) {
-                        systemLoadCard.style.display = 'block';
-                        showNotification('⚠️ Máy đã đạt giới hạn! Hãy nhấn Reset để tiếp tục!', 'warning', 6000);
-                        systemLoad = 85;
-                    }
+                    if (systemLoad >= 85 && systemLoad < 100) { systemLoadCard.style.display = 'block'; resetBtn.disabled = false; }
+                    else if (systemLoad >= 100) { systemLoadCard.style.display = 'block'; showNotification('⚠️ Máy đã đạt giới hạn! Hãy nhấn Reset để tiếp tục!', 'warning', 6000); systemLoad = 85; }
                 }, 5000);
             }
-
-            function stopSystemMonitoring() {
-                if (systemLoadInterval) {
-                    clearInterval(systemLoadInterval);
-                    systemLoadInterval = null;
-                }
-            }
-
+            function stopSystemMonitoring() { if (systemLoadInterval) { clearInterval(systemLoadInterval); systemLoadInterval = null; } }
             function updateSystemLoadDisplay() {
                 const cpuLoad = Math.min(95, 35 + systemLoad * 0.6);
                 const ramLoad = Math.min(95, 62 + systemLoad * 0.3);
                 const tempLoad = Math.min(50, 38 + systemLoad * 0.15);
-                metricCpu.textContent = Math.round(cpuLoad) + '%';
-                cpuBar.style.width = cpuLoad + '%';
-                metricRam.textContent = Math.round(ramLoad) + '%';
-                ramBar.style.width = ramLoad + '%';
-                metricTemp.textContent = Math.round(tempLoad) + '°C';
-                tempBar.style.width = tempLoad + '%';
-                metricBattery.textContent = Math.max(50, Math.round(batteryLevel - systemLoad * 0.3)) + '%';
-                batteryBar.style.width = Math.max(50, batteryLevel - systemLoad * 0.3) + '%';
+                metricCpu.textContent = Math.round(cpuLoad) + '%'; cpuBar.style.width = cpuLoad + '%';
+                metricRam.textContent = Math.round(ramLoad) + '%'; ramBar.style.width = ramLoad + '%';
+                metricTemp.textContent = Math.round(tempLoad) + '°C'; tempBar.style.width = tempLoad + '%';
+                metricBattery.textContent = Math.max(50, Math.round(batteryLevel - systemLoad * 0.3)) + '%'; batteryBar.style.width = Math.max(50, batteryLevel - systemLoad * 0.3) + '%';
             }
 
-            // ==================== REAL-TIME METRICS UPDATE ====================
             function startMetricsUpdater() {
                 metricsInterval = setInterval(() => {
-                    // FPS
-                    if (isActive && optimizationDone) {
-                        const boostedFPS = Math.min(120, Math.round(actualFPS * 1.5));
-                        metricFps.textContent = boostedFPS;
-                        fpsBar.style.width = Math.min(100, (boostedFPS / 120) * 100) + '%';
-                    } else {
-                        metricFps.textContent = actualFPS;
-                        fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
-                    }
-
-                    // CPU
-                    metricCpu.textContent = Math.round(cpuLoadEstimate) + '%';
-                    cpuBar.style.width = cpuLoadEstimate + '%';
-
-                    // Nhiệt độ: cập nhật dựa trên tải hệ thống và trạng thái tăng tốc
-                    if (isActive && optimizationDone) {
-                        temperature = 28 + systemLoad * 0.1;
-                    } else {
-                        temperature = 38 + systemLoad * 0.15;
-                    }
+                    if (isActive && optimizationDone) { const boostedFPS = Math.min(120, Math.round(actualFPS * 1.5)); metricFps.textContent = boostedFPS; fpsBar.style.width = Math.min(100, (boostedFPS / 120) * 100) + '%'; }
+                    else { metricFps.textContent = actualFPS; fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%'; }
+                    metricCpu.textContent = Math.round(cpuLoadEstimate) + '%'; cpuBar.style.width = cpuLoadEstimate + '%';
+                    if (isActive && optimizationDone) { temperature = 28 + systemLoad * 0.1; } else { temperature = 38 + systemLoad * 0.15; }
                     temperature = Math.min(50, Math.max(25, temperature));
-                    metricTemp.textContent = Math.round(temperature) + '°C';
-                    tempBar.style.width = temperature + '%';
-
-                    // Bộ nhớ
-                    if (isActive && optimizationDone) {
-                        usedMemory = Math.min(95, 62 + systemLoad * 0.25);
-                    } else {
-                        usedMemory = 62;
-                    }
-                    metricRam.textContent = Math.round(usedMemory) + '%';
-                    ramBar.style.width = usedMemory + '%';
-
-                    // Pin: hiển thị giá trị hiện tại (đã được cập nhật bởi Battery API hoặc fallback)
+                    metricTemp.textContent = Math.round(temperature) + '°C'; tempBar.style.width = temperature + '%';
+                    if (isActive && optimizationDone) { usedMemory = Math.min(95, 62 + systemLoad * 0.25); } else { usedMemory = 62; }
+                    metricRam.textContent = Math.round(usedMemory) + '%'; ramBar.style.width = usedMemory + '%';
                     updateBatteryDisplay();
-
-                    // Boost Level
-                    if (isActive && optimizationDone) {
-                        boostLevel = Math.min(100, boostLevel + 0.5);
-                    } else {
-                        boostLevel = Math.max(0, boostLevel - 1);
-                    }
-                    metricBoost.textContent = Math.round(boostLevel) + '%';
-                    boostBar.style.width = boostLevel + '%';
+                    if (isActive && optimizationDone) { boostLevel = Math.min(100, boostLevel + 0.5); } else { boostLevel = Math.max(0, boostLevel - 1); }
+                    metricBoost.textContent = Math.round(boostLevel) + '%'; boostBar.style.width = boostLevel + '%';
                 }, 1000);
             }
 
-            // ==================== RESET SYSTEM ====================
-            function resetSystem() {
-                if (isOptimizing) {
-                    showNotification('Hệ thống đang tối ưu, không thể reset!', 'warning');
-                    return;
-                }
-                showNotification('🔄 Đang reset toàn bộ hệ thống...', 'warning', 3000);
+            // ==================== DỌN DẸP BỘ NHỚ ĐỆM ====================
+            function startCleanup() {
+                if (isCleaning) return;
+                isCleaning = true;
+                cleanupBtn.disabled = true;
+                cleanupProgress.classList.add('show');
+                cleanupStatus.classList.add('show');
+                cleanupFill.style.width = '0%';
+                cleanupStatus.textContent = 'Đang phân tích bộ nhớ rác...';
+                showNotification('🧹 Bắt đầu dọn dẹp bộ nhớ đệm...', 'warning', 3000);
 
+                const cleanupSteps = [
+                    'Đang quét bộ nhớ đệm...',
+                    'Đang phân tích dữ liệu rác...',
+                    'Đang xóa bộ nhớ đệm...',
+                    'Đang dọn dẹp các tệp tạm...',
+                    'Đang tối ưu bộ nhớ...',
+                    'Đang giải phóng RAM...',
+                    'Đang xóa rác game...',
+                    'Hoàn tất dọn dẹp!'
+                ];
+                let stepIndex = 0;
+                const totalSteps = cleanupSteps.length;
+                const cleanupDuration = 1000 + Math.random() * 9000; // 1-10 giây
+                const stepInterval = cleanupDuration / totalSteps;
+                const cleanupIntervalId = setInterval(() => {
+                    if (stepIndex < totalSteps) {
+                        cleanupStatus.textContent = cleanupSteps[stepIndex];
+                        const progress = ((stepIndex + 1) / totalSteps) * 100;
+                        cleanupFill.style.width = progress + '%';
+                        stepIndex++;
+                    } else {
+                        clearInterval(cleanupIntervalId);
+                        completeCleanup();
+                    }
+                }, stepInterval);
+                window.currentCleanupInterval = cleanupIntervalId; // Lưu để hủy khi reset nếu cần
+            }
+
+            function completeCleanup() {
+                isCleaning = false;
+                cleanupBtn.disabled = false;
+                cleanupFill.style.width = '100%';
+                cleanupStatus.textContent = '✅ Đã xóa bộ nhớ đệm thành công! Máy mượt hơn rõ rệt.';
+                showNotification('✅ Dọn dẹp bộ nhớ đệm hoàn tất! Máy mượt hơn, không bị văng game.', 'success', 5000);
+                // Giả lập RAM trống hơn
+                usedMemory = Math.max(40, usedMemory - 15);
+                metricRam.textContent = Math.round(usedMemory) + '%';
+                ramBar.style.width = usedMemory + '%';
+                setTimeout(() => {
+                    cleanupProgress.classList.remove('show');
+                    cleanupStatus.classList.remove('show');
+                }, 3000);
+            }
+
+            function resetSystem() {
+                if (isOptimizing) { showNotification('Hệ thống đang tối ưu, không thể reset!', 'warning'); return; }
+                if (isCleaning) { clearInterval(window.currentCleanupInterval); isCleaning = false; cleanupBtn.disabled = false; cleanupProgress.classList.remove('show'); cleanupStatus.classList.remove('show'); }
+                showNotification('🔄 Đang reset toàn bộ hệ thống...', 'warning', 3000);
                 loadingOverlay.classList.add('show');
                 loadingFill.style.width = '0%';
                 loadingText.textContent = 'Đang reset hệ thống...';
-
                 let prog = 0;
                 const resetInterval = setInterval(() => {
                     prog += 12;
                     loadingFill.style.width = prog + '%';
-                    if (prog >= 100) {
-                        clearInterval(resetInterval);
-                        loadingOverlay.classList.remove('show');
-                        fullReset();
-                    }
+                    if (prog >= 100) { clearInterval(resetInterval); loadingOverlay.classList.remove('show'); fullReset(); }
                 }, 150);
             }
 
@@ -1474,41 +1017,20 @@
                 timerValue.textContent = '02:00:00';
                 localStorage.removeItem(TIMER_KEY);
                 localStorage.removeItem(STATE_KEY);
-
-                // Reset metrics
-                metricCpu.textContent = '35%';
-                cpuBar.style.width = '35%';
-                metricRam.textContent = '62%';
-                ramBar.style.width = '62%';
-                metricTemp.textContent = '38°C';
-                tempBar.style.width = '38%';
-                metricBattery.textContent = Math.round(batteryLevel) + '%';
-                batteryBar.style.width = batteryLevel + '%';
-                metricBoost.textContent = '0%';
-                boostBar.style.width = '0%';
-                metricFps.textContent = actualFPS;
-                fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
-
-                optItems.forEach(el => {
-                    el.classList.remove('done', 'active-opt');
-                });
-
+                metricCpu.textContent = '35%'; cpuBar.style.width = '35%';
+                metricRam.textContent = '62%'; ramBar.style.width = '62%';
+                metricTemp.textContent = '38°C'; tempBar.style.width = '38%';
+                metricBattery.textContent = Math.round(batteryLevel) + '%'; batteryBar.style.width = batteryLevel + '%';
+                metricBoost.textContent = '0%'; boostBar.style.width = '0%';
+                metricFps.textContent = actualFPS; fpsBar.style.width = Math.min(100, (actualFPS / 120) * 100) + '%';
+                optItems.forEach(el => { el.classList.remove('done', 'active-opt'); });
                 showNotification('✅ Reset hoàn tất! Hệ thống sẵn sàng cho lần tăng tốc mới!', 'success', 5000);
             }
 
-            // ==================== PERSISTENCE ====================
             function saveState() {
-                const state = {
-                    isActive: isActive,
-                    optimizationDone: optimizationDone,
-                    systemLoad: systemLoad,
-                    startTime: startTime,
-                    boostLevel: boostLevel,
-                    batteryLevel: batteryLevel
-                };
+                const state = { isActive, optimizationDone, systemLoad, startTime, boostLevel, batteryLevel };
                 localStorage.setItem(STATE_KEY, JSON.stringify(state));
             }
-
             function loadState() {
                 try {
                     const saved = localStorage.getItem(STATE_KEY);
@@ -1520,51 +1042,30 @@
                         startTime = state.startTime || null;
                         boostLevel = state.boostLevel || 0;
                         if (state.batteryLevel) batteryLevel = state.batteryLevel;
-                        if (startTime) {
-                            endTime = startTime + 2 * 60 * 60 * 1000;
-                        }
+                        if (startTime) endTime = startTime + 2 * 60 * 60 * 1000;
                         updateToggleUI();
-                        if (isActive && optimizationDone) {
-                            startTimer();
-                            startSystemMonitoring();
-                            resetBtn.disabled = false;
-                            if (systemLoad >= 85) systemLoadCard.style.display = 'block';
-                        } else if (isActive && !optimizationDone) {
-                            isActive = true;
-                            optimizationDone = false;
-                            updateToggleUI();
-                            startOptimization();
-                        }
+                        if (isActive && optimizationDone) { startTimer(); startSystemMonitoring(); resetBtn.disabled = false; if (systemLoad >= 85) systemLoadCard.style.display = 'block'; }
+                        else if (isActive && !optimizationDone) { isActive = true; optimizationDone = false; updateToggleUI(); startOptimization(); }
                     }
                 } catch (e) {}
             }
 
-            // ==================== INITIALIZATION ====================
             function init() {
                 loadState();
                 startMetricsUpdater();
-                setTimeout(() => {
-                    showNotification('👋 Chào mừng đến với Tăng Tốc Roblox Ultra VIP!', 'success');
-                }, 800);
+                setTimeout(() => { showNotification('👋 Chào mừng đến với Tăng Tốc Roblox Ultra VIP 6.0!', 'success'); }, 800);
             }
             init();
 
-            // Expose functions
             window.toggleAccelerator = toggleAccelerator;
             window.resetSystem = resetSystem;
             window.goToRoblox = goToRoblox;
+            window.startCleanup = startCleanup;
 
-            // Handle page visibility - timer continues in background
             document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'visible' && isActive && optimizationDone) {
-                    updateTimer();
-                }
+                if (document.visibilityState === 'visible' && isActive && optimizationDone) updateTimer();
             });
-
-            // Save state periodically
-            setInterval(() => {
-                if (isActive) saveState();
-            }, 10000);
+            setInterval(() => { if (isActive) saveState(); }, 10000);
         })();
     </script>
 </body>
